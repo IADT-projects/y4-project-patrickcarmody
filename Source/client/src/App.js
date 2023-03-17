@@ -10,6 +10,7 @@ import Home from './pages/Home';
 //  Components
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
+import All from './pages/All';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
           <SideBar />
           <Routes>
             <Route path="/" element={<Home/>}/>
+            <Route path="/all" element={<All/>}/>
           </Routes>
         </Box>
       </ThemeProvider>

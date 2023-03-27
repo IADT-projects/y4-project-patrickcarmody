@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { HelmetProvider } from 'react-helmet-async';
-import './index.css';
-import '@fontsource/poppins/300.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/500.css';
-import '@fontsource/poppins/600.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-  <HelmetProvider>
-    <React.StrictMode>
+  <Suspense>
+    <BrowserRouter>
       <App />
-    </React.StrictMode>
-  </HelmetProvider>
+    </BrowserRouter>
+  </Suspense>
 );

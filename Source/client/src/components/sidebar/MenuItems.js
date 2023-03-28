@@ -10,7 +10,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'All',
     icon: List,
-    href: '/page',
+    href: '/campaigns',
   },
   {
     id: uniqueId(),

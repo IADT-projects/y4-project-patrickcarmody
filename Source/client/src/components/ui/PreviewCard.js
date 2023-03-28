@@ -4,14 +4,8 @@ import Progress from "./Progress";
 const paperSX = {}
 
 
-const PreviewCard = ({
-    address,
-    title,
-    description,
-    category,
-    creator,
-    goal
-}) => {
+const PreviewCard = (props) => {
+
     return (
         <>
         <Card elevation={1} sx={{ padding: 0 }}>
@@ -21,10 +15,10 @@ const PreviewCard = ({
             <CardContent>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography variant="h4">Campaign Title</Typography>
+                        <Typography variant="h6">{props.campaign.title}</Typography>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Typography variant="h6" textAlign={"right"}>Campaign Title</Typography>
+                    <Grid item xs={6} paddingBottom={2}>
+                        <Typography variant="subtitle1" textAlign={"right"}>{props.campaign.category}</Typography>
                     </Grid>
                 </Grid>
                 <Progress/>

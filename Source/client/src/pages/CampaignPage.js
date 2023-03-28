@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CampaignInfo from "../components/ui/CampaignInfo";
 import ContributeWindow from "../components/ui/ContributeWindow";
 import { KeyboardArrowLeft } from "@mui/icons-material";
+import CreatorCard from "../components/ui/CreatorCard";
 
 const CampaignPage = ({campaign}) => {
     const navigate = useNavigate();
@@ -12,14 +13,19 @@ const CampaignPage = ({campaign}) => {
             <IconButton onClick={() => navigate(-1)}>
                 <KeyboardArrowLeft/>
             </IconButton>
-            <Typography variant="h3" marginY={2}>View Campaign</Typography>
+            <Typography variant="h3" marginY={2}>{campaign.title}</Typography>
         </Grid>
             <Grid container spacing={1} direction="row">
-                <Grid item xs={8} >
-                    <CampaignInfo campaign={campaign} />
+                <Grid item lg={8} md={12}>
+                    <CampaignInfo campaign={campaign}/>
                 </Grid>
-                <Grid item xs={4}>
-                    <ContributeWindow campaign={campaign} />
+                <Grid item container lg={4} md={12} spacing={1}>
+                    <Grid item lg={12} md={6} xs={12}>
+                        <ContributeWindow campaign={campaign} />
+                    </Grid>
+                    <Grid item lg={12} md={6} xs={12}>
+                        <CreatorCard creator={campaign.creator}/>
+                    </Grid>
                 </Grid>
             </Grid>
         </>

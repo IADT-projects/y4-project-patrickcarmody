@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import CampaignPage from '../CampaignPage';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from '../../config'
 
 const SingleCampaign = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [ campaign, setCampaign ] = useState(null);
 
     useEffect(() => {
         axios.get(`/campaigns/${id}`)
         .then((response) => {
-            // console.log(response.data);
             setCampaign(response.data);
         })
         .catch((err) => {

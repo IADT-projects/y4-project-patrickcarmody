@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import { Menu } from '@mui/icons-material';
+import { Web3Button } from '@web3modal/react';
 
 // components
 
@@ -58,9 +59,10 @@ const Header = (props) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Button variant="contained" color="primary"  target="_blank">
+          {/* <Button variant="contained" color="primary"  target="_blank">
             Log In
-          </Button>
+          </Button> */}
+          <Web3Button/>
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>

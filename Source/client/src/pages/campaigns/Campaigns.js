@@ -26,7 +26,7 @@ const Campaigns = () => {
 
   const campaignsList = campaign.map((campaign) => {
     return (
-      <Grid item xs={6} lg={4}>
+      <Grid item xs={12} md={6} lg={4}>
         <PreviewCard campaign={campaign}/>
       </Grid>
     )
@@ -34,6 +34,7 @@ const Campaigns = () => {
 
     return (
       <PageContainer title="Home" description="this is the home page">
+        <Typography variant='h3' sx={{ marginY: 2 }}>All campaigns</Typography>
         <Box>
           <Grid container spacing={3} direction="row">
             { campaignsList }

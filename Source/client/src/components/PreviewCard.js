@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 const DogImage = require('../assets/placeholder/dog.jpg');
 
-const PreviewCard = () => {
+const PreviewCard = ({campaign}) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia

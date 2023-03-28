@@ -1,8 +1,7 @@
 import React from 'react';
 import { Grid, Box, Typography, Pagination } from '@mui/material';
 import PageContainer from '../components/PageContainer'
-import DashboardCard from '../components/DashboardCard';
-import ExampleComponent from './ExampleComponent'
+import PreviewCard from '../components/ui/PreviewCard';
 
 const Home = () => {
     return (
@@ -18,49 +17,24 @@ const Home = () => {
               <Typography variant='subtitle'>
                 This page shows all active campaigns from the site
               </Typography>
-              
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"Fundraiser"}
-                action={"Sports"}
-                progress={63}
-               />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"Buy Hospital Equipment"}
-                action={"Medical"}
-                progress={55}
-              />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"New Fundraiser"}
-                action={"Family"}
-                progress={20}
-              />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"Disaster Relief"}
-                action={"Emergnecies"}
-                progress={10}
-              />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"Local Sports Team"}
-                action={"Sports"}
-                progress={40}
-              />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={6} lg={4}>
-              <DashboardCard
-                title={"Fundraiser"}
-                action={"Sports"}
-                progress={90}
-              />
+              <PreviewCard/>
             </Grid>
             <Grid item xs={12} lg={12} justifyItems={"center"} justifyContent={"center"}>
               <Pagination/>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Box, Divider } from '@mui/material';
 import PageContainer from '../../components/PageContainer'
 import DashboardCard from '../../components/DashboardCard';
+import PreviewCard from '../../components/ui/PreviewCard';
 
 const Campaigns = () => {
     return (
@@ -20,7 +21,7 @@ const Campaigns = () => {
                     <DashboardCard title="Fundraiser"/>
                   </Grid>
                   <Grid item xs={4}>
-                    <DashboardCard title="Fundraiser"/>
+                    <PreviewCard/>
                   </Grid>
                   <Grid item xs={4}>
                     <DashboardCard title="Fundraiser"/>

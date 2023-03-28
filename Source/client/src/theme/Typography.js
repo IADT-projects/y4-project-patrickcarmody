@@ -22,16 +22,19 @@ const typography = {
       fontWeight: 600,
       fontSize: '1.3125rem',
       lineHeight: '1.6rem',
+      fontFamily: "'Poppins', sans-serif;",
     },
     h5: {
       fontWeight: 600,
       fontSize: '1.125rem',
       lineHeight: '1.6rem',
+      fontFamily: "'Poppins', sans-serif;",
     },
     h6: {
       fontWeight: 600,
       fontSize: '1rem',
       lineHeight: '1.2rem',
+      fontFamily: "'Poppins', sans-serif;",
     },
     button: {
       textTransform: 'capitalize',

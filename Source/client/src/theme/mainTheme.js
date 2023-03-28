@@ -5,12 +5,12 @@ const mainTheme = createTheme({
     direction: 'ltr',
     palette: {
       primary: {
-        main: '#5D87FF',
+        main: '#3f84d4',
         light: '#ECF2FF',
         dark: '#4570EA',
       },
       secondary: {
-        main: '#49BEFF',
+        main: '#746dbf',
         light: '#E8F7FF',
         dark: '#23afdb',
       },
@@ -53,8 +53,8 @@ const mainTheme = createTheme({
   
       },
       text: {
-        primary: '#2A3547',
-        secondary: '#5A6A85',
+        primary: '#1b222e',
+        secondary: '#2f2f36',
       },
       action: {
         disabledBackground: 'rgba(73,82,88,0.12)',

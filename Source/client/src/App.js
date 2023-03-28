@@ -4,7 +4,6 @@ import Router from './Router'
 
 import { mainTheme } from './theme/mainTheme';
 
-
 function App() {
   const routing = useRoutes(Router);
   const theme = mainTheme;

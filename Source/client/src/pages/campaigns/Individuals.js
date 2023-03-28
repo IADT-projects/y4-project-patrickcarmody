@@ -1,13 +1,13 @@
 import React from 'react';
 import PageContainer from '../../components/PageContainer'
-import { Box } from '@mui/material';
-import CampaignPage from '../CampaignPage';
+import { Box, Typography } from '@mui/material';
 
 const Individuals = () => {
     return (
       <PageContainer title="Individual" description="this is the home page">
         <Box>
-          <h1>Individuals</h1>
+          <Typography variant='h2'>Individuals</Typography>
+          <Typography variant='h6'>Use this page to contribute to user-created fundraising campaigns.</Typography>
         </Box>
       </PageContainer>
     );

@@ -39,7 +39,6 @@ const Header = (props) => {
             },
           }}
         >
-          
           <Menu width="20" height="20" />
         </IconButton>
 
@@ -55,14 +54,13 @@ const Header = (props) => {
             }),
           }}
         >
-
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          {/* <Button variant="contained" color="primary"  target="_blank">
+          <Button variant="contained" color="primary"  target="_blank">
             Log In
-          </Button> */}
-          <Web3Button/>
+          </Button>
+          {/* <Web3Button/> */}
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>

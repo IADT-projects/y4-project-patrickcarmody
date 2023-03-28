@@ -3,6 +3,7 @@ import { Grid, Box, Divider, Typography, Pagination } from '@mui/material';
 import PageContainer from '../../components/PageContainer'
 import PreviewCard from '../../components/ui/PreviewCard';
 import axios from '../../config'
+import Loading from '../../components/Loading';
 
 const Campaigns = () => {
 
@@ -21,7 +22,7 @@ const Campaigns = () => {
   }, [])
 
   if(!campaign) return(
-    <h1>Loading...</h1>
+    <Loading/>
   )
 
   const campaignsList = campaign.map((campaign) => {

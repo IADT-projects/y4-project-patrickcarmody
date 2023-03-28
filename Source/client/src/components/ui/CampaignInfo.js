@@ -3,7 +3,7 @@ import { Card, CardContent, CardMedia, Divider, Grid, Link, Typography } from "@
 
 const CampaignInfo = ({campaign}) => {
     const category = campaign.category.charAt(0).toUpperCase() + campaign.category.slice(1)
-
+    const campaignaddress = `${campaign.address.substring(0,6)}...${campaign.address.substring(38)}`
     return(
         <>
         <Card elevation={2} sx={{padding: 0}}>
@@ -31,7 +31,7 @@ const CampaignInfo = ({campaign}) => {
                 <Divider/>
                 <Grid container>
                 <Grid item xs={6}>
-                        <Typography variant="body1" textAlign={"left"}>Initial Target:</Typography>
+                        <Typography variant="body1" textAlign={"left"}>Initial Target</Typography>
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="subtitle1" textAlign={"right"}>€5,000</Typography>
@@ -45,7 +45,7 @@ const CampaignInfo = ({campaign}) => {
                     <Grid item xs={6}>
                         <Link href='#' underline="none">
                         <Typography variant="subtitle1" sx={{ textAlign: 'right' }}>
-                            {campaign.address}
+                            {campaignaddress}
                         </Typography>
                         </Link>
                     </Grid>

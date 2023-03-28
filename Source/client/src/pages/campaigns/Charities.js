@@ -6,7 +6,8 @@ const Charities = () => {
     return (
       <PageContainer title="Home" description="this is the home page">
         <Box>
-          <Typography variant='h3'>Charity Pages</Typography>
+          <Typography variant='h2'>Charities</Typography>
+          <Typography variant='h6'>Use this page to donate to existing charity organisations.</Typography>
         </Box>
       </PageContainer>
     );

@@ -27,7 +27,7 @@ const Router = [
       //Main
       { path: '/', element: <Navigate to="/home" /> },
       { path: '/home', exact: true, element: <Home /> },
-      { path: '/page', exact: true, element: <Page /> },
+      // { path: '/page', exact: true, element: <Page /> },
       //Campaigns
       { path: '/campaigns', exact: true, element: <Campaigns /> },
       { path: '/campaigns/charity', exact: true, element: <Charities /> },

@@ -11,6 +11,7 @@ const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')))
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')))
 const Create = Loadable(lazy(() => import('./pages/campaigns/Create')))
 const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')))
+const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
 
 const About = Loadable(lazy(() => import('./pages/main/About')))
 const Start = Loadable(lazy(() => import('./pages/main/Start')))
@@ -32,6 +33,7 @@ const Router = [
       { path: '/campaigns/charity', exact: true, element: <Charities /> },
       { path: '/campaigns/individual', exact: true, element: <Individuals /> },
       { path: '/campaigns/create', exact: true, element: <Create /> },
+      { path: '/campaigns/:id', element: <SingleCampaign/> },
       //Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },

@@ -4,7 +4,7 @@ const connect = async () => {
     let db = null;
 
     try {
-        await mongoose.connect(process.env.DB_ATLAS_URI, {
+        await mongoose.connect(process.env.DB_ATLAS_URL, {
             useNewUrlParser: true,
             useUnifiedTopology:true
         });

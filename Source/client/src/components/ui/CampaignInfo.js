@@ -1,7 +1,9 @@
-import { Card, CardContent, CardMedia, Divider, Grid, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Divider, Grid, Link, Typography } from "@mui/material";
 
 
-const CampaignInfo = () => {
+const CampaignInfo = ({campaign}) => {
+    const category = campaign.category.charAt(0).toUpperCase() + campaign.category.slice(1)
+
     return(
         <>
         <Card elevation={2} sx={{padding: 0}}>
@@ -12,13 +14,15 @@ const CampaignInfo = () => {
             <CardContent>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography variant="h3">Title</Typography>
+                        <Typography variant="h3">{campaign.title}</Typography>
                     </Grid>
                     <Grid item xs={6} paddingBottom={2}>
-                        <Typography variant="subtitle1" textAlign={"right"}>Category</Typography>
+                        <Link href='#' underline="none">
+                            <Typography variant="subtitle1" textAlign={"right"}>{category}</Typography>
+                        </Link>
                     </Grid>
-                    <Grid item xs={6} paddingBottom={2}>
-                        <Typography variant="subtitle1" textAlign={"left"}>This is an example description</Typography>
+                    <Grid item xs={12} paddingBottom={2}>
+                        <Typography variant="subtitle1" textAlign={"left"}>{campaign.description}</Typography>
                     </Grid>
                     <Grid container item xs={12} paddingBottom={2}>
                         <Typography variant="h6" textAlign={"center"}>Campaign Details</Typography>
@@ -39,7 +43,11 @@ const CampaignInfo = () => {
                         <Typography variant="body1" textAlign={"left"}>View on Blockchain</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant="subtitle1" textAlign={"right"}>0x000000000000</Typography>
+                        <Link href='#' underline="none">
+                        <Typography variant="subtitle1" sx={{ textAlign: 'right' }}>
+                            {campaign.address}
+                        </Typography>
+                        </Link>
                     </Grid>
                 </Grid>
             </CardContent>

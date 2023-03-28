@@ -1,7 +1,8 @@
-import { Box, Button, Card, CardContent, CardMedia, TextField, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, TextField, Typography } from "@mui/material"
 import Progress from "./Progress"
 
-const ContributeWindow = () => {
+const ContributeWindow = ({campaign}) => {
+    console.log(campaign)
     return(
         <>
             <Card elevation={2}>
@@ -12,7 +13,6 @@ const ContributeWindow = () => {
                         <TextField fullWidth />
                     </Box>
                     <Button variant="contained">Contribute</Button>
-
                 </CardContent>
             </Card>
         </>

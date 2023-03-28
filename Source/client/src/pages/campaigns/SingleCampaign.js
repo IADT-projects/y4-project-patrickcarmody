@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PageContainer from '../../components/PageContainer'
-import { Box, Grid } from '@mui/material';
 import CampaignPage from '../CampaignPage';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../config'
@@ -13,7 +11,7 @@ const SingleCampaign = () => {
     useEffect(() => {
         axios.get(`/campaigns/${id}`)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setCampaign(response.data);
         })
         .catch((err) => {

@@ -34,6 +34,23 @@ const searchData = (req, res) => {
         });
 }
 
+const filterByCategory = (req, res) => {
+    const query = req.query;
+    Campaign.find(query)
+      .then((data) => {
+        console.log(`User searched for campaigns with query: ${JSON.stringify(query)}`);
+        if (data.length > 0) {
+          res.status(200).json(data);
+        } else {
+          res.status(404).json("None found");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+
 const readSingle = (req, res) => {
     let id = req.params.id;
 
@@ -149,5 +166,6 @@ module.exports = {
     createData,
     editData,
     deleteData,
-    searchData
+    searchData,
+    filterByCategory
 }

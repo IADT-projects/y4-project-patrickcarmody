@@ -9,20 +9,30 @@ import { Search } from '@mui/icons-material';
 const Campaigns = () => {
 
   const [campaigns, setCampaigns] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     console.log('Mounted');
-    const endpoint = selectedCategory === 'all' ? '/campaigns' : `/campaigns/search?category=${selectedCategory.toString}`;
-    axios.get(endpoint)
+    axios.get(`/campaigns`)
+    .then((response) => {
+        console.log(response.data)
+        setCampaigns(response.data)
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+  }, []);
+
+  const handleSearch = () => {
+    console.log('Enter')
+    axios.get(`/campaigns/search?title=${searchQuery}`)
       .then((response) => {
-        console.log(response.data);
         setCampaigns(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
-  }, [selectedCategory])
+      });
+  };
 
   if (!campaigns) return <Loading />;
 
@@ -34,39 +44,33 @@ const Campaigns = () => {
     )
   });
 
-  const handleCategoryChange = (event) => {
-    const newCategory = event.target.value;
-    setSelectedCategory(newCategory);
-    const endpoint = newCategory === 'all' ? '/campaigns' : `/campaigns/search?category=${newCategory}`;
-    axios.get(endpoint)
-      .then((response) => {
-        setCampaigns(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-  };
-
   return (
     <PageContainer title="Home" description="this is the home page">
       <Typography variant='h3' sx={{ marginY: 2 }}>All campaigns</Typography>
       <Grid container paddingBottom={2} spacing={2}>
         <Grid item xs={12} lg={4}>
-          <TextField
-            label='Search'
-            fullWidth
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <Search />
-                </InputAdornment>
-              )
-            }}
-          />
+        <TextField
+          label='Search'
+          fullWidth
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              handleSearch();
+            }
+          }}
+          InputProps={{
+          endAdornment: (
+            <InputAdornment position='end' onClick={handleSearch}>
+              <Search />
+            </InputAdornment>
+          )
+          }}
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+        />
         </Grid>
         <Grid item xs={12} lg={4}></Grid>
         <Grid item xs={12} lg={4}>
-          <Select fullWidth value={selectedCategory} onChange={handleCategoryChange}>
+          <Select fullWidth>
             <MenuItem value="all">All</MenuItem>
             <MenuItem value='animals'>Animals</MenuItem>
             <MenuItem value='community'>Community</MenuItem>

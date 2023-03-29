@@ -3,6 +3,14 @@ import typography from "./Typography";
 
 const mainTheme = createTheme({
     direction: 'ltr',
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+      },
+    },
     palette: {
       primary: {
         main: '#3f84d4',
@@ -10,7 +18,7 @@ const mainTheme = createTheme({
         dark: '#4570EA',
       },
       secondary: {
-        main: '#746dbf',
+        main: '#3BBBEB',
         light: '#E8F7FF',
         dark: '#23afdb',
       },

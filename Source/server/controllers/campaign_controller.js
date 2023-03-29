@@ -17,6 +17,40 @@ const readData = (req, res) => {
         });
 };
 
+const searchData = (req, res) => {
+    const query = req.query.title;
+    Campaign.find({ title: new RegExp(query, 'i')})
+        .then((data) => {
+            console.log(`User searched for campaigns with title: ${query}`);
+            if (data.length > 0) {
+                res.status(200).json(data);
+            } else {
+                res.status(404).json("None found");
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+}
+
+const filterByCategory = (req, res) => {
+    const query = req.query;
+    Campaign.find(query)
+      .then((data) => {
+        console.log(`User searched for campaigns with query: ${JSON.stringify(query)}`);
+        if (data.length > 0) {
+          res.status(200).json(data);
+        } else {
+          res.status(404).json("None found");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+
 const readSingle = (req, res) => {
     let id = req.params.id;
 
@@ -131,5 +165,7 @@ module.exports = {
     readSingle,
     createData,
     editData,
-    deleteData
+    deleteData,
+    searchData,
+    filterByCategory
 }

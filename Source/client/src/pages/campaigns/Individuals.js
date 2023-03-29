@@ -1,14 +1,12 @@
 import React from 'react';
 import PageContainer from '../../components/PageContainer'
-import { Box, Grid } from '@mui/material';
-import CampaignPage from '../CampaignPage';
+import { Box, Typography } from '@mui/material';
 
 const Individuals = () => {
     return (
       <PageContainer title="Individual" description="this is the home page">
         <Box>
-          <h1>Individuals</h1>
-          <CampaignPage/>
+          <Typography variant='h3' sx={{ marginY: 2 }}>Individual Fundraisers</Typography>
         </Box>
       </PageContainer>
     );

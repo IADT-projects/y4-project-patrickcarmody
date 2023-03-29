@@ -6,40 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
 
-  const [form, setForm] = useState({});
+//   const [form, setForm] = useState({});
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-
-  const handleForm = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-
-    setForm(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const isRequired = (fields) => {
-    let error = false;
-
-    fields.forEach(field => {
-        if(!form[field]) {
-            error = true;
-            setErrors(prevState => ({
-                ...prevState,
-                [field]: {
-                    message: `${field} is required!`
-                }
-            }));
-        }
-    });
-
-    return error;
-}
-
-
-
 
     return (
       <PageContainer title="Home" description="this is the home page">
@@ -92,6 +61,7 @@ const Create = () => {
             </Grid>
             <Grid item xs={12} lg={7}>
               <TextField variant='standard' label='Description' multiline fullWidth></TextField>
+              {errors}
             </Grid>
             <Grid item xs={12} lg={7}>
               <Button variant='contained' size='large'>Submit</Button>

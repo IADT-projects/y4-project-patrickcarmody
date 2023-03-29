@@ -2,8 +2,6 @@ import React from 'react';
 import { Grid, Box } from '@mui/material';
 import PageContainer from '../components/PageContainer'
 
-import ExampleComponent from './ExampleComponent'
-
 const Home = () => {
     return (
       <PageContainer title="Home" description="this is the home page">

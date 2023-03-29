@@ -32,14 +32,12 @@ const Router = [
       { path: '/campaigns', exact: true, element: <Campaigns /> },
       { path: '/campaigns/charity', exact: true, element: <Charities /> },
       { path: '/campaigns/individual', exact: true, element: <Individuals /> },
-      { path: '/campaigns/create', exact: true, element: <Create /> },
+      { path: '/campaigns/create', exact: true, element: <CreateForm/> },
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       //Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },
       { path: '*', element: <Navigate to="/home" /> },
-      { path: 'createform', element: <CreateForm/> },
-
     ],
   },
 ]

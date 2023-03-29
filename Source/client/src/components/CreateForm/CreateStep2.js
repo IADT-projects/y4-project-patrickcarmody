@@ -1,9 +1,22 @@
+import { Grid, TextField, Typography } from "@mui/material";
+
 const CreateStep2 = () => {
     return(
 
         <>
-        <h1>Why are you raising money?</h1>
-        <p>Select the category that best fits your campaign</p>
+            <Grid item xs={12}>
+                <Typography variant="h3">
+                    Why are you raising money?
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="body1">
+                    Choose the category that best fits your campaign
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <TextField variant="outlined" label='Title' sx={{ width: '40%'}}/>
+            </Grid>
         </>
 
     )    

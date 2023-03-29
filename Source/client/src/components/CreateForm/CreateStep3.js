@@ -1,9 +1,18 @@
-const CreateStep3 = () => {
-    return(
+import { Grid, TextField, Typography } from "@mui/material";
 
+const CreateStep3 = () => {
+    
+    return(
         <>
-        <h1>What is your target?</h1>
-        <p>How much are you aiming to initially raise through your campaign? Users will still be able to donate once the target is met</p>
+            <Grid item xs={12}>
+                <Typography variant="h3">What's your initial target?</Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="body1">This is just your initial target, users will still be able to contribute to your campaign after it reaches this amount.</Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <TextField variant="outlined" label='Target' sx={{ width: '40%'}}/>
+            </Grid>
         </>
 
     )    

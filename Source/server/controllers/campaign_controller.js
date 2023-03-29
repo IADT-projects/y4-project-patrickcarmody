@@ -17,6 +17,30 @@ const readData = (req, res) => {
         });
 };
 
+const searchCampaigns = (req, res) => {
+    const query = req.query.q; // get the search query from the request
+    const filter = {
+      $or: [
+        { title: { $regex: query, $options: "i" } }, // search by title
+        { description: { $regex: query, $options: "i" } }, // search by description
+      ],
+    };
+  
+    Campaign.find(filter)
+      .then((data) => {
+        console.log(`User searched for "${query}" and got ${data.length} results`);
+        if (data.length > 0) {
+          res.status(200).json(data);
+        } else {
+          res.status(404).json("None found");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  };
+
 const readSingle = (req, res) => {
     let id = req.params.id;
 
@@ -131,5 +155,6 @@ module.exports = {
     readSingle,
     createData,
     editData,
-    deleteData
+    deleteData,
+    searchCampaigns
 }

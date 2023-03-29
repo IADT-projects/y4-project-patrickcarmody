@@ -12,7 +12,6 @@ const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')))
 const Create = Loadable(lazy(() => import('./pages/campaigns/Create')))
 const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')))
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
-
 const About = Loadable(lazy(() => import('./pages/main/About')))
 const Start = Loadable(lazy(() => import('./pages/main/Start')))
 

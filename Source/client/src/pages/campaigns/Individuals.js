@@ -6,8 +6,7 @@ const Individuals = () => {
     return (
       <PageContainer title="Individual" description="this is the home page">
         <Box>
-          <Typography variant='h2'>Individuals</Typography>
-          <Typography variant='h6'>Use this page to contribute to user-created fundraising campaigns.</Typography>
+          <Typography variant='h3' sx={{ marginY: 2 }}>Individual Fundraisers</Typography>
         </Box>
       </PageContainer>
     );

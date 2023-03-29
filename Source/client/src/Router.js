@@ -6,10 +6,8 @@ import Loadable from './components/layout/Loadable';
 const Layout = Loadable(lazy(() => import('./components/layout/Layout')));
 
 const Home = (Loadable(lazy(() => import('./pages/Home'))));
-const Page = (Loadable(lazy(() => import('./pages/Page'))));
 const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')))
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')))
-const Create = Loadable(lazy(() => import('./pages/campaigns/Create')))
 const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')))
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
 const About = Loadable(lazy(() => import('./pages/main/About')))

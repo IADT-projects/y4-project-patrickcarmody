@@ -10,11 +10,10 @@ const Campaigns = () => {
 
   const [campaigns, setCampaigns] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     console.log('Mounted');
-    axios.get(`/campaigns?page=${page}&limit=9`)
+    axios.get(`/campaigns`)
     .then((response) => {
         console.log(response.data)
         setCampaigns(response.data)
@@ -22,21 +21,22 @@ const Campaigns = () => {
     .catch((err) => {
         console.error(err);
     });
-  }, [page]);
+  }, []);
 
   const handleSearch = () => {
     console.log('Enter')
-    axios.get(`/campaigns/search?title=${searchQuery}&page=${page}&limit=9`)
+    axios.get(`/campaigns?title=${searchQuery}`)
       .then((response) => {
         setCampaigns(response.data);
       })
       .catch((err) => {
-        console.error(err);
+        if (err.response && err.response.status === 404) {
+            setCampaigns(null)
+          console.log('404 error');
+        } else {
+          console.error(err);
+        }
       });
-  };
-
-  const handlePageChange = (event, value) => {
-    setPage(value);
   };
 
   if (!campaigns) return <Loading />;
@@ -48,6 +48,7 @@ const Campaigns = () => {
       </Grid>
     )
   });
+
 
   return (
     <PageContainer title="Home" description="this is the home page">
@@ -94,11 +95,7 @@ const Campaigns = () => {
         <Grid container spacing={3} direction="row">
           {campaignsList}
           <Grid item xs={12} lg={12}>
-            <Pagination
-              count={Math.ceil(campaigns.length / 9)}
-              page={page}
-              onChange={handlePageChange}
-            />
+            {/* Pagination here */}
           </Grid>
         </Grid>
       </Box>

@@ -54,9 +54,13 @@ const DashboardCard = ({
               {action}  
             </Stack>
           ) : null}
-        <Box component='img' alt="image" sx={{ height: 100, width: 310}}
-              src="https://i.imgur.com/7mYGrmY.jpg"/>
-              <Typography>Progress:</Typography>
+        <Box 
+          component='img' 
+          alt="image" 
+          sx={{ height: 100, width: 310}}
+          src="https://i.imgur.com/7mYGrmY.jpg"/>
+            
+        <Typography>Progress:</Typography>
         <LinearProgress variant='determinate' color='secondary' sx={{height: 10, marginY: 1}} value={progress}/>
         <Button variant='contained' >View</Button>
           {children}

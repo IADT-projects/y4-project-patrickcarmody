@@ -1,44 +1,20 @@
 const Campaign = require('../models/campaign_schema');
 
 const readData = (req, res) => {
-    Campaign.find()
-        .then((data) => {
-            console.log(`User got all campaigns`);
-            if(data.length > 0) {
-                res.status(200).json(data);
-            }
-            else{
-                res.status(404).json("None found");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-};
-
-const searchData = (req, res) => {
-    const query = req.query.title;
-    Campaign.find({ title: new RegExp(query, 'i')})
-        .then((data) => {
-            console.log(`User searched for campaigns with title: ${query}`);
-            if (data.length > 0) {
-                res.status(200).json(data);
-            } else {
-                res.status(404).json("None found");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-}
-
-const filterByCategory = (req, res) => {
-    const query = req.query;
+    let query = {};
+    // check if user included search params
+    if (Object.keys(req.query).length > 0) {
+      for (const [property, term] of Object.entries(req.query)) {
+        query[property] = new RegExp(term, 'i');
+      }
+    }
     Campaign.find(query)
       .then((data) => {
-        console.log(`User searched for campaigns with query: ${JSON.stringify(query)}`);
+        if (Object.keys(query).length > 0) {
+          console.log(`User searched for campaigns with ${Object.keys(query).join(', ')}: ${Object.values(query).join(', ')}`);
+        } else {
+          console.log(`User retrieved all campaigns`);
+        }
         if (data.length > 0) {
           res.status(200).json(data);
         } else {
@@ -46,7 +22,7 @@ const filterByCategory = (req, res) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         res.status(500).json(err);
       });
   }
@@ -165,7 +141,5 @@ module.exports = {
     readSingle,
     createData,
     editData,
-    deleteData,
-    searchData,
-    filterByCategory
+    deleteData
 }

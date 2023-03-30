@@ -4,7 +4,7 @@
         "description": "This is the description for the dog shelter crowdfunding campaign",
         "category": "animals",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "5",
+        "goal": 6000,
         "image": "dog.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -13,7 +13,7 @@
         "description": "This is the description for the Barbados hurricane aid crowdfunding campaign",
         "category": "emergencies",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "20",
+        "goal": "20000",
         "image": "disaster.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -22,7 +22,7 @@
         "description": "This is the description for the operating theatre crowdfunding campaign",
         "category": "medical",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "50",
+        "goal": 120000,
         "image": "hospital.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -31,7 +31,7 @@
         "description": "This is the description for the stock exchange startup crowdfunding campaign",
         "category": "business",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "50",
+        "goal": 60000,
         "image": "business.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -40,7 +40,7 @@
         "description": "This is the description for the walking club trip crowdfunding campaign",
         "category": "community",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "4",
+        "goal": 6500,
         "image": "community.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -49,7 +49,7 @@
         "description": "This is the description for the football club kits crowdfunding campaign",
         "category": "sports",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "2",
+        "goal": 2100,
         "image": "sports.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -58,7 +58,7 @@
         "description": "This is the description for the California Wildfire Aid crowdfunding campaign",
         "category": "emergencies",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "30",
+        "goal": 11000,
         "image": "forest.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -67,7 +67,7 @@
         "description": "This is the description for the company prizegiving crowdfunding campaign",
         "category": "events",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "4",
+        "goal": 7850,
         "image": "event.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
@@ -76,7 +76,7 @@
         "description": "This is the description for the wedding crowdfunding campaign",
         "category": "family",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
-        "goal": "10",
+        "goal": 12500,
         "image": "wedding.png",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     }

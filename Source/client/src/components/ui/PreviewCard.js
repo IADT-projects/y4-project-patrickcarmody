@@ -8,7 +8,7 @@ const PreviewCard = ({campaign}) => {
         <>
         <Card elevation={1} sx={{ padding: 0 }}>
             <CardMedia sx={{ height: 140, width: "100%" }} 
-            image="https://images.pexels.com/photos/9108987/pexels-photo-9108987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image={`/images/campaigns/${campaign.image}`}
             />
             <CardContent>
                 <Grid container>

@@ -40,6 +40,7 @@ const Create = () => {
                 <MenuItem value={"medical"}>Medical</MenuItem>
                 <MenuItem value={"sports"}>Sports</MenuItem>
                 <MenuItem value={"other"}>Other</MenuItem>
+                <MenuItem value={"business"}>Business</MenuItem>
               </Select>
             </Grid>
             <Grid item xs={12} lg={10}>

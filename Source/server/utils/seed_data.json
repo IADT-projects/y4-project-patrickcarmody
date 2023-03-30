@@ -1,0 +1,83 @@
+[
+    {
+        "title": "Dublin City Dog Shelter",
+        "description": "This is the description for the dog shelter crowdfunding campaign",
+        "category": "animals",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "5",
+        "image": "dog.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Barbados Hurricane Aid",
+        "description": "This is the description for the Barbados hurricane aid crowdfunding campaign",
+        "category": "emergencies",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "20",
+        "image": "disaster.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "New Operating Theatre",
+        "description": "This is the description for the operating theatre crowdfunding campaign",
+        "category": "medical",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "50",
+        "image": "hospital.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Stock Exchange Startup",
+        "description": "This is the description for the stock exchange startup crowdfunding campaign",
+        "category": "business",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "50",
+        "image": "business.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Walking Club Trip to Alps",
+        "description": "This is the description for the walking club trip crowdfunding campaign",
+        "category": "community",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "4",
+        "image": "community.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Buy new kits for the football club",
+        "description": "This is the description for the football club kits crowdfunding campaign",
+        "category": "sports",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "2",
+        "image": "sports.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "California Wildfire Aid",
+        "description": "This is the description for the California Wildfire Aid crowdfunding campaign",
+        "category": "emergencies",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "30",
+        "image": "forest.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Company Prizegiving Event",
+        "description": "This is the description for the company prizegiving crowdfunding campaign",
+        "category": "events",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "4",
+        "image": "event.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    },
+    {
+        "title": "Jane & John's Wedding",
+        "description": "This is the description for the wedding crowdfunding campaign",
+        "category": "family",
+        "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
+        "goal": "10",
+        "image": "wedding.png",
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
+    }
+]

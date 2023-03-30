@@ -2,9 +2,6 @@ const { Schema, model } = require('mongoose');
 
 const campaignSchema = Schema(
     {
-        address: {
-            type: String
-        },
         title: {
             type: String
         },
@@ -19,6 +16,12 @@ const campaignSchema = Schema(
         },
         goal: {
             type: Number
+        },
+        image: {
+            type: String
+        },
+        address: {
+            type: String
         }
     }
 );

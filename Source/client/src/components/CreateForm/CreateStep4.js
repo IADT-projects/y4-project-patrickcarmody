@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 
-const CreateStep4 = () => {
+const CreateStep4 = ({ formData, setFormData, stepData, setStepData }) => {
+
+    const [description, setDescription] = useState(stepData.description)
+
+    const handleChange = (e) => {
+        setDescription(e.target.value);
+      };
+    
+    useEffect(() => {
+        setFormData({ ...formData, description: description });
+    }, [description]);
+
+    useEffect(() => {
+        setStepData({ description });
+      }, [description]);
+
     return(
         <>
             <Grid item xs={12}>
@@ -10,7 +26,14 @@ const CreateStep4 = () => {
                 <Typography variant="body1">Give a description of what you're raising money for, and why.</Typography>
             </Grid>
             <Grid item xs={12}>
-                <TextField variant="standard" multiline label='Description' sx={{ width: '60%'}}/>
+                <TextField 
+                    variant="standard" 
+                    label='Description' 
+                    sx={{ width: '40%'}}
+                    type="text"
+                    value={description}
+                    onChange={handleChange}
+                />
             </Grid>
         </>
     )    

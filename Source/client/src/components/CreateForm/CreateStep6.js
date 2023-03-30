@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
 
-const CreateStep5 = ({ formData, setFormData, stepData, setStepData }) => {
+const CreateStep6 = ({ formData, setFormData }) => {
     return(
         <>
             <Grid item xs={12}>
-                <Typography variant="h3">Confirm</Typography>
+                <Typography variant="h3">Step 6</Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant="body1">Typography</Typography>
@@ -14,4 +14,4 @@ const CreateStep5 = ({ formData, setFormData, stepData, setStepData }) => {
     )    
 }
 
-export default CreateStep5;
+export default CreateStep6;

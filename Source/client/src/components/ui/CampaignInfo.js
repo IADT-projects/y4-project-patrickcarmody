@@ -9,14 +9,11 @@ const CampaignInfo = ({campaign}) => {
         <Card elevation={2} sx={{padding: 0}}>
             <CardMedia 
             sx={{ height: 250, width: "100%" }}
-            image="https://images.pexels.com/photos/9108987/pexels-photo-9108987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image={`/images/campaigns/${campaign.image}`}
             />
             <CardContent>
                 <Grid container>
-                    <Grid item xs={6}>
-                        <Typography variant="h3">{campaign.title}</Typography>
-                    </Grid>
-                    <Grid item xs={6} paddingBottom={2}>
+                    <Grid item xs={12} paddingBottom={2}>
                         <Link href='#' underline="none">
                             <Typography variant="subtitle1" textAlign={"right"}>{category}</Typography>
                         </Link>
@@ -34,7 +31,7 @@ const CampaignInfo = ({campaign}) => {
                         <Typography variant="body1" textAlign={"left"}>Initial Target</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant="subtitle1" textAlign={"right"}>€5,000</Typography>
+                        <Typography variant="subtitle1" textAlign={"right"}>€{campaign.goal}</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <Divider/>

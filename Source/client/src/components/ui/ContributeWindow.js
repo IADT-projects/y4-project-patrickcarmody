@@ -8,7 +8,7 @@ const ContributeWindow = ({campaign}) => {
             <Card elevation={2}>
                 <CardContent>
                     <Typography variant="h5" textAlign={"center"} paddingY={2}>Donate</Typography>
-                    <Progress/>
+                    <Progress campaign={campaign}/>
                     <Box paddingY={3}>
                         <TextField variant='outlined' fullWidth label="Amount"/>
                     </Box>

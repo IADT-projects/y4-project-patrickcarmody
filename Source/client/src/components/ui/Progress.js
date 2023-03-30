@@ -1,6 +1,6 @@
 import { Grid, LinearProgress, Typography } from "@mui/material";
 
-const Progress = ({raised, goal}) => {
+const Progress = ({campaign}) => {
     return (
         <>
         <Grid container>
@@ -16,10 +16,10 @@ const Progress = ({raised, goal}) => {
                     />
             </Grid>
             <Grid item xs={6} paddingY={1}>
-                <Typography variant="body2">€1,345</Typography>
+                <Typography variant="body2">€{campaign.goal}</Typography>
             </Grid>
             <Grid item xs={6} paddingY={1}>
-                <Typography variant="body2" textAlign={"right"}>€4,000</Typography>
+                <Typography variant="body2" textAlign={"right"}>€{campaign.goal}</Typography>
             </Grid>
         </Grid>
         </>

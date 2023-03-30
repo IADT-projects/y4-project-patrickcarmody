@@ -19,7 +19,7 @@ const PreviewCard = ({campaign}) => {
                         <Typography variant="subtitle1" textAlign={"right"}>{category}</Typography>
                     </Grid>
                 </Grid>
-                <Progress/>
+                <Progress campaign={campaign}/>
             </CardContent>
                 <Button variant="contained" sx={{ margin: 2}} component={Link} to={`/campaigns/${campaign._id}`}>
                     View

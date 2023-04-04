@@ -7,6 +7,7 @@ import CreateStep2 from "./CreateStep2";
 import CreateStep3 from "./CreateStep3";
 import CreateStep4 from "./CreateStep4";
 import CreateStep5 from "./CreateStep5";
+import CreateStep6 from "./CreateStep6";
 
 const CreateForm = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -16,20 +17,22 @@ const CreateForm = () => {
         "category": "",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": "",
-        "image": "dog.png",
+        "image": "",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     });
     const [step1Data, setStep1Data] = useState({ title: ""});
     const [step2Data, setStep2Data] = useState({ category: "" });
     const [step3Data, setStep3Data] = useState({ target: "" });
     const [step4Data, setStep4Data] = useState({ description: "" });
+    const [step5Data, setStep5Data] = useState({ image: "" });
 
     const steps = [
         { label: "Title", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} /> },
         { label: "Category", component: <CreateStep2 formData={formData} setFormData={setFormData} stepData={step2Data} setStepData={setStep2Data} /> },
         { label: "Target", component: <CreateStep3 formData={formData} setFormData={setFormData} stepData={step3Data} setStepData={setStep3Data} /> },
         { label: "About", component: <CreateStep4 formData={formData} setFormData={setFormData} stepData={step4Data} setStepData={setStep4Data} /> },
-        { label: "Confirm", component: <CreateStep5 formData={formData} setFormData={setFormData} /> },
+        { label: "Image", component: <CreateStep5 formData={formData} setFormData={setFormData} stepData={step5Data} setStepData={setStep5Data} /> },
+        { label: "Confirm", component: <CreateStep6 formData={formData} setFormData={setFormData}/> },
     ];
 
     const handleNext = () => {
@@ -41,6 +44,7 @@ const CreateForm = () => {
     };
 
     const handleSubmit = () => {
+        console.log(formData);
         axios.post('/campaigns', formData)
             .then((response) => {
                 console.log(response.data);

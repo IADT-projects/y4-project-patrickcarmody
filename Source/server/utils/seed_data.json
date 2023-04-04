@@ -5,7 +5,7 @@
         "category": "animals",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 6000,
-        "image": "dog.png",
+        "image": "dog_a062ak",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -14,7 +14,7 @@
         "category": "emergencies",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": "20000",
-        "image": "disaster.png",
+        "image": "disaster_adjxdg",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -23,7 +23,7 @@
         "category": "medical",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 120000,
-        "image": "hospital.png",
+        "image": "hospital_dnxndo",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -32,7 +32,7 @@
         "category": "business",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 60000,
-        "image": "business.png",
+        "image": "business_kwjy1y",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -41,7 +41,7 @@
         "category": "community",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 6500,
-        "image": "community.png",
+        "image": "community_vce2hd",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -50,7 +50,7 @@
         "category": "sports",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 2100,
-        "image": "sports.png",
+        "image": "sports_bkfdzv",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -59,7 +59,7 @@
         "category": "emergencies",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 11000,
-        "image": "forest.png",
+        "image": "forest_ddkkrv",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -68,7 +68,7 @@
         "category": "events",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 7850,
-        "image": "event.png",
+        "image": "event_jupl40",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     },
     {
@@ -77,7 +77,7 @@
         "category": "family",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 12500,
-        "image": "wedding.png",
+        "image": "wedding_pwjqrg",
         "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7"
     }
 ]

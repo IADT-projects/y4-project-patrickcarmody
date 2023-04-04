@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
 
 const CreateStep6 = ({ formData, setFormData }) => {
@@ -8,7 +7,7 @@ const CreateStep6 = ({ formData, setFormData }) => {
                 <Typography variant="h3">Step 6</Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant="body1">Typography</Typography>
+                <Typography variant="body1">Final Step. Confirm.</Typography>
             </Grid>
         </>
     )    

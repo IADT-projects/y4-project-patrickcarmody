@@ -27,7 +27,7 @@ const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
             </Grid>
             <Grid item xs={12}>
                 <TextField 
-                    variant="outlined" 
+                    variant="standard" 
                     label='Target ' 
                     sx={{ width: '40%'}}
                     type="number"

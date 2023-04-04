@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardMedia, Grid, Paper, Typography } from "@mui/material";
+import { Button, Card, CardContent, CardMedia, Grid,Typography } from "@mui/material";
 import Progress from "./Progress";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const PreviewCard = ({campaign}) => {
         <>
         <Card elevation={1} sx={{ padding: 0 }}>
             <CardMedia sx={{ height: 140, width: "100%" }} 
-            image={`/images/campaigns/${campaign.image}`}
+            image={`https://res.cloudinary.com/dzooewr3a/image/upload/c_scale,w_300/${campaign.image}.png`}
             />
             <CardContent>
                 <Grid container>

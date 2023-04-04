@@ -9,7 +9,7 @@ const CampaignInfo = ({campaign}) => {
         <Card elevation={2} sx={{padding: 0}}>
             <CardMedia 
             sx={{ height: 250, width: "100%" }}
-            image={`/images/campaigns/${campaign.image}`}
+            image={`https://res.cloudinary.com/dzooewr3a/image/upload/${campaign.image}.png`}
             />
             <CardContent>
                 <Grid container>

@@ -9,7 +9,7 @@ const Home = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} lg={8}>
               <h1>This is the home page</h1>
-              <p>It hasn't been created yet</p>
+              <p>Raise funds for your cause by receiving cryptocurrency donations</p>
             </Grid>
           </Grid>
         </Box>

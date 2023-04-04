@@ -1,17 +1,13 @@
 import React from 'react';
-import { Grid, Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import PageContainer from '../../components/PageContainer'
 
 const About = () => {
     return (
-      <PageContainer title="Home" description="this is the home page">
+      <PageContainer title="About" description="this is the home page">
         <Box>
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={8}>
-              <h1>About Us</h1>
-              <p>This page is about this platform.</p>
-            </Grid>
-          </Grid>
+          <Typography variant='h3' sx={{ marginY: 2 }}>About</Typography>
+          <Typography variant='h6'>About</Typography>  
         </Box>
       </PageContainer>
     );

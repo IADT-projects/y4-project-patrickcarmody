@@ -1,4 +1,4 @@
-import { Person, VolunteerActivism, Apartment, List, Add, Info, Article } from '@mui/icons-material';
+import { Person, VolunteerActivism, List, Add, Info, Article } from '@mui/icons-material';
 import { uniqueId } from 'lodash';
 
 const Menuitems = [

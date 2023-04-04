@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, Pagination, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
+import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
 import PageContainer from '../../components/PageContainer';
 import PreviewCard from '../../components/ui/PreviewCard';
 import axios from '../../config';

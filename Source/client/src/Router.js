@@ -5,7 +5,7 @@ import Loadable from './components/layout/Loadable';
 // Layout
 const Layout = Loadable(lazy(() => import('./components/layout/Layout')));
 
-const Home = (Loadable(lazy(() => import('./pages/Home'))));
+const Home = (Loadable(lazy(() => import('./pages/main/Home'))));
 const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')))
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')))
 const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')))

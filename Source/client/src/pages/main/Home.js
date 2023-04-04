@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
-import PageContainer from '../components/PageContainer'
+import PageContainer from '../../components/PageContainer'
 
 const Home = () => {
     return (

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardMedia, Divider, Grid, Link, Typography } from "@mui/material";
-
+import { Sell } from "@mui/icons-material";
 
 const CampaignInfo = ({campaign}) => {
     const category = campaign.category.charAt(0).toUpperCase() + campaign.category.slice(1)
@@ -13,7 +13,8 @@ const CampaignInfo = ({campaign}) => {
             />
             <CardContent>
                 <Grid container>
-                    <Grid item xs={12} paddingBottom={2}>
+                    <Grid item xs={12} paddingBottom={2} sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}>
+                        <Sell/>
                         <Link href='#' underline="none">
                             <Typography variant="subtitle1" textAlign={"right"}>{category}</Typography>
                         </Link>

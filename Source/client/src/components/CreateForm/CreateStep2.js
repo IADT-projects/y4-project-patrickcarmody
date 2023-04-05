@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, MenuItem, Select, TextField, Typography } from "@mui/material";
 
 const CreateStep2 = ({ formData, setFormData, stepData, setStepData  }) => {
 
@@ -31,14 +31,22 @@ const CreateStep2 = ({ formData, setFormData, stepData, setStepData  }) => {
                 </Typography>
             </Grid>
             <Grid item xs={12}>
-                <TextField 
-                    variant="standard" 
-                    label='Category' 
-                    sx={{ width: '40%'}}
-                    type="text"
+                <Select
+                    label="Category"
                     value={category}
                     onChange={handleChange}
-                />
+                    sx={{ width: '50%' }}
+                    >
+                        <MenuItem value="animals">Animals</MenuItem>
+                        <MenuItem value="community">Community</MenuItem>
+                        <MenuItem value="emergencies">Emergencies</MenuItem>
+                        <MenuItem value="environment">Environment</MenuItem>
+                        <MenuItem value="events">Events</MenuItem>
+                        <MenuItem value="family">Family</MenuItem>
+                        <MenuItem value="medical">Medical</MenuItem>
+                        <MenuItem value="sports">Sports</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
+                </Select>
             </Grid>
         </>
 

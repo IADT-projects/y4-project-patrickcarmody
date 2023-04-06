@@ -13,6 +13,7 @@ const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampa
 const About = Loadable(lazy(() => import('./pages/main/About')))
 const Start = Loadable(lazy(() => import('./pages/main/Start')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')))
+const User = Loadable(lazy(() => import('./pages/users/User')))
 
 // Pages
 
@@ -22,17 +23,19 @@ const Router = [
     path: '/',
     element: <Layout />,
     children: [
-      //Main
+      // Main
       { path: '/', element: <Navigate to="/home" /> },
       { path: '/home', exact: true, element: <Home /> },
       // { path: '/page', exact: true, element: <Page /> },
-      //Campaigns
+      // Campaigns
       { path: '/campaigns', exact: true, element: <Campaigns /> },
       { path: '/campaigns/charity', exact: true, element: <Charities /> },
       { path: '/campaigns/individual', exact: true, element: <Individuals /> },
       { path: '/campaigns/create', exact: true, element: <CreateForm/> },
       { path: '/campaigns/:id', element: <SingleCampaign/> },
-      //Other
+      //Users
+      { path: '/users/:id', element: <User /> },
+      // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },
       { path: '*', element: <Navigate to="/home" /> },

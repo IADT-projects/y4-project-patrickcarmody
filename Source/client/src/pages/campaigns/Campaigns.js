@@ -51,7 +51,7 @@ const Campaigns = () => {
 
 
   return (
-    <PageContainer title="Home" description="this is the home page">
+    <PageContainer title="Campaigns" description="this is the home page">
       <Typography variant='h3' sx={{ marginY: 2 }}>All campaigns</Typography>
       <Grid container paddingBottom={2} spacing={2}>
         <Grid item xs={12} lg={4}>

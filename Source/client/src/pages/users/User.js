@@ -2,74 +2,101 @@ import { useEffect, useState } from "react";
 import PageContainer from "../../components/PageContainer"
 import { useParams } from "react-router-dom";
 import axios from '../../config'
+import { Grid, IconButton, Link, Typography } from "@mui/material";
+import { KeyboardArrowLeft } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/system";
 import PreviewCard from "../../components/ui/PreviewCard";
-import { Grid } from "@mui/material";
 
 const User = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [campaigns, setCampaigns] = useState(null);
-    const [campaignsList, setCampaignsList] = useState(null);
+    const [numberOfCampaigns, setNumberOfCampaigns] = useState(0);
 
-    // get user
     useEffect(() => {
         axios.get(`/users?address=${id}`)
             .then((response) => {
-                console.log(response)
                 setUser(response.data[0]);
-                console.log(user);
+                axios.get(`/campaigns?creator=${id}`)
+                    .then((response) => {
+                        setNumberOfCampaigns(response.data.length)
+                        setCampaigns(response.data);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    })
             })
             .catch((err) => {
                 console.error(err);
             });
     }, [id])
 
-    useEffect(() => {
-        if(user !== null) {
-        axios.get(`/campaigns?creator=${user.address}`)
-            .then((response) => {
-                setCampaigns(response.data);
-                setCampaignsList(
-                    campaigns.map((campaign) => {
-                        return(
-                            <Grid item xs={12} md={6} lg={4}>
-                                <PreviewCard campaign={campaign}/>
-                            </Grid>
-                        )
-                    })
-                )
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-        else{
-            console.log("User is null")
-        }
-    }, [])
-
     return(
         <PageContainer title="User" description="user profile">
-            {user ? (
+          {user ? (
             <>
-                <h1>User Profile</h1>
-                <h1>{user.first_name} {user.last_name}</h1>
-                <img src={`https://res.cloudinary.com/dzooewr3a/image/upload/${user.image}.png`}/>
-                <h3>{user.address}</h3>
-                <h1>Campaigns created by {user.first_name} {user.last_name}:</h1>
-                {/* display campaigns here */}
-                <Grid container spacing={3} direction="row">
-                    {campaignsList}
-                </Grid>            
+              <Grid container direction={"row"}>
+                {/* ----- Nav ----- */}
+                <IconButton onClick={() => navigate(-1)}>
+                  <KeyboardArrowLeft/>
+                </IconButton>
+                <Typography variant="h3" marginY={2}>User Profile</Typography>
+              </Grid>
+              <Grid container spacing={3}> 
+                {/* ----- User info ----- */}
+                <Grid item xs={12} width='100%'>
+                  <Box
+                    component="img"
+                    sx={{ height: '400px', width: '400px', marginX: '32%', borderRadius: '80%'}}
+                    src={`https://res.cloudinary.com/dzooewr3a/image/upload/${user.image}.png`}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h2" sx={{ textAlign: 'center' }}>{user.first_name} {user.last_name}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography sx={{ fontSize: 17, textAlign: 'center' }}>{user.biography}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Link href={`https://etherscan.io/address/${user.address}`} 
+                        underline='hover'
+                        rel='noopener'
+                        target='blank'
+                  >
+                    <Typography sx={{ fontSize: 14, textAlign: 'center' }}>{user.address}</Typography>
+                  </Link>
+                </Grid>
+                <Grid item container xs={12}>
+                  <Grid item xs={6}>
+                    <Typography sx={{ fontWeight: 'medium', fontSize: 17, textAlign: 'center' }}>{numberOfCampaigns}</Typography>
+                    <Typography sx={{ fontSize: 12, textAlign: 'center' }}>Campaigns</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography sx={{ fontWeight: 'medium', fontSize: 17, textAlign: 'center' }}>€20,728</Typography>
+                    <Typography sx={{ fontSize: 12, textAlign: 'center' }}>Raised</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Typography variant='h2' sx={{ textAlign: 'center', paddingTop: 9 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
+              <Grid container spacing={3} direction="row" padding={3}>
+                {campaigns &&
+                  campaigns.map((campaign) => (
+                    <Grid item xs={12} md={6}>
+                      <PreviewCard campaign={campaign} />
+                    </Grid>
+                  ))
+                }
+              </Grid>
             </>
-            ) : (
+          ) : (
             <>
-                <h1>User not found</h1>
+              <h1>User not found</h1>
             </>
-            )}
-            
+          )}
         </PageContainer>
-    )
+      )     
 }
 
 export default User; 

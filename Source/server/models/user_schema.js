@@ -10,6 +10,9 @@ const userSchema = Schema (
             type: String,
             required: [true],
         },
+        biography: {
+            type: String,
+        },
         last_name: {
             type: String,
             required: [true],

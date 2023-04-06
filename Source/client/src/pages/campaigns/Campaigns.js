@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, Pagination, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
+import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
 import PageContainer from '../../components/PageContainer';
 import PreviewCard from '../../components/ui/PreviewCard';
 import axios from '../../config';
@@ -51,7 +51,7 @@ const Campaigns = () => {
 
 
   return (
-    <PageContainer title="Home" description="this is the home page">
+    <PageContainer title="Campaigns" description="this is the home page">
       <Typography variant='h3' sx={{ marginY: 2 }}>All campaigns</Typography>
       <Grid container paddingBottom={2} spacing={2}>
         <Grid item xs={12} lg={4}>

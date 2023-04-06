@@ -1,48 +1,55 @@
 const User = require('../models/user_schema');
 
-const testFunction = (req, res) => {
-    // let newUser = new User(req.body);
-    console.log(req.body);
-    console.log("Request details: ", req.body);
-    res.status(200).json({
-        msg: "Ok"
-    })
-};
-
 const register = async (req, res) => {
-    console.log(req.body)
-};
+    try {
+        let newUser = new User(req.body);
+        let savedUser = await newUser.save();
+        console.log("New user created: " + savedUser);
+        return res.status(201).json(savedUser);
+      } catch (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+    };
 
-const readUsers = (req, res) => {
-    User.find()
+const readData = (req, res) => {
+    let query = {};
+    // check if user included search params
+    if (Object.keys(req.query).length > 0) {
+        for (const [property, term] of Object.entries(req.query)) {
+        query[property] = new RegExp(term, 'i');
+        }
+    }
+    User.find(query)
         .then((data) => {
-            // console.log(data);
-            if(data.length > 0){
-                res.status(200).json(data);
-                console.log("Got all users")
-            }
-            else{
-                res.status(404).json("None found");
-                console.log("Got all users, but none found.")
-            }
+        if (Object.keys(query).length > 0) {
+            console.log(`User searched for user with ${Object.keys(query).join(', ')}: ${Object.values(query).join(', ')}`);
+        } else {
+            console.log(`User retrieved all users`);
+        }
+        if (data.length > 0) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json("None found");
+        }
         })
         .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
+        console.error(err);
+        res.status(500).json(err);
         });
-};
+}
 
-const readUser = (req, res) => {
+const readSingle = (req, res) => {
     let id = req.params.id;
 
     User.findById(id)
         .then((data) => {
             if(data) {
                 res.status(200).json(data);
+                console.log(`User got user with ID ${id}`)
             }
             else {
                 res.status(404).json({
-                    "message": `User with id: ${id} not found`
+                    "message": `user with id: ${id} not found`
                 });
             }
         })
@@ -57,7 +64,7 @@ const readUser = (req, res) => {
                 res.status(500).json(err)
             }
         });
-}
+};
 
 const deleteUser = (req, res) => {
     let id = req.params.id;
@@ -110,10 +117,9 @@ const editUser = (req, res) => {
 }
 
 module.exports = {
-    testFunction,
     register,
-    readUsers,
-    readUser,
+    readData,
+    readSingle,
     deleteUser,
     editUser
 };

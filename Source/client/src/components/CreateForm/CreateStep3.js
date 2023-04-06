@@ -3,19 +3,19 @@ import { Grid, TextField, Typography } from "@mui/material";
 
 const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
 
-    const [target, setTarget] = useState(stepData.target)
+    const [goal, setGoal] = useState(stepData.goal)
 
     const handleChange = (e) => {
-        setTarget(e.target.value);
+        setGoal(e.target.value);
     };
 
     useEffect(() => {
-        setFormData({ ...formData, target: target });
-    }, [target]);
+        setFormData({ ...formData, goal: goal });
+    }, [goal]);
 
     useEffect(() => {
-        setStepData({ target });
-      }, [target]);
+        setStepData({ goal });
+      }, [goal]);
     
     return(
         <>
@@ -31,7 +31,7 @@ const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
                     label='Target ' 
                     sx={{ width: '40%'}}
                     type="number"
-                    value={target}
+                    value={goal}
                     onChange={handleChange}
                 />
             </Grid>

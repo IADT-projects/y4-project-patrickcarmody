@@ -4,6 +4,7 @@ import CampaignInfo from "../components/ui/CampaignInfo";
 import ContributeWindow from "../components/ui/ContributeWindow";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import CreatorCard from "../components/ui/CreatorCard";
+import UserPreviewCard from "../components/users/UserPreviewCard";
 
 const CampaignPage = ({campaign}) => {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const CampaignPage = ({campaign}) => {
                         <ContributeWindow campaign={campaign} />
                     </Grid>
                     <Grid item lg={12} md={6} xs={12}>
-                        <CreatorCard creator={campaign.creator}/>
+                        <UserPreviewCard address={campaign.creator}/>
                     </Grid>
                 </Grid>
             </Grid>

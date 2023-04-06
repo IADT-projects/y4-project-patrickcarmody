@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { readData, readSingle, createData, editData, deleteData, searchData} = require('../controllers/campaign_controller.js');
+const { readData, readSingle, createData, editData, deleteData } = require('../controllers/campaign_controller.js');
 
-router.get('/', readData)
+router
+    .get('/', readData)
     .get('/:id', readSingle)
     .post('/', createData)
     .put('/:id', editData)

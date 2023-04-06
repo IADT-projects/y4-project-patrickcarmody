@@ -13,9 +13,10 @@ const User = () => {
 
     // get user
     useEffect(() => {
-        axios.get(`/users/${id}`)
+        axios.get(`/users?address=${id}`)
             .then((response) => {
-                setUser(response.data);
+                console.log(response)
+                setUser(response.data[0]);
                 console.log(user);
             })
             .catch((err) => {

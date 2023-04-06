@@ -61,7 +61,7 @@ const UserPreviewCard = ({ address }) => {
                     <Grid item xs={12} justifyItems='center' textAlign={'center'}>
                         <Button 
                             variant="contained"
-                            href={`/users/${creator._id}`}
+                            href={`/users/${creator.address}`}
                             >
                             View Profile
                         </Button>

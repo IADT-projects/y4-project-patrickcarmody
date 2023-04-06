@@ -14,7 +14,6 @@ const About = Loadable(lazy(() => import('./pages/main/About')))
 const Start = Loadable(lazy(() => import('./pages/main/Start')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')))
 const User = Loadable(lazy(() => import('./pages/users/User')))
-const UserPreviewCard = Loadable(lazy(() => import('./components/users/UserPreviewCard')));
 
 // Pages
 
@@ -39,8 +38,7 @@ const Router = [
       // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },
-      { path: '*', element: <Navigate to="/home" /> },
-      { path: 'card', element: <UserPreviewCard/> }
+      { path: '*', element: <Navigate to="/home" /> }
     ],
   },
 ]

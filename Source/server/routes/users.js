@@ -3,16 +3,16 @@ const router = express.Router();
 
 const { 
     register, 
-    readUser,
-    readUsers,
+    readData,
+    readSingle,
     editUser,
     deleteUser
   } = require('../controllers/user_controller');
 
   router
+  .get('/', readData)
+  .get('/:id', readSingle)
   .post('/register', register)
-  .get('/', readUsers)
-  .get('/:id', readUser)
   .put('/:id', editUser)
   .delete('/:id', deleteUser)
 module.exports = router;

@@ -1,17 +1,15 @@
 const User = require('../models/user_schema');
 
-const testFunction = (req, res) => {
-    // let newUser = new User(req.body);
-    console.log(req.body);
-    console.log("Request details: ", req.body);
-    res.status(200).json({
-        msg: "Ok"
-    })
-};
-
 const register = async (req, res) => {
-    console.log(req.body)
-};
+    try {
+        let newUser = new User(req.body);
+        let savedUser = await newUser.save();
+        console.log("New user created: " + savedUser);
+        return res.status(201).json(savedUser);
+      } catch (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+    };
 
 const readUsers = (req, res) => {
     User.find()
@@ -110,7 +108,6 @@ const editUser = (req, res) => {
 }
 
 module.exports = {
-    testFunction,
     register,
     readUsers,
     readUser,

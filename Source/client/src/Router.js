@@ -14,6 +14,7 @@ const About = Loadable(lazy(() => import('./pages/main/About')))
 const Start = Loadable(lazy(() => import('./pages/main/Start')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')))
 const User = Loadable(lazy(() => import('./pages/users/User')))
+const Register = Loadable(lazy(() => import('./pages/users/Register')))
 
 // Pages
 
@@ -35,6 +36,7 @@ const Router = [
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       //Users
       { path: '/users/:id', element: <User /> },
+      { path: '/register', element: <Register /> },
       // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },

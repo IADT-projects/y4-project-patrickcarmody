@@ -14,11 +14,13 @@ const User = () => {
     const [user, setUser] = useState(null);
     const [campaigns, setCampaigns] = useState(null);
     const [numberOfCampaigns, setNumberOfCampaigns] = useState(0);
+    const [pageTitle, setPageTitle] = useState("User");
 
     useEffect(() => {
         axios.get(`/users?address=${id}`)
             .then((response) => {
                 setUser(response.data[0]);
+                setPageTitle(`${user.first_name} ${user.last_name}`)
                 axios.get(`/campaigns?creator=${id}`)
                     .then((response) => {
                         setNumberOfCampaigns(response.data.length)
@@ -34,7 +36,7 @@ const User = () => {
     }, [id])
 
     return(
-        <PageContainer title="User" description="user profile">
+        <PageContainer title={pageTitle} description="user profile">
           {user ? (
             <>
               <Grid container direction={"row"}>

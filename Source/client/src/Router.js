@@ -4,17 +4,17 @@ import Loadable from './components/layout/Loadable';
 
 // Layout
 const Layout = Loadable(lazy(() => import('./components/layout/Layout')));
-
 const Home = (Loadable(lazy(() => import('./pages/main/Home'))));
-const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')))
-const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')))
-const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')))
+const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')));
+const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
+const Individuals = Loadable(lazy(() => import('./pages/campaigns/Individuals')));
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
-const About = Loadable(lazy(() => import('./pages/main/About')))
-const Start = Loadable(lazy(() => import('./pages/main/Start')))
-const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')))
-const User = Loadable(lazy(() => import('./pages/users/User')))
-const Register = Loadable(lazy(() => import('./pages/users/Register')))
+const About = Loadable(lazy(() => import('./pages/main/About')));
+const Start = Loadable(lazy(() => import('./pages/main/Start')));
+const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
+const User = Loadable(lazy(() => import('./pages/users/User')));
+const Register = Loadable(lazy(() => import('./pages/users/Register')));
+const Login = Loadable(lazy(() => import('./pages/users/Login')));
 
 // Pages
 
@@ -37,6 +37,8 @@ const Router = [
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/register', element: <Register /> },
+
+      { path: '/login', element: <Login /> },
       // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },

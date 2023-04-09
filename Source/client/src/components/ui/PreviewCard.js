@@ -6,7 +6,7 @@ const PreviewCard = ({campaign}) => {
     const category = campaign.category.charAt(0).toUpperCase() + campaign.category.slice(1);
     return (
         <>
-        <Card elevation={1} sx={{ padding: 0 }}>
+        <Card elevation={2} sx={{ padding: 0, borderRadius: 3 }}>
             <CardMedia sx={{ height: 140, width: "100%" }} 
             image={`https://res.cloudinary.com/dzooewr3a/image/upload/c_scale,w_300/${campaign.image}.png`}
             />
@@ -21,8 +21,13 @@ const PreviewCard = ({campaign}) => {
                 </Grid>
                 <Progress campaign={campaign}/>
             </CardContent>
-                <Button variant="contained" sx={{ margin: 2}} component={Link} to={`/campaigns/${campaign._id}`}>
-                    View
+                <Button 
+                    variant="contained" 
+                    sx={{ margin: 2, borderRadius: 2 }} 
+                    component={Link} 
+                    to={`/campaigns/${campaign._id}`}
+                    >
+                        View
                 </Button>
         </Card>
         </>

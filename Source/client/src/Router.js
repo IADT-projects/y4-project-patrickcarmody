@@ -4,6 +4,8 @@ import Loadable from './components/layout/Loadable';
 
 // Layout
 const Layout = Loadable(lazy(() => import('./components/layout/Layout')));
+const HomeLayout = Loadable(lazy(() => import('./components/layout/HomeLayout')));
+
 const Home = (Loadable(lazy(() => import('./pages/main/Home'))));
 const Campaigns = Loadable(lazy(() => import('./pages/campaigns/Campaigns')));
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
@@ -21,13 +23,19 @@ const Login = Loadable(lazy(() => import('./pages/users/Login')));
 
 const Router = [
     {
+      path: '/home',
+      element: <HomeLayout/>,
+      children: [
+        { path: '/home', element: <Home/> }
+      ]
+    },
+    {
     path: '/',
     element: <Layout />,
     children: [
       // Main
       { path: '/', element: <Navigate to="/home" /> },
-      { path: '/home', exact: true, element: <Home /> },
-      // { path: '/page', exact: true, element: <Page /> },
+      // { path: '/home', exact: true, element: <Home /> },
       // Campaigns
       { path: '/campaigns', exact: true, element: <Campaigns /> },
       { path: '/campaigns/charity', exact: true, element: <Charities /> },

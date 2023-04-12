@@ -31,9 +31,10 @@ const CreateStep1 = ({ formData, setFormData, stepData, setStepData }) => {
             </Grid>
             <Grid item xs={12}>
                 <TextField 
+                textAlign='center'
                 variant="standard" 
                 label='Title' 
-                sx={{ width: '40%'}}
+                sx={{ width: '50%'}}
                 type="text"
                 value={title}
                 onChange={handleChange}

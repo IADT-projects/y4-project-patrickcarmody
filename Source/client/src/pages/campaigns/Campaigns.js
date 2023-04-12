@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
 import PageContainer from '../../components/PageContainer';
-import PreviewCard from '../../components/ui/PreviewCard';
 import axios from '../../config';
 import Loading from '../../components/Loading';
 import { Search } from '@mui/icons-material';
+import CampaignCard from '../../components/CampaignCard/CampaignCard';
 
 const Campaigns = () => {
 
@@ -43,8 +43,8 @@ const Campaigns = () => {
 
   const campaignsList = campaigns.map((campaign) => {
     return (
-      <Grid item xs={12} md={6} lg={4}>
-        <PreviewCard campaign={campaign} />
+      <Grid item xs={12} md={4} lg={3}>
+        <CampaignCard campaign={campaign} />
       </Grid>
     )
   });

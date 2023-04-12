@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import CampaignInfo from "../components/ui/CampaignInfo";
 import ContributeWindow from "../components/ui/ContributeWindow";
 import { KeyboardArrowLeft } from "@mui/icons-material";
-import CreatorCard from "../components/ui/CreatorCard";
 import UserPreviewCard from "../components/users/UserPreviewCard";
 
 const CampaignPage = ({campaign}) => {

@@ -69,7 +69,9 @@ const CreateForm = () => {
                 <Stepper activeStep={activeStep}>
                     {steps.map((step) => (
                     <Step key={step.label}>
-                        <StepLabel>{step.label}</StepLabel>
+                        <Grid item container justify={"center"} alignItems={"center"} >
+                            <StepLabel>{step.label}</StepLabel>
+                        </Grid>
                     </Step>
                     ))}
                 </Stepper>

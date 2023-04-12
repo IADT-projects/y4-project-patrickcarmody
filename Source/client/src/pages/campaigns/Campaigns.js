@@ -43,7 +43,7 @@ const Campaigns = () => {
 
   const campaignsList = campaigns.map((campaign) => {
     return (
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid item xs={12} md={4} lg={3}>
         <CampaignCard campaign={campaign} />
       </Grid>
     )

@@ -10,7 +10,7 @@ const CampaignCard = ({ campaign }) => {
 
     return (
         <>
-        <Card sx={{ maxWidth: 345, minHeight: 375, borderRadius: 2 }}>
+        <Card sx={{  minHeight: 375, borderRadius: 2 }}>
         <CardActionArea 
             sx={{ height: '100%', paddingBottom: 5}}
             component={Link}

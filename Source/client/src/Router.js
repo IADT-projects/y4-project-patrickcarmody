@@ -20,7 +20,6 @@ const Login = Loadable(lazy(() => import('./pages/users/Login')));
 
 // Pages
 
-
 const Router = [
     {
       path: '/home',
@@ -47,6 +46,7 @@ const Router = [
       { path: '/register', element: <Register /> },
 
       { path: '/login', element: <Login /> },
+
       // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },

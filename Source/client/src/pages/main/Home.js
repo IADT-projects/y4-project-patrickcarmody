@@ -75,7 +75,7 @@ const Home = () => {
                 variant='outlined'
                 endIcon={<East/>}
                 component={Link}
-                to='/campaigns'
+                to='/campaigns/individual'
                 sx={{
                   height: '50px',
                   width: '200px',
@@ -105,7 +105,7 @@ const Home = () => {
                 variant='outlined'
                 endIcon={<East/>}
                 component={Link}
-                to='/campaigns'
+                to='/campaigns/charity'
                 sx={{
                   height: '50px',
                   width: '200px',

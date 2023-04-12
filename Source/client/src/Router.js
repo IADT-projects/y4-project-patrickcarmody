@@ -14,6 +14,7 @@ const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampa
 const About = Loadable(lazy(() => import('./pages/main/About')));
 const Start = Loadable(lazy(() => import('./pages/main/Start')));
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
+const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
 const User = Loadable(lazy(() => import('./pages/users/User')));
 const Register = Loadable(lazy(() => import('./pages/users/Register')));
 const Login = Loadable(lazy(() => import('./pages/users/Login')));
@@ -39,8 +40,10 @@ const Router = [
       { path: '/campaigns', exact: true, element: <Campaigns /> },
       { path: '/campaigns/charity', exact: true, element: <Charities /> },
       { path: '/campaigns/individual', exact: true, element: <Individuals /> },
-      { path: '/campaigns/create', exact: true, element: <CreateForm/> },
       { path: '/campaigns/:id', element: <SingleCampaign/> },
+
+      { path: '/campaigns/create/user', exact: true, element: <CreateForm/> },
+      { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/register', element: <Register /> },

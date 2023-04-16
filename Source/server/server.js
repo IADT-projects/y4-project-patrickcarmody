@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
 
 app.use('/api/users', require('./routes/users.js'));
 app.use('/api/campaigns', require('./routes/campaigns.js'));
+app.use('/api/charities', require('./routes/charities.js'))
 
 app.listen(port, () => {
     console.log(`App listening on port 3005`);

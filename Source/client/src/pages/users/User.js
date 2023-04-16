@@ -17,22 +17,22 @@ const User = () => {
     const [pageTitle, setPageTitle] = useState("User");
 
     useEffect(() => {
-        axios.get(`/users?address=${id}`)
+      axios.get(`/users?address=${id}`)
+        .then((response) => {
+          setUser(response.data[0]);
+          axios.get(`/campaigns?creator=${id}`)
             .then((response) => {
-                setUser(response.data[0]);
-                setPageTitle(`${user.first_name} ${user.last_name}`)
-                axios.get(`/campaigns?creator=${id}`)
-                    .then((response) => {
-                        setNumberOfCampaigns(response.data.length)
-                        setCampaigns(response.data);
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    })
+              setNumberOfCampaigns(response.data.length)
+              setCampaigns(response.data);
             })
             .catch((err) => {
-                console.error(err);
-            });
+              console.error(err);
+            })
+          setPageTitle(`${response.data[0].first_name} ${response.data[0].last_name}`)
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }, [id])
 
     return(
@@ -48,13 +48,19 @@ const User = () => {
               </Grid>
               <Grid container spacing={3}> 
                 {/* ----- User info ----- */}
-                <Grid item xs={12} width='100%'>
+                `<Grid item xs={12} width='100%'>
                   <Box
                     component="img"
-                    sx={{ height: '400px', width: '400px', marginX: '32%', borderRadius: '80%'}}
+                    sx={{ 
+                      height: '200px', 
+                      width: '200px', 
+                      borderRadius: '80%',
+                      display: 'block',
+                      margin: '0 auto',
+                    }}
                     src={`https://res.cloudinary.com/dzooewr3a/image/upload/${user.image}.png`}
                   />
-                </Grid>
+                </Grid>`
                 <Grid item xs={12}>
                   <Typography variant="h2" sx={{ textAlign: 'center' }}>{user.first_name} {user.last_name}</Typography>
                 </Grid>

@@ -6,7 +6,7 @@ import Loading from '../../components/Loading';
 import { Search } from '@mui/icons-material';
 import CampaignCard from '../../components/CampaignCard/CampaignCard';
 
-const Campaigns = () => {
+const IndividualCampaigns = () => {
 
   const [campaigns, setCampaigns] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -103,4 +103,4 @@ const Campaigns = () => {
   );
 };
 
-export default Campaigns;
+export default IndividualCampaigns;

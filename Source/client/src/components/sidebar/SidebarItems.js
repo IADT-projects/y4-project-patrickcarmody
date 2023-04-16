@@ -12,6 +12,7 @@ const SidebarItems = () => {
   return (
     <Box sx={{ px: 3 }}>
       <List sx={{ pt: 0 }} className="sidebarNav">
+      <img src='/images/placeholder-logo.png' style={{width: "100%"}}/>
         {Menuitems.map((item) => {
           if (item.subheader) {
             return <NavGroup item={item} key={item.subheader} />;

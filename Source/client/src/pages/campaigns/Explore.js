@@ -2,8 +2,13 @@ import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import PageContainer from "../../components/PageContainer";
 import { ChevronRightRounded } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from '../../config';
+import CampaignCard from "../../components/CampaignCard/CampaignCard";
 
 const Explore = () => {
+
+    const [campaigns, setCampaigns] = useState([]);
 
     const categories = [
         "Animals",
@@ -15,6 +20,24 @@ const Explore = () => {
         "Medical",
         "Sports"
     ]
+
+    useEffect(() => {
+        axios.get(`/campaigns`)
+        .then((response) => {
+            setCampaigns(response.data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }, [])
+
+    const campaignsList = campaigns.map((campaign) => {
+        return(
+            <Grid item xs={12}>
+                <CampaignCard campaign={campaign}/>
+            </Grid>
+        )
+    })
 
     return(
         <PageContainer title='Explore' description='explore campaigns'>
@@ -44,13 +67,6 @@ const Explore = () => {
                             <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
                         </Grid>
                     </Grid>
-                </Grid>
-                {/* ----- Search ----- */}
-                <Grid item xs={12}>
-                    <Typography variant='h4' sx={{ paddingBottom: 2, fontWeight: 'medium' }} textAlign='center'>Search user campaigns</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField sx={{margin: 'auto'}}></TextField>
                 </Grid>
                 {/* ----- Categories ----- */}
                 <Grid container paddingY={2}>

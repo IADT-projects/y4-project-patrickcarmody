@@ -16,7 +16,7 @@ const CharityCard = ({ charity }) => {
         >
             <CardMedia
                 component='img'
-                height='150'
+                height='200'
                 image={`https://res.cloudinary.com/dzooewr3a/image/upload/c_scale,w_375/${charity.bannerImage}.png`}
             />
             <Box

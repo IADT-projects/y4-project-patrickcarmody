@@ -10,7 +10,7 @@ const Home = () => {
         <Box>
           <Grid container columnSpacing={3} padding={4} rowSpacing={10}> 
             {/* ----- Section 1 ----- */}
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <Typography 
                 variant='h1'>
                   Raising money
@@ -38,7 +38,7 @@ const Home = () => {
                 Donate Now
               </Button>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={12} md={7}>
               <img 
                 src='https://i.imgur.com/1Ksal3s.png'
                 width={'100%'}
@@ -47,10 +47,10 @@ const Home = () => {
             </Grid>
             {/* ----- Section 4 ----- */}
             <Grid item xs={12} container alignItems={'center'}>
-              <Grid item xs={7}>
+              <Grid item xs={12} md={7} sx={{paddingY: 1}}>
                 <Typography variant='h3' textAlign={'center'}>Start accepting crypto today</Typography>
               </Grid>
-              <Grid item xs={5} justifyContent='center' display='flex'>
+              <Grid item xs={12} md={5} sx={{paddingY: 1}} justifyContent='center' display='flex'>
                   <Button 
                     variant='contained'
                     endIcon={<Article/>}
@@ -67,10 +67,10 @@ const Home = () => {
               </Grid>
             </Grid>
             {/* ----- Section 3 ----- */}
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
                 <Typography variant='h2'>Donate to user campaigns</Typography>
             </Grid>
-            <Grid item xs={4} display='flex' justifyContent={'flex-end'}>
+            <Grid item xs={12} md={4} display='flex' justifyContent={'flex-end'}>
               <Button 
                 variant='outlined'
                 endIcon={<East/>}

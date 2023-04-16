@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-      <PageContainer title="Home" description="this is the home page">
+      <PageContainer title="Crowdfunding" description="home page">
         <Box>
           <Grid container columnSpacing={3} padding={4} rowSpacing={10}> 
             {/* ----- Section 1 ----- */}
@@ -28,7 +28,7 @@ const Home = () => {
                 variant='contained'
                 endIcon={<East/>}
                 component={Link}
-                to='/campaigns'
+                to='/campaigns/explore'
                 sx={{
                   height: '40px',
                   width: '150px',
@@ -75,7 +75,7 @@ const Home = () => {
                 variant='outlined'
                 endIcon={<East/>}
                 component={Link}
-                to='/campaigns/individual'
+                to='/campaigns/user'
                 sx={{
                   height: '50px',
                   width: '200px',

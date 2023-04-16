@@ -4,7 +4,7 @@ import PageContainer from '../../components/PageContainer'
 
 const Charities = () => {
     return (
-      <PageContainer title="Home" description="this is the home page">
+      <PageContainer title="Charities" description="charity organisation pages">
         <Box>
         <Typography variant='h3' sx={{ marginY: 2 }}>Charity Pages</Typography>
           <Typography variant='h6'>Use this page to donate to existing charity organisations.</Typography>

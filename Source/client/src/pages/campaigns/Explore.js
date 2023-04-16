@@ -1,7 +1,10 @@
+import PageContainer from "../../components/PageContainer";
 
 const Explore = () => {
     return(
-        <h1>Explore</h1>
+        <PageContainer title='Explore' description='explore campaigns'>
+            <h1>Explore</h1>
+        </PageContainer>
     );
 };
 

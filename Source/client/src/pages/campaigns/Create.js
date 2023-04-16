@@ -11,7 +11,7 @@ const Create = () => {
   const navigate = useNavigate();
 
     return (
-      <PageContainer title="Home" description="this is the home page">
+      <PageContainer title="Create" description="create a fundraiser">
         <Box>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={6}>

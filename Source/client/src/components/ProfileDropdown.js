@@ -1,9 +1,14 @@
 import { AccountBalanceWallet, Logout, MenuOutlined, Person, Settings } from "@mui/icons-material";
-import { Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
+import { Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
+import { useContext } from "react";
 import { React, useState } from "react";
+import { Link } from 'react-router-dom'
+import { UserContext } from "../context/UserContext";
 
 
-const ProfileDropdown = () => {
+const ProfileDropdown = (userData) => {
+    const {setUserData, setIsAuthenticated} = useContext(UserContext);
+    const user = userData.userData
     const [anchorEl2, setAnchorEl2] = useState(null);
     const handleClick2 = (event) => {
       setAnchorEl2(event.currentTarget);
@@ -11,6 +16,11 @@ const ProfileDropdown = () => {
     const handleClose2 = () => {
       setAnchorEl2(null);
     };
+
+    console.log(user.image);
+    if(!user.image) {
+        console.log("no image");
+    }
 
     return(
         <Box>
@@ -26,13 +36,23 @@ const ProfileDropdown = () => {
                 }}
                 onClick={handleClick2}
             >
+                { user.image ? (
                 <Avatar
-                    src={'https://res.cloudinary.com/dzooewr3a/image/upload/v1680787491/stephanie_vmzgn2.png'}
+                    src={'https://res.cloudinary.com/dzooewr3a/image/upload/v1680787491/profile-temp_cpgaam.png'}
                     sx={{
                         width: 35,
                         height: 35
                     }}
                 />
+                ) : (
+                <Avatar
+                    sx={{ width: 35, height: 35, bgcolor: [500]}}
+                >
+                    {user.first_name.charAt(0)}{user.last_name.charAt(0)}
+                </Avatar>
+                )}
+                
+
             </IconButton>
            <Menu
                 id="profile-menu"
@@ -48,7 +68,7 @@ const ProfileDropdown = () => {
                     },
                   }}
            >
-                <MenuItem>
+                <MenuItem component={Link} to={`/users/${user.address}`}>
                     <ListItemIcon>
                         <Person width={20}/>
                         <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Profile</ListItemText>

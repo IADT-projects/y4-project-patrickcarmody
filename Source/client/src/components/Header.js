@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button, Popover } from '@mui/material';
 import PropTypes from 'prop-types';
-import {MenuOutlined}  from '@mui/icons-material';
+import { MenuOutlined }  from '@mui/icons-material';
 import { Web3Button } from '@web3modal/react';
 import ProfileDropdown from './ProfileDropdown';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-
+  const { isAuthenticated, userData } = useContext(UserContext);
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
     background: theme.palette.background.paper,
@@ -40,10 +43,18 @@ const Header = (props) => {
 
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Button variant="contained" color="primary"  target="_blank">
-            Log In
-          </Button>
-          <ProfileDropdown/>
+          {isAuthenticated ? (
+            <ProfileDropdown userData={userData}/>
+          ) : (
+            <Button 
+              variant="contained" 
+              color="primary"
+              LinkComponent={Link}
+              to='/login'
+            >
+              Log In
+            </Button>
+          ) }
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>

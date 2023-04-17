@@ -50,6 +50,7 @@ const Login = () => {
                 last_name: response.data.user.last_name,
             })
             setIsAuthenticated(true)
+            navigate(`/users/${response.data.user.address}`);
         })
         .catch((err) => {
             console.log(err)

@@ -1,4 +1,4 @@
-import { AccountBalanceWallet, Logout, MenuOutlined, Person, Settings } from "@mui/icons-material";
+import { AccountBalanceWallet, Logout, MenuOutlined, PermDataSetting, Person, Settings } from "@mui/icons-material";
 import { Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
 import { useContext } from "react";
 import { React, useState } from "react";
@@ -74,16 +74,10 @@ const ProfileDropdown = (userData) => {
                         <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Profile</ListItemText>
                     </ListItemIcon>
                 </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <MenuOutlined width={20}/>
-                        <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Campaigns</ListItemText>
-                    </ListItemIcon>
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <AccountBalanceWallet width={20}/>
-                        <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Withdraw</ListItemText>
+                <MenuItem component={Link} to='/dashboard'>
+                    <ListItemIcon >
+                        <PermDataSetting width={20}/>
+                        <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Dashboard</ListItemText>
                     </ListItemIcon>
                 </MenuItem>
                 <Divider/>

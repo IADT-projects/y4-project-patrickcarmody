@@ -13,6 +13,7 @@ const Start = Loadable(lazy(() => import('./pages/main/Start')));
 const User = Loadable(lazy(() => import('./pages/users/User')));
 const Register = Loadable(lazy(() => import('./pages/users/Register')));
 const Login = Loadable(lazy(() => import('./pages/users/Login')));
+const Dashboard = Loadable(lazy(() => import('./pages/users/Dashboard')));
 
 // Charities
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
@@ -59,6 +60,7 @@ const Router = [
       { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
       //Users
       { path: '/users/:id', element: <User /> },
+      { path: '/dashboard', element: <Dashboard /> },
 
       // Other
       { path: '/about', exact: true, element: <About /> },

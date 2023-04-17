@@ -6,7 +6,8 @@ const {
     readData,
     readSingle,
     editUser,
-    deleteUser
+    deleteUser,
+    login
   } = require('../controllers/user_controller');
 
   router
@@ -15,4 +16,5 @@ const {
   .post('/register', register)
   .put('/:id', editUser)
   .delete('/:id', deleteUser)
+  .post('/login', login)
 module.exports = router;

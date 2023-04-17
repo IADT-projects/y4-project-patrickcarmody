@@ -38,6 +38,10 @@ const Router = [
       element: <Login/>
     },
     {
+      path: '/register',
+      element: <Register/>
+    },
+    {
     path: '/',
     element: <Layout />,
     children: [
@@ -55,7 +59,6 @@ const Router = [
       { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
       //Users
       { path: '/users/:id', element: <User /> },
-      { path: '/register', element: <Register /> },
 
       // Other
       { path: '/about', exact: true, element: <About /> },

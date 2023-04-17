@@ -1,15 +1,22 @@
-import React from 'react';
-import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button, Popover } from '@mui/material';
 import PropTypes from 'prop-types';
-import { Menu } from '@mui/icons-material';
+import {MenuOutlined}  from '@mui/icons-material';
 import { Web3Button } from '@web3modal/react';
-
-// components
-
-// Web3
-
+import UserMenu from './UserMenu';
 
 const Header = (props) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const isPopoverOpen = Boolean(anchorEl);
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
@@ -39,7 +46,7 @@ const Header = (props) => {
             },
           }}
         >
-          <Menu width="20" height="20" />
+          <MenuOutlined width="20" height="20" />
         </IconButton>
 
         <IconButton
@@ -48,11 +55,11 @@ const Header = (props) => {
           color="inherit"
           aria-controls="msgs-menu"
           aria-haspopup="true"
-          sx={{
-            ...(typeof anchorEl2 === 'object' && {
-              color: 'primary.main',
-            }),
-          }}
+          // sx={{
+          //   ...(typeof anchorEl2 === 'object' && {
+          //     color: 'primary.main',
+          //   }),
+          // }}
         >
         </IconButton>
         <Box flexGrow={1} />
@@ -60,7 +67,35 @@ const Header = (props) => {
           <Button variant="contained" color="primary"  target="_blank">
             Log In
           </Button>
-          {/* <Web3Button/> */}
+          <Button
+            variant="outlined" 
+            color="primary"  
+            onMouseEnter={handlePopoverOpen}
+            onMouseLeave={handlePopoverClose}
+          >
+              Menu
+          </Button>
+          <Popover
+            open={isPopoverOpen}
+            anchorEl={anchorEl}
+            onClose={handlePopoverClose}
+            anchorReference="anchorPosition"
+            anchorPosition={(anchorEl && anchorEl.getBoundingClientRect().bottom) ? 
+              {
+                top: anchorEl.getBoundingClientRect().bottom + 2,
+                right: window.innerWidth - anchorEl.getBoundingClientRect().right - 30,
+              } : undefined}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            sx={{
+              marginTop: '8px',
+              marginRight: '16px',
+            }}
+          >
+            <UserMenu />
+          </Popover>
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>

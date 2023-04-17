@@ -1,15 +1,57 @@
 const User = require('../models/user_schema');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
     try {
-        let newUser = new User(req.body);
-        let savedUser = await newUser.save();
-        console.log("New user created: " + savedUser);
-        return res.status(201).json(savedUser);
-      } catch (error) {
-        return res.status(400).json({ msg: error.message });
+      let newUser = new User(req.body);
+      newUser.password = bcrypt.hashSync(req.body.password, 9);
+      const user = await newUser.save();
+      console.log("New user created");
+      user.password = undefined;
+      return res.status(201).json(user);
+    } catch (err) {
+      if (err.code === 11000) {
+        return res.status(400).json({
+          msg: err,
+          error: "Email is already in use"
+        })
+      } else {
+        return res.status(400).json({
+          msg: err
+        })
       }
-    };
+    }
+  };
+
+  const login = async (req, res) => {
+    try {
+      const user = await User.findOne({ email: req.body.email });
+      if (!user || !user.comparePassword(req.body.password)) {
+        res.status(401).json({
+          msg: "Authentication failed. Invalid user or password",
+        });
+      } else {
+        console.log(`User with ID ${user._id} logged in`);
+        const token = jwt.sign(
+          {
+            email: user.email,
+            name: user.name,
+            _id: user._id,
+          },
+          process.env.APP_KEY, // provide a valid secretOrPrivateKey argument
+        );
+        res.status(200).json({
+          msg: "Login Successful",
+          token,
+        });
+      }
+    } catch (err) {
+        console.log(err)
+      res.status(500).json({ msg: err });
+    }
+  };
+  
 
 const readData = (req, res) => {
     let query = {};
@@ -121,5 +163,6 @@ module.exports = {
     readData,
     readSingle,
     deleteUser,
-    editUser
+    editUser,
+    login
 };

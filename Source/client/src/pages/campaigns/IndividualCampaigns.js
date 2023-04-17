@@ -3,22 +3,23 @@ import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } fr
 import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
-import { Search } from '@mui/icons-material';
-import CharityCard from '../../components/CharityCard';
+import { Search, Clear } from '@mui/icons-material';
+import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
 
-const Charities = () => {
+const IndividualCampaigns = () => {
 
-  const [charities, setCharities] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showClearButton, setShowClearButton] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/charities`)
+    axios.get(`/campaigns`)
     .then((response) => {
         console.log(response.data)
-        setCharities(response.data)
+        setCampaigns(response.data)
     })
     .catch((err) => {
         console.error(err);
@@ -28,13 +29,13 @@ const Charities = () => {
 
   const handleSearch = () => {
     setLoading(true);
-    axios.get(`/charities?title=${searchQuery}`)
+    axios.get(`/campaigns?title=${searchQuery}`)
       .then((response) => {
-        setCharities(response.data);
+        setCampaigns(response.data);
       })
       .catch((err) => {
         if (err.response && err.response.status === 404) {
-            setCharities([])
+            setCampaigns([])
           console.log('404 error');
         } else {
           console.error(err);
@@ -43,19 +44,32 @@ const Charities = () => {
       .finally(() => setLoading(false));
   };
 
-  const charitiesList = charities.length
-    ? charities.map((charity) => {
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setShowClearButton(false);
+    handleSearch();
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+    setShowClearButton(event.target.value !== '');
+  };
+
+  if (loading) return <Loading />;
+
+  const campaignsList = campaigns.length
+    ? campaigns.map((campaign) => {
       return (
         <Grid item xs={12} md={4} lg={3}>
-          <CharityCard charity={charity} />
+          <CampaignCard campaign={campaign} />
         </Grid>
       )
     })
     : <NoResults />;
-
+    
     return (
-      <PageContainer title="Charities" description="charity campaigns">
-        <Typography variant='h3' sx={{ marginY: 2 }}>Charity campaigns</Typography>
+      <PageContainer title="User Campaigns" description="user campaigns">
+        <Typography variant='h3' sx={{ marginY: 2 }}>User campaigns</Typography>
         <Grid container paddingBottom={2} spacing={2}>
           <Grid item xs={12} lg={4}>
           <TextField
@@ -67,14 +81,18 @@ const Charities = () => {
               }
             }}
             InputProps={{
-            endAdornment: (
-              <InputAdornment position='end' onClick={handleSearch}>
-                <Search />
-              </InputAdornment>
-            )
+              endAdornment: (
+                <InputAdornment position='end'>
+                  {showClearButton ? (
+                    <Clear onClick={handleClearSearch} />
+                  ) : (
+                    <Search onClick={handleSearch} />
+                  )}
+                </InputAdornment>
+              )
             }}
             value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
+            onChange={handleSearchInputChange}
           />
           </Grid>
           <Grid item xs={12} lg={4}></Grid>
@@ -94,7 +112,7 @@ const Charities = () => {
           </Grid>
         </Grid>
     
-        <Box>
+      <Box>
         <Grid container spacing={3} direction="row">
         {loading && (
         <Grid item xs={12}>
@@ -103,8 +121,8 @@ const Charities = () => {
         )}
         {!loading && (
         <>
-        {charities.length > 0 ? (
-        charitiesList
+        {campaigns.length > 0 ? (
+        campaignsList
         ) : (
         <Grid item xs={12}>
           <NoResults />
@@ -122,4 +140,4 @@ const Charities = () => {
     
 };
 
-export default Charities;
+export default IndividualCampaigns;

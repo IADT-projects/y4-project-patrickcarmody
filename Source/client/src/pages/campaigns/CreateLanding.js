@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import PageContainer from "../../components/PageContainer";
 import { Link } from "react-router-dom";
 import { Apartment, Person } from "@mui/icons-material";
+import '../../assets/css/index.css'
 
 const CreateLanding = () => {
     return(
@@ -10,7 +11,7 @@ const CreateLanding = () => {
             <Typography variant='h3' sx={{ marginY: 2 }}>Receive cryptocurrency for your cause</Typography>
             <Typography variant='h6'>Are you creating your own fundraiser or creating a page for your organization?</Typography>
         </Box>
-        <Box display="flex" justifyContent='center'>
+        <Box display="flex" justifyContent='center' alignItems='center'>
             <Box 
                 component={Link}
                 to='/campaigns/create/user'
@@ -19,10 +20,14 @@ const CreateLanding = () => {
                     height: '500px',
                     border: '2px dashed #3ea4f7',
                     borderRadius: 5,
-                    margin: 1
+                    margin: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}
             >
-                <Person/>
+                <Person sx={{ fontSize: '200px' }} />
                 <Typography variant="body1" sx={{ textAlign: 'center' }}>
                     User
                 </Typography>
@@ -35,10 +40,14 @@ const CreateLanding = () => {
                     height: '500px',
                     border: '2px dashed #3ea4f7',
                     borderRadius: 5,
-                    margin: 1
+                    margin: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}
             >
-                <Apartment/>
+                <Apartment sx={{ fontSize: '200px'}} />
                 <Typography variant="body1" sx={{ textAlign: 'center' }}>
                     Organisation
                 </Typography>

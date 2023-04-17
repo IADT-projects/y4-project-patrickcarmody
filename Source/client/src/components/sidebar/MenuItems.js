@@ -8,15 +8,15 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'All',
+    title: 'Explore',
     icon: List,
-    href: '/campaigns',
+    href: '/campaigns/explore',
   },
   {
     id: uniqueId(),
-    title: 'Individuals',
+    title: 'Users',
     icon: Person,
-    href: '/campaigns/individual',
+    href: '/campaigns/user',
   },
   {
     id: uniqueId(),

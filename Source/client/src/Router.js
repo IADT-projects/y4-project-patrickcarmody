@@ -5,23 +5,25 @@ import Loadable from './components/layout/Loadable';
 // Layout
 const Layout = Loadable(lazy(() => import('./components/layout/Layout')));
 const HomeLayout = Loadable(lazy(() => import('./components/layout/HomeLayout')));
-
+// Pages
 const Home = (Loadable(lazy(() => import('./pages/main/Home'))));
-
-const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
-const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
-const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
-
-const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
 const About = Loadable(lazy(() => import('./pages/main/About')));
 const Start = Loadable(lazy(() => import('./pages/main/Start')));
-const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
-const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
+// Users
 const User = Loadable(lazy(() => import('./pages/users/User')));
 const Register = Loadable(lazy(() => import('./pages/users/Register')));
 const Login = Loadable(lazy(() => import('./pages/users/Login')));
 
-// Pages
+// Charities
+const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
+
+const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
+// User campaigns
+const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
+const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
+
+const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
+const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
 
 const Router = [
     {
@@ -30,6 +32,10 @@ const Router = [
       children: [
         { path: '/home', element: <Home/> }
       ]
+    },
+    {
+      path: '/login',
+      element: <Login/>
     },
     {
     path: '/',
@@ -50,8 +56,6 @@ const Router = [
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/register', element: <Register /> },
-
-      { path: '/login', element: <Login /> },
 
       // Other
       { path: '/about', exact: true, element: <About /> },

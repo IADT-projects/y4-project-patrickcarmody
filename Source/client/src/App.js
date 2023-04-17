@@ -3,6 +3,9 @@ import { useRoutes } from 'react-router-dom';
 import Router from './Router'
 import { mainTheme } from './theme/mainTheme';
 
+// Provider
+import { UserProvider } from './context/UserProvider';
+
 // Web3 Imports
 import { Web3Modal } from '@web3modal/react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
@@ -20,16 +23,18 @@ const wagmiClient = createClient({
 })
 const ethereumClient = new EthereumClient(wagmiClient, chains)
 
-
 function App() {
   const routing = useRoutes(Router);
   const theme = mainTheme;
+
   return (
     <>
       <WagmiConfig client={wagmiClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline/>
-          {routing}
+          <UserProvider>
+            {routing}
+          </UserProvider>
         </ThemeProvider>
       </WagmiConfig>
       <Web3Modal 

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const {authRequired} = require('../controllers/auth_controller');
 const { 
     register, 
     readData,
@@ -14,7 +15,8 @@ const {
   .get('/', readData)
   .get('/:id', readSingle)
   .post('/register', register)
-  .put('/:id', editUser)
-  .delete('/:id', deleteUser)
   .post('/login', login)
+  .put('/:id', authRequired, editUser)
+  .delete('/:id', authRequired, deleteUser)
+
 module.exports = router;

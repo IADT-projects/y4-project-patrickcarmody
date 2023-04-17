@@ -14,6 +14,7 @@ const User = Loadable(lazy(() => import('./pages/users/User')));
 const Register = Loadable(lazy(() => import('./pages/users/Register')));
 const Login = Loadable(lazy(() => import('./pages/users/Login')));
 const Dashboard = Loadable(lazy(() => import('./pages/users/Dashboard')));
+const UserSettings = Loadable(lazy(() => import('./pages/users/UserSettings')));
 
 // Charities
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
@@ -61,6 +62,7 @@ const Router = [
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/dashboard', element: <Dashboard /> },
+      { path: '/settings', element: <UserSettings/> },
 
       // Other
       { path: '/about', exact: true, element: <About /> },

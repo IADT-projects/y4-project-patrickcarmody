@@ -7,7 +7,6 @@ import { UserContext } from "../context/UserContext";
 
 
 const ProfileDropdown = (userData) => {
-    const {setUserData, setIsAuthenticated} = useContext(UserContext);
     const user = userData.userData
     const [anchorEl2, setAnchorEl2] = useState(null);
     const handleClick2 = (event) => {
@@ -81,7 +80,7 @@ const ProfileDropdown = (userData) => {
                     </ListItemIcon>
                 </MenuItem>
                 <Divider/>
-                <MenuItem>
+                <MenuItem component={Link} to='/settings'>
                     <ListItemIcon>
                         <Settings/>
                         <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Settings</ListItemText>

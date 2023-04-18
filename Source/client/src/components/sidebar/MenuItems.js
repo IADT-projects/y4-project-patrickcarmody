@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash';
 const Menuitems = [
   {
     navlabel: true,
-    subheader: 'CAMPAIGNS',
+    subheader: 'DONATE',
   },
   {
     id: uniqueId(),

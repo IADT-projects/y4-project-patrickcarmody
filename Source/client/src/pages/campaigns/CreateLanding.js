@@ -8,10 +8,10 @@ const CreateLanding = () => {
     return(
         <PageContainer title="Create" description="create a fundraiser">
             <Box>
-                <Typography variant='h3' sx={{ marginY: 2 }}>Receive cryptocurrency for your cause</Typography>
-                <Typography variant='h6'>Are you creating your own fundraiser or creating a page for your organization?</Typography>
+                <Typography variant='h2' sx={{ marginY: 2 }}>Receive cryptocurrency for your cause</Typography>
+                <Typography variant='h3' sx={{ fontWeight: 500 }}>Are you creating your own fundraiser or creating a page for your organization?</Typography>
             </Box>
-            <Box sx={{display: { sx: 'block' , md: 'flex' }}} mt={3}>
+            <Box sx={{ display: { sx: 'block' , md: 'flex' } }} mt={3}>
                 <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: {xs: "100%", md: "40%" }, height: '350px'}}>
                     <Box
                         component={Link}

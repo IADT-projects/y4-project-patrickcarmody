@@ -5,7 +5,7 @@
         "last_name": "Cameron",
         "biography": "Pop cultureaholic. Incurable troublemaker. Food aficionado. Friend of animals everywhere.",
         "email": "stephanie@example.com",
-        "password": "password",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
         "image": "stephanie_vmzgn2"
     },
     {
@@ -14,7 +14,7 @@
         "last_name": "Russell",
         "biography": "Hardcore web aficionado. Evil internet advocate. Incurable entrepreneur.",
         "email": "george@example.com",
-        "password": "password",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
         "image": "george_ekqhth"
     },
     {
@@ -23,7 +23,7 @@
         "last_name": "Leonard",
         "biography": "Infuriatingly humble introvert. Friendly writer. Tv trailblazer. Troublemaker.",
         "email": "alison@example.com",
-        "password": "password",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
         "image": "alison_vc5ndh"
     },
     {
@@ -32,7 +32,7 @@
         "last_name": "McAndrew",
         "biography": "Friendly music lover. Web aficionado. Future teen idol. Extreme twitter fan. Internet practitioner. Hipster-friendly coffee maven.",
         "email": "kyle@example.com",
-        "password": "password",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
         "image": "kyle_gltsvr"
     }
 ]

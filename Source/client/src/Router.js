@@ -15,15 +15,13 @@ const Register = Loadable(lazy(() => import('./pages/users/Register')));
 const Login = Loadable(lazy(() => import('./pages/users/Login')));
 const Dashboard = Loadable(lazy(() => import('./pages/users/Dashboard')));
 const UserSettings = Loadable(lazy(() => import('./pages/users/UserSettings')));
-
 // Charities
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
-
 const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
 // User campaigns
 const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
-
+const EditCampaign = Loadable(lazy(() => import('./pages/campaigns/Edit')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
 
@@ -56,6 +54,7 @@ const Router = [
       { path: '/campaigns/charity', exact: true, element: <Charities /> },
 
       { path: '/campaigns/:id', element: <SingleCampaign/> },
+      { path: '/campaigns/:id/edit', element: <EditCampaign/> },
 
       { path: '/campaigns/create/user', exact: true, element: <CreateForm/> },
       { path: '/campaigns/create', exact: true, element: <CreateLanding/> },

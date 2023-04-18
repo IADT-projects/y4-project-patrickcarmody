@@ -60,9 +60,7 @@ const IndividualCampaigns = () => {
   const campaignsList = campaigns.length
     ? campaigns.map((campaign) => {
       return (
-        <Grid item xs={12} md={4} lg={3}>
-          <CampaignCard campaign={campaign} />
-        </Grid>
+          <CampaignCard campaign={campaign} sx={{pl: 5}}/>
       )
     })
     : <NoResults />;
@@ -119,17 +117,17 @@ const IndividualCampaigns = () => {
           <Loading />
         </Grid>
         )}
-        {!loading && (
-        <>
-        {campaigns.length > 0 ? (
-        campaignsList
-        ) : (
-        <Grid item xs={12}>
-          <NoResults />
-        </Grid>
-        )}
-        </>
-        )}
+          {!loading && (
+          <>
+          {campaigns.length > 0 ? (
+            campaignsList
+          ) : (
+          <Grid item xs={12}>
+            <NoResults />
+          </Grid>
+          )}
+          </>
+          )}
         <Grid item xs={12} lg={12}>
         {/* Pagination here */}
         </Grid>

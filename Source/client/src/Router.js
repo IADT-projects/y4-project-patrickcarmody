@@ -26,6 +26,9 @@ const EditCampaign = Loadable(lazy(() => import('./pages/campaigns/Edit')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
 
+
+const NewCard = Loadable(lazy(() => import('./components/CampaignCard/CampaignCard')));
+
 const Router = [
     {
       path: '/home',
@@ -48,6 +51,8 @@ const Router = [
     children: [
       // Main
       { path: '/', element: <Navigate to="/home" /> },
+
+      { path: '/newcard', element: <NewCard/>},
 
       // Campaigns
       { path: '/campaigns/explore', exact: true, element: <Explore /> },

@@ -57,9 +57,9 @@ const Router = [
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       { path: '/campaigns/:id/edit', element: <EditCampaign/> },
 
-      { path: '/campaigns/create/user', exact: true, element: <CreateForm/> },
-      { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
-      { path: '/campaigns/create/charity', exact: true, element: <CharityForm/> },
+      { path: '/create/campaign', exact: true, element: <CreateForm/> },
+      { path: '/create', exact: true, element: <CreateLanding/> },
+      { path: '/create/charity', exact: true, element: <CharityForm/> },
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/dashboard', element: <Dashboard /> },

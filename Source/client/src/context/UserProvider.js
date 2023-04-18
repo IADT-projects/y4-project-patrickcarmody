@@ -29,8 +29,14 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
   }, [isAuthenticated]);
 
+  const logout = () => {
+    localStorage.removeItem('userData');
+    localStorage.removeItem('isAuthenticated');
+    setIsAuthenticated(false);
+  };
+
   return (
-    <UserContext.Provider value={{ userData, setUserData, isAuthenticated, setIsAuthenticated }}>
+    <UserContext.Provider value={{ userData, setUserData, isAuthenticated, setIsAuthenticated, logout }}>
       {children}
     </UserContext.Provider>
   );

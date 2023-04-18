@@ -18,6 +18,7 @@ const UserSettings = Loadable(lazy(() => import('./pages/users/UserSettings')));
 // Charities
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
 const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
+const CharityForm = Loadable(lazy(() => import('./components/CharityForm/Index')));
 // User campaigns
 const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
@@ -58,6 +59,7 @@ const Router = [
 
       { path: '/campaigns/create/user', exact: true, element: <CreateForm/> },
       { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
+      { path: '/campaigns/create/charity', exact: true, element: <CharityForm/> },
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/dashboard', element: <Dashboard /> },

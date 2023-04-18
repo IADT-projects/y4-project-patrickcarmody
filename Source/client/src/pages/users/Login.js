@@ -48,6 +48,7 @@ const Login = () => {
                 email: response.data.user.email,
                 first_name: response.data.user.first_name,
                 last_name: response.data.user.last_name,
+                image: response.data.user.image,
             })
             setIsAuthenticated(true)
             navigate(`/users/${response.data.user.address}`);

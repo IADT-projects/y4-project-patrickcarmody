@@ -7,6 +7,7 @@ import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import PreviewCard from "../../components/ui/PreviewCard";
+import UserIcon from "../../components/users/UserIcon";
 
 const User = () => {
     const navigate = useNavigate();
@@ -48,9 +49,8 @@ const User = () => {
               </Grid>
               <Grid container spacing={3}> 
                 {/* ----- User info ----- */}
-                `<Grid item xs={12} width='100%'>
+                <Grid item xs={12} width='100%'>
                   <Box
-                    component="img"
                     sx={{ 
                       height: '200px', 
                       width: '200px', 
@@ -58,9 +58,10 @@ const User = () => {
                       display: 'block',
                       margin: '0 auto',
                     }}
-                    src={`https://res.cloudinary.com/dzooewr3a/image/upload/${user.image}.png`}
-                  />
-                </Grid>`
+                  >
+                    <UserIcon user={user} size='200'/>
+                  </Box>
+                </Grid>
                 <Grid item xs={12}>
                   <Typography variant="h2" sx={{ textAlign: 'center' }}>{user.first_name} {user.last_name}</Typography>
                 </Grid>

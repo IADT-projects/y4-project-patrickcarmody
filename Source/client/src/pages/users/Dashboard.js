@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import UserIcon from "../../components/users/UserIcon";
 
 const Dashboard = () => {
 
@@ -42,18 +43,17 @@ const Dashboard = () => {
               </Grid>
               <Grid container spacing={3}> 
                 {/* ----- User info ----- */}
-                <Grid item xs={6} sx={{height: "500px"}}>
+                <Grid item xs={12} md={6} sx={{height: "500px"}}>
                     <Box 
                         sx={{
                             padding: 4, 
                             height: "100%",
                             border: '1px solid #dbdbdb',
-                            boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.12)',
+                            boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.12)'
                             }}
                     >
                         <Grid item xs={12} width='100%'>
                             <Box
-                                component="img"
                                 sx={{ 
                                 height: '200px', 
                                 width: '200px', 
@@ -61,8 +61,10 @@ const Dashboard = () => {
                                 display: 'block',
                                 margin: '0 auto',
                                 }}
-                                src={`https://res.cloudinary.com/dzooewr3a/image/upload/${userData.image}.png`}
-                            />
+                                
+                            >
+                                <UserIcon user={userData} size='200'/>
+                            </Box>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant="h2" sx={{ textAlign: 'center', mt: 4}}>{userData.first_name} {userData.last_name}</Typography>
@@ -83,7 +85,7 @@ const Dashboard = () => {
                 </Grid>
                 
                 {/* ----- Stats -----  */}
-                <Grid item container xs={6}>
+                <Grid item container xs={12} md={6}>
                     <Paper elevation={5} sx={{ height: "100%", width: '100%', p:1}}>
                         <Box sx={{ padding: 4, height: '50%', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
                             <Typography variant='h2' sx={{ fontWeight: 'medium', textAlign: 'center' }}>2</Typography>
@@ -96,7 +98,6 @@ const Dashboard = () => {
                     </Paper>
                 </Grid>
             
-              
               {/* ----- Campaigns -----  */}
               <Grid item xs={12}>
               <Box 

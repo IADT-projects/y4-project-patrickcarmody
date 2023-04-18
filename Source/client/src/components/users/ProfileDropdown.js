@@ -2,13 +2,17 @@ import { AccountBalanceWallet, Logout, MenuOutlined, PermDataSetting, Person, Se
 import { Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
 import { useContext } from "react";
 import { React, useState } from "react";
-import { Link } from 'react-router-dom'
-import { UserContext } from "../context/UserContext";
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from "../../context/UserContext";
+import UserIcon from "./UserIcon";
 
 
 const ProfileDropdown = (userData) => {
+    const { logout } = useContext(UserContext);
     const user = userData.userData
     const [anchorEl2, setAnchorEl2] = useState(null);
+    const navigate = useNavigate()
+
     const handleClick2 = (event) => {
       setAnchorEl2(event.currentTarget);
     };
@@ -16,10 +20,10 @@ const ProfileDropdown = (userData) => {
       setAnchorEl2(null);
     };
 
-    console.log(user.image);
-    if(!user.image) {
-        console.log("no image");
-    }
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
 
     return(
         <Box>
@@ -35,23 +39,7 @@ const ProfileDropdown = (userData) => {
                 }}
                 onClick={handleClick2}
             >
-                { user.image ? (
-                <Avatar
-                    src={'https://res.cloudinary.com/dzooewr3a/image/upload/v1680787491/profile-temp_cpgaam.png'}
-                    sx={{
-                        width: 35,
-                        height: 35
-                    }}
-                />
-                ) : (
-                <Avatar
-                    sx={{ width: 35, height: 35, bgcolor: [500]}}
-                >
-                    {user.first_name.charAt(0)}{user.last_name.charAt(0)}
-                </Avatar>
-                )}
-                
-
+                <UserIcon user={user} size='40'/>
             </IconButton>
            <Menu
                 id="profile-menu"
@@ -86,7 +74,7 @@ const ProfileDropdown = (userData) => {
                         <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Settings</ListItemText>
                     </ListItemIcon>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                         <Logout width={20}/>
                         <ListItemText sx={{ paddingX: 2, color: '#36353b' }}>Log out</ListItemText>

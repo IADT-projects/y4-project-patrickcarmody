@@ -34,7 +34,7 @@ const CreateLanding = () => {
             </Box>
             <Box 
                 component={Link}
-                to='/campaigns/create/organisation'
+                to='/campaigns/create/charity'
                 sx={{
                     width: '40%',
                     height: '500px',

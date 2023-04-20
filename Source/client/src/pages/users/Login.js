@@ -51,7 +51,7 @@ const Login = () => {
                 image: response.data.user.image,
             })
             setIsAuthenticated(true)
-            navigate(`/users/${response.data.user.address}`);
+            navigate(`/dashboard`);
         })
         .catch((err) => {
             console.log(err)
@@ -66,7 +66,7 @@ const Login = () => {
                 <Grid container spacing={0} justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
                     <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '500px' }}>
                         <>
-                        <Stack direction="row" alignItems="center" mb={3}>
+                        <Stack direction="row" alignItems="center" mb={3} spacing={3}>
                             <Box width={24}>
                                 <IconButton onClick={() => navigate(-1)}>
                                     <ChevronLeft/>
@@ -75,81 +75,81 @@ const Login = () => {
                             <Typography fontWeight={550} variant='h3' textAlign={'center'}>
                                 Login
                             </Typography>
-                            </Stack>
-                            <Stack>
-                                <Box>
-                                    <Typography variant="subtitle1"
-                                        fontWeight={500} 
-                                        component="label" 
-                                        htmlFor='username' mb="5px"
-                                    >
-                                            Email
-                                    </Typography>
-                                    <TextField 
-                                        id="email" 
-                                        name='email'
-                                        variant="outlined" 
-                                        fullWidth 
-                                        onChange={handleForm}
-                                    />
-                                </Box>
-                                <Box mt="25px">
-                                    <Typography variant="subtitle1"
-                                        fontWeight={500} 
-                                        component="label" 
-                                        htmlFor='password' 
-                                        mb="5px" 
-                                    >
-                                        Password
-                                    </Typography>
-                                    <TextField 
-                                        id="password" 
-                                        name='password'
-                                        type="password" 
-                                        variant="outlined" 
-                                        fullWidth 
-                                        onChange={handleForm}
-                                    />
-                                </Box>
-                                <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
-                                    <FormGroup>
-                                        <FormControlLabel
-                                            control={<Checkbox defaultChecked />}
-                                            label="Remember me"
-                                        />
-                                    </FormGroup>
-                                    <Typography
-                                        component={Link}
-                                        to="/"
-                                        fontWeight="500"
-                                        sx={{
-                                            textDecoration: 'none',
-                                            color: 'primary.main',
-                                        }}
-                                    >
-                                        Forgot Password ?
-                                    </Typography>
-                                </Stack>
-                            </Stack>
+                        </Stack>
+                        <Stack>
                             <Box>
-                                <Button
-                                    color="primary"
-                                    variant="contained"
-                                    size="large"
-                                    fullWidth
-                                    onClick={submitForm}
+                                <Typography variant="subtitle1"
+                                    fontWeight={500} 
+                                    component="label" 
+                                    htmlFor='username' mb="5px"
                                 >
-                                    Sign In
-                                </Button>
-                            </Box>
-                            <Stack direction='row' spacing={1} justifyContent='center' mt={3}>
-                                <Typography fontWeight='500'>
-                                    Don't have an account yet?
+                                        Email
                                 </Typography>
-                                <Typography component={Link} to='/register' fontWeight="500" sx={{textDecoration: 'none', color: 'primary.main'}}>
-                                    Register
+                                <TextField 
+                                    id="email" 
+                                    name='email'
+                                    variant="outlined" 
+                                    fullWidth 
+                                    onChange={handleForm}
+                                />
+                            </Box>
+                            <Box mt="25px">
+                                <Typography variant="subtitle1"
+                                    fontWeight={500} 
+                                    component="label" 
+                                    htmlFor='password' 
+                                    mb="5px" 
+                                >
+                                    Password
+                                </Typography>
+                                <TextField 
+                                    id="password" 
+                                    name='password'
+                                    type="password" 
+                                    variant="outlined" 
+                                    fullWidth 
+                                    onChange={handleForm}
+                                />
+                            </Box>
+                            <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
+                                <FormGroup>
+                                    <FormControlLabel
+                                        control={<Checkbox defaultChecked />}
+                                        label="Remember me"
+                                    />
+                                </FormGroup>
+                                <Typography
+                                    component={Link}
+                                    to="/"
+                                    fontWeight="500"
+                                    sx={{
+                                        textDecoration: 'none',
+                                        color: 'primary.main',
+                                    }}
+                                >
+                                    Forgot Password ?
                                 </Typography>
                             </Stack>
+                        </Stack>
+                        <Box>
+                            <Button
+                                color="primary"
+                                variant="contained"
+                                size="large"
+                                fullWidth
+                                onClick={submitForm}
+                            >
+                                Sign In
+                            </Button>
+                        </Box>
+                        <Stack direction='row' spacing={1} justifyContent='center' mt={3}>
+                            <Typography fontWeight='500'>
+                                Don't have an account yet?
+                            </Typography>
+                            <Typography component={Link} to='/register' fontWeight="500" sx={{textDecoration: 'none', color: 'primary.main'}}>
+                                Register
+                            </Typography>
+                        </Stack>
                         </>
                     </Card>
                 </Grid>

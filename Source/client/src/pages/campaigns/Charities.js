@@ -3,15 +3,18 @@ import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } fr
 import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
-import { Search } from '@mui/icons-material';
-import CharityCard from '../../components/CharityCard';
+import { Search, Clear } from '@mui/icons-material';
+import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
+import CharityCard from '../../components/CharityCard';
 
-const Charities = () => {
+const IndividualCampaigns = () => {
 
   const [charities, setCharities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showClearButton, setShowClearButton] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -26,9 +29,9 @@ const Charities = () => {
     .finally(() => setLoading(false));
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = (categoryValue) => {
     setLoading(true);
-    axios.get(`/charities?title=${searchQuery}`)
+    axios.get(`/charities?title=${searchQuery}&category=${categoryValue}`)
       .then((response) => {
         setCharities(response.data);
       })
@@ -43,19 +46,39 @@ const Charities = () => {
       .finally(() => setLoading(false));
   };
 
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setShowClearButton(false);
+    handleSearch(category);
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+    setShowClearButton(event.target.value !== '');
+  };
+
+  const handleCategoryChange = (event) => {
+    console.log(event.target.value);
+    setCategory(event.target.value);
+  }
+
+  useEffect(() => {
+    handleSearch(category);
+  }, [searchQuery, category]); // Run handleSearch on searchQuery and category change
+
+  if (loading) return <Loading />;
+
   const charitiesList = charities.length
     ? charities.map((charity) => {
       return (
-        <Grid item xs={12} md={4} lg={3}>
-          <CharityCard charity={charity} />
-        </Grid>
+          <CharityCard charity={charity} sx={{pl: 5}}/>
       )
     })
     : <NoResults />;
-
+    
     return (
-      <PageContainer title="Charities" description="charity campaigns">
-        <Typography variant='h3' sx={{ marginY: 2 }}>Charity campaigns</Typography>
+      <PageContainer title="Charities" description="charity organisations">
+        <Typography variant='h3' sx={{ marginY: 2 }}>Charity Organisations</Typography>
         <Grid container paddingBottom={2} spacing={2}>
           <Grid item xs={12} lg={4}>
           <TextField
@@ -67,20 +90,24 @@ const Charities = () => {
               }
             }}
             InputProps={{
-            endAdornment: (
-              <InputAdornment position='end' onClick={handleSearch}>
-                <Search />
-              </InputAdornment>
-            )
+              endAdornment: (
+                <InputAdornment position='end'>
+                  {showClearButton ? (
+                    <Clear onClick={handleClearSearch} />
+                  ) : (
+                    <Search onClick={handleSearch} />
+                  )}
+                </InputAdornment>
+              )
             }}
             value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
+            onChange={handleSearchInputChange}
           />
           </Grid>
           <Grid item xs={12} lg={4}></Grid>
           <Grid item xs={12} lg={4}>
-            <Select fullWidth>
-              <MenuItem value="all">All</MenuItem>
+            <Select fullWidth onChange={handleCategoryChange} defaultValue=''>
+              <MenuItem value=" ">All</MenuItem>
               <MenuItem value='animals'>Animals</MenuItem>
               <MenuItem value='community'>Community</MenuItem>
               <MenuItem value='emergencies'>Emergencies</MenuItem>
@@ -94,24 +121,24 @@ const Charities = () => {
           </Grid>
         </Grid>
     
-        <Box>
-        <Grid container spacing={3} direction="row">
+      <Box>
+        <Grid container spacing={3} direction="row" pt={3} justifyContent="center">
         {loading && (
         <Grid item xs={12}>
           <Loading />
         </Grid>
         )}
-        {!loading && (
-        <>
-        {charities.length > 0 ? (
-        charitiesList
-        ) : (
-        <Grid item xs={12}>
-          <NoResults />
-        </Grid>
-        )}
-        </>
-        )}
+          {!loading && (
+          <>
+          {charities.length > 0 ? (
+            charitiesList
+          ) : (
+          <Grid item xs={12}>
+            <NoResults />
+          </Grid>
+          )}
+          </>
+          )}
         <Grid item xs={12} lg={12}>
         {/* Pagination here */}
         </Grid>
@@ -122,4 +149,4 @@ const Charities = () => {
     
 };
 
-export default Charities;
+export default IndividualCampaigns;

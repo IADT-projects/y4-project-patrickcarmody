@@ -11,6 +11,7 @@ const IndividualCampaigns = () => {
 
   const [campaigns, setCampaigns] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
   const [showClearButton, setShowClearButton] = useState(false);
 
@@ -27,9 +28,9 @@ const IndividualCampaigns = () => {
     .finally(() => setLoading(false));
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = (categoryValue) => {
     setLoading(true);
-    axios.get(`/campaigns?title=${searchQuery}`)
+    axios.get(`/campaigns?title=${searchQuery}&category=${categoryValue}`)
       .then((response) => {
         setCampaigns(response.data);
       })
@@ -47,13 +48,22 @@ const IndividualCampaigns = () => {
   const handleClearSearch = () => {
     setSearchQuery('');
     setShowClearButton(false);
-    handleSearch();
+    handleSearch(category);
   };
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
     setShowClearButton(event.target.value !== '');
   };
+
+  const handleCategoryChange = (event) => {
+    console.log(event.target.value);
+    setCategory(event.target.value);
+  }
+
+  useEffect(() => {
+    handleSearch(category);
+  }, [searchQuery, category]); // Run handleSearch on searchQuery and category change
 
   if (loading) return <Loading />;
 
@@ -95,8 +105,8 @@ const IndividualCampaigns = () => {
           </Grid>
           <Grid item xs={12} lg={4}></Grid>
           <Grid item xs={12} lg={4}>
-            <Select fullWidth>
-              <MenuItem value="all">All</MenuItem>
+            <Select fullWidth onChange={handleCategoryChange} defaultValue=''>
+              <MenuItem value=" ">All</MenuItem>
               <MenuItem value='animals'>Animals</MenuItem>
               <MenuItem value='community'>Community</MenuItem>
               <MenuItem value='emergencies'>Emergencies</MenuItem>
@@ -111,7 +121,7 @@ const IndividualCampaigns = () => {
         </Grid>
     
       <Box>
-        <Grid container spacing={3} direction="row">
+        <Grid container spacing={3} direction="row" pt={3} pl={2} justifyContent="center">
         {loading && (
         <Grid item xs={12}>
           <Loading />

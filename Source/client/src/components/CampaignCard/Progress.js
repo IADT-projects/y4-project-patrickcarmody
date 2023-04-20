@@ -11,7 +11,8 @@ const Progress = ({ campaign }) => {
         <>
             <Box
                 sx={{
-                    height: '50px'
+                    height: '50px',
+                    width: '100%'
                 }}
             >
                 <Typography 

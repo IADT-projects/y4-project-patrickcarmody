@@ -2,31 +2,37 @@ const Charity = require('../models/charity_schema');
 
 const readData = (req, res) => {
     let query = {};
+    let limit = parseInt(req.query.limit);
+    
     // check if user included search params
     if (Object.keys(req.query).length > 0) {
-        for (const [property, term] of Object.entries(req.query)) {
+      for (const [property, term] of Object.entries(req.query)) {
+        if (property !== 'limit') { // Exclude limit parameter from query
             query[property] = new RegExp(term, 'i');
-        }
+          }
+      }
     }
+  
     Charity.find(query)
-        .then((data) => {
-            if(Object.keys(query).length > 0) {
-                console.log(`User searched for charity with ${Object.keys(query).join(', ')}: ${Object.values(query).join(', ')}`)
-            } else {
-                console.log(`User requested all charities`);
-            }
-            if(data.length > 0) {
-                res.status(200).json(data);
-            }
-            else {
-                res.status(404).json('No results');
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).json(err);
-        });
-    }
+      .limit(limit)
+      .then((data) => {
+        if (Object.keys(query).length > 0) {
+          console.log(`User searched for charity with ${Object.keys(query).join(', ')}: ${Object.values(query).join(', ')}`)
+        } else {
+          console.log(`User requested all charities`);
+        }
+        if (data.length > 0) {
+          res.status(200).json(data);
+        } else {
+          res.status(404).json('No results');
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+      });
+  };
+  
 
 const readSingle = (req, res) => {
     let id = req.params.id;

@@ -6,7 +6,7 @@ import { Grid, IconButton, Link, Typography } from "@mui/material";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
-import PreviewCard from "../../components/ui/PreviewCard";
+import CampaignCard from "../../components/CampaignCard/CampaignCard";
 import UserIcon from "../../components/users/UserIcon";
 
 const User = () => {
@@ -88,13 +88,11 @@ const User = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Typography variant='h2' sx={{ textAlign: 'center', paddingTop: 9 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
-              <Grid container spacing={3} direction="row" padding={3}>
+              <Typography variant='h2' sx={{ textAlign: 'center', pt: 6, pb: 3 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
+              <Grid container spacing={3} direction="row" padding={3} justifyContent='center'>
                 {campaigns &&
                   campaigns.map((campaign) => (
-                    <Grid item xs={12} md={6}>
-                      <PreviewCard campaign={campaign} />
-                    </Grid>
+                      <CampaignCard campaign={campaign} />
                   ))
                 }
               </Grid>

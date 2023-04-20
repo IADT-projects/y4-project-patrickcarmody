@@ -15,7 +15,7 @@ const CampaignCard = ({campaign}) => {
             alignItems='center'
             sx={{
                 width: { xs: '100%', md: '30%' },
-                height: { xs: '500px', md: '400px'},
+                height: { xs: '500px', md: '350px'},
                 m: 1
             }}
         >
@@ -46,7 +46,7 @@ const CampaignCard = ({campaign}) => {
                     src={`https://res.cloudinary.com/dzooewr3a/image/upload/v1681845846/${campaign.image}.png`}
                     sx={{
                         width: '100%',
-                        height: '35%',
+                        height: '45%',
                         backgroundColor: '#3BBBEB',
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
@@ -92,7 +92,7 @@ const CampaignCard = ({campaign}) => {
                 <Box display={'flexgrow'}
                     //Progress
                     sx={{
-                        width: '100%',
+                        width: '97%',
                         height: '24%',
                         pl: 1,
                         borderBottomRightRadius: 10,

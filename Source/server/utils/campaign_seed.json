@@ -1,7 +1,7 @@
 [
     {
         "title": "Dublin City Dog Shelter",
-        "description": "This is the description for the dog shelter crowdfunding campaign",
+        "description": "We have hundreds of puppies and dogs of all shapes, sizes, colours and breeds in our care, looking for their special someone. All puppies and dogs in our rehoming centre are neutered (or if not already neutered at the time of adoption, they will go home with a €90 voucher to be redeemed against the cost of neutering at a local veterinary practice), microchipped, fully vaccinated and have their temperament assessed before going to their Forever Home. Dogs Trust also offers a lifetime of training and behavioural support for all dogs and puppies rehomed from our centre. Dogs Trust does not receive any Government funding towards our life saving work, so none of this would be possible without the continued commitment and generosity of our donors and supporters. We simply could not continue our efforts without them.",
         "category": "animals",
         "creator": "0x45a2800B3b41263156cF45D7Fc4D8E436707c211",
         "goal": 6000,
@@ -10,7 +10,7 @@
     },
     {
         "title": "Barbados Hurricane Aid",
-        "description": "This is the description for the Barbados hurricane aid crowdfunding campaign",
+        "description": "Food, Water, Shelter, and Medical Services are the four basic immediate concerns in a hurricane or other emergency situation to safeguard people. Preventing injury and loss of life from storm-tossed debris, electrocution, exposure, or being caught in floodwaters are priorities for first responders and emergency personnel during a hurricane. Evacuations relate to geographic areas. But evacuating can be difficult for some. People who lack mobility or have other disabling physical or mental conditions have greater difficulty simply leaving their residences, as do those without transportation or with very low incomes.",
         "category": "emergencies",
         "creator": "0x45a2800B3b41263156cF45D7Fc4D8E436707c211",
         "goal": "20000",
@@ -19,7 +19,7 @@
     },
     {
         "title": "New Operating Theatre",
-        "description": "This is the description for the operating theatre crowdfunding campaign",
+        "description": "An operating theater (also known as an operating room (OR), operating suite, or operation suite) is a facility within a hospital where surgical operations are carried out in an aseptic environment.",
         "category": "medical",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 120000,
@@ -28,7 +28,7 @@
     },
     {
         "title": "Stock Exchange Startup",
-        "description": "This is the description for the stock exchange startup crowdfunding campaign",
+        "description": "A stock exchange, securities exchange, or bourse is an exchange where stockbrokers and traders can buy and sell securities, such as shares of stock, bonds and other financial instruments. Stock exchanges may also provide facilities for the issue and redemption of such securities and instruments and capital events including the payment of income and dividends.",
         "category": "business",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 60000,
@@ -37,7 +37,7 @@
     },
     {
         "title": "Walking Club Trip to Alps",
-        "description": "This is the description for the walking club trip crowdfunding campaign",
+        "description": "The Alpine arch extends from Nice on the western Mediterranean to Trieste on the Adriatic and Vienna at the beginning of the Pannonian Basin. The mountains were formed over tens of millions of years as the African and Eurasian tectonic plates collided. Extreme shortening caused by the event resulted in marine sedimentary rocks rising by thrusting and folding into high mountain peaks such as Mont Blanc and the Matterhorn",
         "category": "community",
         "creator": "0x9bc72d38226C9433C8cd18bd758E732aB494b00C",
         "goal": 6500,
@@ -46,7 +46,7 @@
     },
     {
         "title": "Buy new kits for the football club",
-        "description": "This is the description for the football club kits crowdfunding campaign",
+        "description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in North America, Ireland and Australia)",
         "category": "sports",
         "creator": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7",
         "goal": 2100,
@@ -55,7 +55,7 @@
     },
     {
         "title": "California Wildfire Aid",
-        "description": "This is the description for the California Wildfire Aid crowdfunding campaign",
+        "description": "Recovering from a wildfire takes time and a diverse network of organizations and services to make sure people have the help they need.",
         "category": "emergencies",
         "creator": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7",
         "goal": 11000,

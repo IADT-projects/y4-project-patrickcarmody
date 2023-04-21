@@ -46,7 +46,8 @@ const ContributeWindow = ({campaign}) => {
 
     return(
         <>
-            <Card elevation={2}>
+            
+            <Box sx={{ boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px' }}>
                 <CardContent>
                     <Typography variant="h5" textAlign={"center"} paddingY={2}>Donate</Typography>
                     <Progress campaign={campaign}/>
@@ -76,7 +77,7 @@ const ContributeWindow = ({campaign}) => {
                         Donate
                     </Button>
                 </CardContent>
-            </Card>
+                </Box>
         </>
     )
 }

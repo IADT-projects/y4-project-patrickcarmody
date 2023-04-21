@@ -43,6 +43,7 @@ const Header = (props) => {
 
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
+        <Web3Button/>
           {isAuthenticated ? (
             <ProfileDropdown userData={userData}/>
           ) : (

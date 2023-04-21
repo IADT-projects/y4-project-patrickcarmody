@@ -11,6 +11,9 @@ const charitySchema = Schema(
         category: {
             type: String
         },
+        creator: {
+            type:String
+        },
         bannerImage: {
             type: String
         },
@@ -19,8 +22,10 @@ const charitySchema = Schema(
         },
         address: {
             type: String
+        },
+        website: {
+            type: String
         }
-
     }
 )
 

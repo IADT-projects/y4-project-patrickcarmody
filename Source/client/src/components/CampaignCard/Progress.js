@@ -6,11 +6,13 @@ const Progress = ({ campaign }) => {
 
     const progress = currentValue / campaign.goal * 100
     const progressPercent = Math.round(progress)
+    
     return(
         <>
             <Box
                 sx={{
-                    height: '50px'
+                    height: '50px',
+                    width: '100%'
                 }}
             >
                 <Typography 

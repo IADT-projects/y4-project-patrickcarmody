@@ -18,12 +18,16 @@ const UserSettings = Loadable(lazy(() => import('./pages/users/UserSettings')));
 // Charities
 const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
 const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
+const CharityForm = Loadable(lazy(() => import('./components/CharityForm/Index')));
 // User campaigns
 const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
 const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampaign')));
 const EditCampaign = Loadable(lazy(() => import('./pages/campaigns/Edit')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
+
+
+const NewCard = Loadable(lazy(() => import('./components/CampaignCard/CampaignCard')));
 
 const Router = [
     {
@@ -48,6 +52,8 @@ const Router = [
       // Main
       { path: '/', element: <Navigate to="/home" /> },
 
+      { path: '/newcard', element: <NewCard/>},
+
       // Campaigns
       { path: '/campaigns/explore', exact: true, element: <Explore /> },
       { path: '/campaigns/user', exact: true, element: <IndividualCampaigns /> },
@@ -56,8 +62,9 @@ const Router = [
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       { path: '/campaigns/:id/edit', element: <EditCampaign/> },
 
-      { path: '/campaigns/create/user', exact: true, element: <CreateForm/> },
-      { path: '/campaigns/create', exact: true, element: <CreateLanding/> },
+      { path: '/create/campaign', exact: true, element: <CreateForm/> },
+      { path: '/create', exact: true, element: <CreateLanding/> },
+      { path: '/create/charity', exact: true, element: <CharityForm/> },
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/dashboard', element: <Dashboard /> },

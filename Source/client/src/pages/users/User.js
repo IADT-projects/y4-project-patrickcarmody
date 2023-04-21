@@ -6,7 +6,8 @@ import { Grid, IconButton, Link, Typography } from "@mui/material";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
-import PreviewCard from "../../components/ui/PreviewCard";
+import CampaignCard from "../../components/CampaignCard/CampaignCard";
+import UserIcon from "../../components/users/UserIcon";
 
 const User = () => {
     const navigate = useNavigate();
@@ -48,9 +49,8 @@ const User = () => {
               </Grid>
               <Grid container spacing={3}> 
                 {/* ----- User info ----- */}
-                `<Grid item xs={12} width='100%'>
+                <Grid item xs={12} width='100%'>
                   <Box
-                    component="img"
                     sx={{ 
                       height: '200px', 
                       width: '200px', 
@@ -58,9 +58,10 @@ const User = () => {
                       display: 'block',
                       margin: '0 auto',
                     }}
-                    src={`https://res.cloudinary.com/dzooewr3a/image/upload/${user.image}.png`}
-                  />
-                </Grid>`
+                  >
+                    <UserIcon user={user} size='200'/>
+                  </Box>
+                </Grid>
                 <Grid item xs={12}>
                   <Typography variant="h2" sx={{ textAlign: 'center' }}>{user.first_name} {user.last_name}</Typography>
                 </Grid>
@@ -68,7 +69,7 @@ const User = () => {
                   <Typography sx={{ fontSize: 17, textAlign: 'center' }}>{user.biography}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Link href={`https://etherscan.io/address/${user.address}`} 
+                  <Link href={`https://mumbai.polygonscan.com/address/${user.address}`} 
                         underline='hover'
                         rel='noopener'
                         target='blank'
@@ -87,13 +88,11 @@ const User = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Typography variant='h2' sx={{ textAlign: 'center', paddingTop: 9 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
-              <Grid container spacing={3} direction="row" padding={3}>
+              <Typography variant='h2' sx={{ textAlign: 'center', pt: 6, pb: 3 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
+              <Grid container spacing={3} direction="row" padding={3} justifyContent='center'>
                 {campaigns &&
                   campaigns.map((campaign) => (
-                    <Grid item xs={12} md={6}>
-                      <PreviewCard campaign={campaign} />
-                    </Grid>
+                      <CampaignCard campaign={campaign} />
                   ))
                 }
               </Grid>

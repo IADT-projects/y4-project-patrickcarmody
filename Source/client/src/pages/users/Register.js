@@ -40,8 +40,7 @@ const Register = () => {
         .then((response) => {
             console.log(response.data);
             setErrorMessage("")
-            // set authenticated true
-            // props.onAuthenticated(true, response.data.token);
+            navigate('/login')
         })
         .catch((err) => {
             console.log(err.response.data)
@@ -57,9 +56,9 @@ const Register = () => {
                 <Grid container spacing={0} justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
                     <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '500px' }}>
                         <>
-                        <Stack direction="row" alignItems="center" mb={3}>
+                        <Stack direction="row" alignItems="center" mb={3} spacing={3}>
                             <Box width={24}>
-                                <IconButton onClick={() => navigate(-1)}>
+                                <IconButton onClick={() => navigate('/campaigns/explore')}>
                                     <ChevronLeft/>
                                 </IconButton>
                             </Box>

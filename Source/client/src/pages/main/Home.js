@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import PageContainer from '../../components/PageContainer'
 import { Article, East } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import axios from '../../config/';
+import CampaignCard from '../../components/CampaignCard/CampaignCard';
+import CharityCard from '../../components/CharityCard';
 
 const Home = () => {
+
+  const [campaigns, setCampaigns] = useState([]);
+  const [charities, setCharities] = useState([]);
+
+  useEffect(() => {
+        axios.get(`/campaigns?limit=3`)
+        .then((response) => {
+            setCampaigns(response.data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }, [])
+
+    useEffect(() => {
+        axios.get(`/charities?limit=3`)
+        .then((response) => {
+            setCharities(response.data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }, [])
+
+    const campaignsList = campaigns.map((campaign) => {
+        return(
+          <CampaignCard campaign={campaign} sx={{ pl: 5 }}/>
+        )
+    })
+
+    const charitiesList = charities.map((charity) => {
+        return(
+            <CharityCard charity={charity} sx={{ pl: 5 }}/>
+        )
+    })
+  
     return (
       <PageContainer title="Crowdfunding" description="home page">
         <Box>
@@ -85,16 +124,8 @@ const Home = () => {
                 View all
               </Button>
             </Grid>
-            <Grid item xs={12} container spacing={1}>
-              <Grid item xs={4} >
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
-              <Grid item xs={4}>
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
-              <Grid item xs={4}>
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
+            <Grid item xs={12} container spacing={1} justifyContent="center">
+              {campaignsList}
             </Grid>
             {/* ----- Section 4 ----- */}
             <Grid item xs={8} container>
@@ -115,16 +146,8 @@ const Home = () => {
                 View all
               </Button>
             </Grid>
-            <Grid item xs={12} container spacing={1}>
-              <Grid item xs={4} >
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
-              <Grid item xs={4}>
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
-              <Grid item xs={4}>
-                <Box sx={{ height: "200px", bgColor: 'black', border: '1px dotted black' }}></Box>
-              </Grid>
+            <Grid item xs={12} container spacing={1} justifyContent="center">
+              {charitiesList}
             </Grid>
           </Grid>
         </Box>

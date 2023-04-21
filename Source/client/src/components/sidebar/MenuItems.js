@@ -28,7 +28,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Create',
     icon: Add,
-    href: '/campaigns/create',
+    href: '/create',
   },
   {
     navlabel: true,

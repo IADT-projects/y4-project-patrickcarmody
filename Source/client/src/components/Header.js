@@ -3,7 +3,7 @@ import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button, Popover } from
 import PropTypes from 'prop-types';
 import { MenuOutlined }  from '@mui/icons-material';
 import { Web3Button } from '@web3modal/react';
-import ProfileDropdown from './ProfileDropdown';
+import ProfileDropdown from './users/ProfileDropdown';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
@@ -43,6 +43,7 @@ const Header = (props) => {
 
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
+        <Web3Button/>
           {isAuthenticated ? (
             <ProfileDropdown userData={userData}/>
           ) : (

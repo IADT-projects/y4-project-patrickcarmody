@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import UserIcon from "../../components/users/UserIcon";
 
 const Dashboard = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
     const [campaigns, setCampaigns] = useState(null);
     const [numberOfCampaigns, setNumberOfCampaigns] = useState(0);
     const [pageTitle, setPageTitle] = useState("User");
+    
 
     useEffect(() => {
         axios.get(`/campaigns?creator=${userData.address}`)
@@ -42,18 +44,21 @@ const Dashboard = () => {
               </Grid>
               <Grid container spacing={3}> 
                 {/* ----- User info ----- */}
-                <Grid item xs={6} sx={{height: "500px"}}>
+                <Grid item xs={12} md={6} sx={{height: "500px"}}>
                     <Box 
                         sx={{
                             padding: 4, 
                             height: "100%",
-                            border: '1px solid #dbdbdb',
-                            boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.12)',
-                            }}
+                            border: '1px solid #f0f0f0',
+                            boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                            transition: 'all 0.2s ease',
+                            '&:hover': {
+                                boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+                            }
+                        }}
                     >
                         <Grid item xs={12} width='100%'>
                             <Box
-                                component="img"
                                 sx={{ 
                                 height: '200px', 
                                 width: '200px', 
@@ -61,8 +66,10 @@ const Dashboard = () => {
                                 display: 'block',
                                 margin: '0 auto',
                                 }}
-                                src={`https://res.cloudinary.com/dzooewr3a/image/upload/${userData.image}.png`}
-                            />
+                                
+                            >
+                                <UserIcon user={userData} size='200'/>
+                            </Box>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant="h2" sx={{ textAlign: 'center', mt: 4}}>{userData.first_name} {userData.last_name}</Typography>
@@ -71,7 +78,7 @@ const Dashboard = () => {
                             <Typography sx={{ fontSize: 17, textAlign: 'center', mt: 4 }}>{userData.biography}</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <Link href={`https://etherscan.io/address/${userData.address}`} 
+                            <Link href={`https://mumbai.polygonscan.com/address/${userData.address}`} 
                                     underline='hover'
                                     rel='noopener'
                                     target='blank'
@@ -83,29 +90,87 @@ const Dashboard = () => {
                 </Grid>
                 
                 {/* ----- Stats -----  */}
-                <Grid item container xs={6}>
-                    <Paper elevation={5} sx={{ height: "100%", width: '100%', p:1}}>
-                        <Box sx={{ padding: 4, height: '50%', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
-                            <Typography variant='h2' sx={{ fontWeight: 'medium', textAlign: 'center' }}>2</Typography>
-                            <Typography sx={{ fontSize: 15, textAlign: 'center' }}>Campaigns</Typography>
+                <Grid item container xs={12} md={6}>
+                    
+                    <Box 
+                        sx={{
+                            padding: 4, 
+                            width: '100%',
+                            height: "100%",
+                            border: '1px solid #f0f0f0',
+                            boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                            transition: 'all 0.2s ease',
+                            '&:hover': {
+                                boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+                            }
+                        }}
+                    >
+                        <Box 
+                            sx={{ 
+                                padding: 4, 
+                                height: '50%', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                flexDirection: 'column', 
+                                justifyContent: 'center' 
+                                }}
+                        >
+                            <Typography 
+                                sx={{ 
+                                    fontWeight: 'medium', 
+                                    textAlign: 'center',
+                                    fontSize: '25px'
+                                }}
+                            >
+                                {numberOfCampaigns}
+                            </Typography>
+                            <Typography 
+                                sx={{ 
+                                    fontSize: 15, 
+                                    textAlign: 'center' 
+                                }}
+                            >
+                                Campaigns
+                            </Typography>
                         </Box>
                         <Box sx={{ padding: 4, height: '50%', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
-                            <Typography variant='h2' sx={{ fontWeight: 'medium', textAlign: 'center' }}>€20,728</Typography>
-                            <Typography sx={{ fontSize: 15, textAlign: 'center' }}>Raised</Typography>
+                            <Typography 
+                                variant='h2' 
+                                sx={{ 
+                                    fontWeight: 'medium', 
+                                    textAlign: 'center',
+                                    fontSize: '25px'
+                                }}
+                            >
+                                €20,728
+                            </Typography>
+
+                            <Typography 
+                                sx={{ 
+                                    fontSize: 15, 
+                                    textAlign: 'center' 
+                                }}
+                            >
+                                Raised
+                            </Typography>
                         </Box>
-                    </Paper>
+                    </Box>
                 </Grid>
             
-              
               {/* ----- Campaigns -----  */}
               <Grid item xs={12}>
               <Box 
                 sx={{
                     padding: 4, 
+                    width: '100%',
                     height: "100%",
-                    border: '1px solid #dbdbdb',
-                    boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.12), 0px 3px 6px rgba(0, 0, 0, 0.12)',
-                    }}
+                    border: '1px solid #f0f0f0',
+                    boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                        boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+                    }
+                }}
                 >
                  <Typography variant='h2' sx={{ fontWeight: 'bold', fontSize: '25px' }}>Your Campaigns</Typography>
                 <Box sx={{ overflow: 'auto', width: { xs: '280px', sm: 'auto'}}}>

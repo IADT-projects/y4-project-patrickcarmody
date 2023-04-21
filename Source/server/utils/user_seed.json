@@ -34,5 +34,14 @@
         "email": "kyle@example.com",
         "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
         "image": "kyle_gltsvr"
+    },
+    {
+        "address": "0xf387359fAb862eaEF4B7C03D2174755918c58D4d",
+        "first_name": "Lisa",
+        "last_name": "Owens",
+        "biography": "Friendly music lover. Web aficionado. Future teen idol. Extreme twitter fan. Internet practitioner. Hipster-friendly coffee maven.",
+        "email": "lisa@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": ""
     }
 ]

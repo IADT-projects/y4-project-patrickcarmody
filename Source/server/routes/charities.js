@@ -13,7 +13,7 @@ const {
 router
     .get('/', readData)
     .get('/:id', readSingle)
-    .post('/', authRequired, createData)
+    .post('/', createData)
     .put('/:id', authRequired, editData)
     .delete('/:id', authRequired, deleteData)
 module.exports = router;

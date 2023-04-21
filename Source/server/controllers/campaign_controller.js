@@ -2,13 +2,18 @@ const Campaign = require('../models/campaign_schema');
 
 const readData = (req, res) => {
     let query = {};
+    let limit = parseInt(req.query.limit) || 0; // Get the value of limit query parameter as a number
+  
     // check if user included search params
     if (Object.keys(req.query).length > 0) {
       for (const [property, term] of Object.entries(req.query)) {
-        query[property] = new RegExp(term, 'i');
+        if (property !== 'limit') { // Exclude limit parameter from query
+          query[property] = new RegExp(term, 'i');
+        }
       }
     }
-    Campaign.find(query)
+  
+    Campaign.find(query).limit(limit) // Add limit method
       .then((data) => {
         if (Object.keys(query).length > 0) {
           console.log(`User searched for campaigns with ${Object.keys(query).join(', ')}: ${Object.values(query).join(', ')}`);
@@ -26,6 +31,7 @@ const readData = (req, res) => {
         res.status(500).json(err);
       });
   }
+  
 
 const readSingle = (req, res) => {
     let id = req.params.id;

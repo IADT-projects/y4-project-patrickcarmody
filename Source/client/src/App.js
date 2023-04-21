@@ -9,13 +9,14 @@ import { UserProvider } from './context/UserProvider';
 // Web3 Imports
 import { Web3Modal } from '@web3modal/react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
+import { mainnet, goerli, polygonMumbai } from 'wagmi/chains';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 
 //Web3
-const chains = [mainnet]
+const chains = [mainnet, goerli, polygonMumbai]
 const projectId = '0afb09d091a22717a29a967913a0a531'
-const provider = configureChains(chains, [w3mProvider({projectId})])
+
+const { provider } = configureChains(chains, [w3mProvider({projectId})])
 const wagmiClient = createClient({
   autoConnect: true,
   connectors: w3mConnectors({ projectId, version: 1, chains}),

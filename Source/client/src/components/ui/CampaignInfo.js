@@ -97,7 +97,7 @@ const CampaignInfo = ({campaign}) => {
                             <Typography textAlign={'left'}>View on Blockchain</Typography>
                         </Box>
                         <Box sx={{width: '50%'}}>
-                            <Link href={`https://etherscan.io/address/${campaign.address}`} sx={{textDecoration: 'none'}}>
+                            <Link href={`https://mumbai.polygonscan.com/address/${campaign.address}`} sx={{textDecoration: 'none'}}>
                                 <Typography sx={{textAlign: 'right'}}>{campaignaddress}</Typography>
                             </Link>
                         </Box>

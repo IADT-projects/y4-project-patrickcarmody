@@ -69,7 +69,7 @@ const User = () => {
                   <Typography sx={{ fontSize: 17, textAlign: 'center' }}>{user.biography}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Link href={`https://etherscan.io/address/${user.address}`} 
+                  <Link href={`https://mumbai.polygonscan.com/address/${user.address}`} 
                         underline='hover'
                         rel='noopener'
                         target='blank'

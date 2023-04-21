@@ -78,7 +78,7 @@ const Dashboard = () => {
                             <Typography sx={{ fontSize: 17, textAlign: 'center', mt: 4 }}>{userData.biography}</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <Link href={`https://etherscan.io/address/${userData.address}`} 
+                            <Link href={`https://mumbai.polygonscan.com/address/${userData.address}`} 
                                     underline='hover'
                                     rel='noopener'
                                     target='blank'

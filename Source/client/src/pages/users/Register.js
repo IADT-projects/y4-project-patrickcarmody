@@ -29,7 +29,6 @@ const Register = () => {
     };
 
     const submitForm = () => {
-        console.log(form)
         axios.post('/users/register', {
             first_name: form.first_name,
             last_name: form.last_name,
@@ -38,7 +37,6 @@ const Register = () => {
             password: form.password
         })
         .then((response) => {
-            console.log(response.data);
             setErrorMessage("")
             navigate('/login')
         })

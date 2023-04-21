@@ -57,7 +57,6 @@ const Edit = () => {
             }
         })
         .then((response) => {
-            console.log(response.data);
             setbuttonMessage("Saved!")
         })
         .catch()

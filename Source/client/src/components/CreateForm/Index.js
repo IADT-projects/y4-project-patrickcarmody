@@ -47,10 +47,8 @@ const CreateForm = () => {
     };
 
     const handleSubmit = () => {
-        console.log(formData);
         axios.post('/campaigns', formData)
             .then((response) => {
-                console.log(response.data);
                 setCreated(true);
                 setId(response.data._id);
             })

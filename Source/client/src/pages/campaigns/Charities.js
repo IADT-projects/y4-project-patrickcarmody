@@ -20,7 +20,6 @@ const IndividualCampaigns = () => {
     setLoading(true);
     axios.get(`/charities`)
     .then((response) => {
-        console.log(response.data)
         setCharities(response.data)
     })
     .catch((err) => {
@@ -58,7 +57,6 @@ const IndividualCampaigns = () => {
   };
 
   const handleCategoryChange = (event) => {
-    console.log(event.target.value);
     setCategory(event.target.value);
   }
 

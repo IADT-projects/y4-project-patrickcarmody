@@ -2,7 +2,6 @@ import { Grid, Typography } from "@mui/material";
 import PreviewCard from "../ui/PreviewCard";
 
 const CreateStep6 = ({ formData }) => {
-    console.log(formData);
     return(
         
         <>

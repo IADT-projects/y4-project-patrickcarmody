@@ -19,7 +19,7 @@ const CharityCard = ({ charity }) => {
         >
             <Box 
                 component={Link}
-                to={`/campaigns/${charity._id}`}
+                to={`/charity/${charity._id}`}
                 sx={{
                     display: 'flex-inline',
                     justifyContent: 'center',

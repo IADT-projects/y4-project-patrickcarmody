@@ -1,16 +1,17 @@
 import { KeyboardArrowLeft } from "@mui/icons-material";
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from '../../config/';
 import PageContainer from "../../components/PageContainer";
+import Donate from "../../components/Charity/Donate";
 
 const ViewCharity = () => {
     const [category, setCategory] = useState("");
+    const [charity, setCharity] = useState(null);
+    
     const { id } = useParams();
     const navigate = useNavigate()
-
-    const [ charity, setCharity ] = useState(null);
 
     useEffect(() => {
         axios.get(`/charities/${id}`)
@@ -104,28 +105,7 @@ const ViewCharity = () => {
                 </Box>
                 
             </Box>
-            <Box sx={{
-                display: 'flex',
-                width: { md: "34%", xs: "100%" },
-                height: '260px',
-                justifyContent: 'center',
-            }}
-            >
-                <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        width: "95%",
-                        height: '95%',
-                        boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-                    }}
-                >
-                    <Typography mt={3} mb={2} variant="h5" textAlign={'center'}>Donate</Typography>
-                    <Typography textAlign={'center'} sx={{ fontWeight: '500', fontSize: '17px' }}>€12,345</Typography>
-                    <Typography textAlign={'center'}>Raised so far</Typography>
-                    <TextField sx={{mx: 2, my: 2}} />
-                    <Button variant="contained" sx={{ width: '85px', ml: 2}}>Donate</Button>
-                </Box>
-            </Box>
+            <Donate charity={charity}/>
         </Box>
         </PageContainer>
         </>

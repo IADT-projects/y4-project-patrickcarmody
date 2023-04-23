@@ -43,8 +43,10 @@ function App() {
         ethereumClient={ethereumClient}
         themeVariables={{
           '--w3m-font-family': 'Poppins, sans-serif',
-          '--w3m-accent-color': '#3f84d4',
+          '--w3m-accent-color': '#377DFF',
           '--w3m-text-medium-regular-weight': 'heavy',
+          '--w3m-text-medium-regular-size': '13px',
+          '--w3m-button-border-radius': '4px',
         }}
       />
     </>

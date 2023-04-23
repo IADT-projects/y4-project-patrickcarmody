@@ -26,7 +26,7 @@ const Donate = ({charity}) => {
         if(totalDepositsData) {
             setTotalDeposited(ethers.utils.formatEther(totalDepositsData));
         }
-    });
+    },[data]);
 
     // Deposit Function
     const {

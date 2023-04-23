@@ -1,11 +1,31 @@
 import { Box, LinearProgress, Typography } from "@mui/material"
+import useReadWithArgs from "../../hooks/useReadWithArgs";
+import GetTotalDepositsABI from "../../assets/abi/getTotalDeposits.json";
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
 
 const Progress = ({ campaign }) => {
-    const currentValue = 2000;
-    // get current contract balance in euro here
 
-    const progress = currentValue / campaign.goal * 100
-    const progressPercent = Math.round(progress)
+    const [depositedAmount, setDepositedAmount] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const [percent, setPercent] = useState("");
+
+    const {
+        data: totalDepositsData,
+        error: totalDepositsError,
+        isLoading: totalDepositsIsLoading,
+        isSuccess: totalDepositsIsSuccess,
+        isError: totalDepositsIsError
+    } = useReadWithArgs(campaign.address, GetTotalDepositsABI, "getTotalDeposits", []);
+    
+    useEffect(() => {
+        if(totalDepositsData) {
+            setDepositedAmount(ethers.utils.formatEther(totalDepositsData));
+            setProgress(depositedAmount / campaign.goal * 100);
+            setPercent(Math.round(progress))
+        }
+        
+    });
     
     return(
         <>
@@ -24,9 +44,8 @@ const Progress = ({ campaign }) => {
                         paddingBottom: 1
                     }}
                 >
-                    Progress ({ progressPercent }%)
+                    Progress ({percent}%)
                 </Typography>
-                
                 <LinearProgress
                     value={ progress }
                     variant="determinate"
@@ -51,7 +70,7 @@ const Progress = ({ campaign }) => {
                             paddingTop: 1
                         }}
                     >
-                        €{ currentValue }
+                        {depositedAmount} MATIC
                     </Typography>
                     <Typography 
                         variant="body1"
@@ -61,11 +80,10 @@ const Progress = ({ campaign }) => {
                             paddingTop: 1
                         }}
                     >
-                        €{ campaign.goal }
+                        {campaign.goal} MATIC
                     </Typography>
                 </Box>
             </Box>
-            
         </>
     )
 }

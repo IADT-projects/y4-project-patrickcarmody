@@ -25,7 +25,7 @@ const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampa
 const EditCampaign = Loadable(lazy(() => import('./pages/campaigns/Edit')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
-
+const Withdraw = Loadable(lazy(() => import('./pages/users/Withdraw')));
 
 const NewCard = Loadable(lazy(() => import('./components/CampaignCard/CampaignCard')));
 
@@ -61,15 +61,17 @@ const Router = [
 
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       { path: '/campaigns/:id/edit', element: <EditCampaign/> },
+      { path: '/campaigns/:id/withdraw', element: <Withdraw/> },
 
       { path: '/create/campaign', exact: true, element: <CreateForm/> },
       { path: '/create', exact: true, element: <CreateLanding/> },
       { path: '/create/charity', exact: true, element: <CharityForm/> },
+      
       //Users
       { path: '/users/:id', element: <User /> },
       { path: '/dashboard', element: <Dashboard /> },
       { path: '/settings', element: <UserSettings/> },
-
+      
       // Other
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },

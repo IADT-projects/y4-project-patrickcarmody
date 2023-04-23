@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button, Popover } from '@mui/material';
+import React from 'react';
+import { Box, AppBar, Toolbar, styled, Stack, IconButton, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import { MenuOutlined }  from '@mui/icons-material';
 import { Web3Button } from '@web3modal/react';

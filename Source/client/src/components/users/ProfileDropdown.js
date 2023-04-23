@@ -1,11 +1,10 @@
-import { AccountBalanceWallet, Logout, MenuOutlined, PermDataSetting, Person, Settings } from "@mui/icons-material";
-import { Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
+import { Logout, PermDataSetting, Person, Settings } from "@mui/icons-material";
+import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import { useContext } from "react";
 import { React, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/UserContext";
 import UserIcon from "./UserIcon";
-
 
 const ProfileDropdown = (userData) => {
     const { logout } = useContext(UserContext);

@@ -1,9 +1,8 @@
-import { Box, CardActionArea, CardMedia, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import '../assets/css/index.css'
 
 const CharityCard = ({ charity }) => {
-    // capitalize category
     const category = charity.category.charAt(0).toUpperCase() + charity.category.slice(1);
 
     return(

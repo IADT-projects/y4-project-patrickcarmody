@@ -3,7 +3,6 @@ import { Check } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
 const UserCreated = ({address}) => {
     const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Divider, TextField, Typography } from "@mui/material"
+import { Box, Button, CardContent, Divider, TextField, Typography } from "@mui/material"
 import Progress from "./Progress"
 import { formatEther, parseEther } from "ethers/lib/utils.js";
 import { useEffect, useState } from "react";
@@ -6,10 +6,8 @@ import { useAccount, useBalance } from "wagmi";
 import useDeposit from "../../hooks/useDeposit";
 import useReadWithArgs from "../../hooks/useReadWithArgs";
 import { ethers } from "ethers";
-
 import GetContributionABI from '../../assets/abi/getContribution.json';
 import GetTotalDepositsABI from '../../assets/abi/getTotalDeposits.json';
-
 
 const ContributeWindow = ({campaign}) => {
     

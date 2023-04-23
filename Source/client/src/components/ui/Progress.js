@@ -28,11 +28,7 @@ const Progress = ({campaign}) => {
         
     });
 
-
-
-
     return (
-        <>
         <Grid container spacing={1}>
             <Grid item xs={12} >
                 <Typography variant="body2">Progress ({percent}%)</Typography>
@@ -52,7 +48,6 @@ const Progress = ({campaign}) => {
                 <Typography variant="body2" textAlign={"right"}>{campaign.goal} MATIC</Typography>
             </Grid>
         </Grid>
-        </>
     )
 }
 

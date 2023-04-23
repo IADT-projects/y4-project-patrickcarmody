@@ -4,7 +4,6 @@ import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
 import { Search, Clear } from '@mui/icons-material';
-import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
 import CharityCard from '../../components/CharityCard';
 

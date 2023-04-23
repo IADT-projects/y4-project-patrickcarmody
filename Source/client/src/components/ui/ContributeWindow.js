@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useAccount, useBalance } from "wagmi";
 import useDeposit from "../../hooks/useDeposit";
 import useReadWithArgs from "../../hooks/useReadWithArgs";
-import { useContractRead } from 'wagmi';
 import { ethers } from "ethers";
 
 import GetContributionABI from '../../assets/abi/getContribution.json';
@@ -18,7 +17,6 @@ const ContributeWindow = ({campaign}) => {
     const [balance, setBalance] = useState(0);
     const [totalDeposited, setTotalDeposited] = useState(0);
     const [userTotalDeposited, setUserTotalDeposited] = useState(0);
-    const [userDeposits, setUserDeposits] = useState(0);
 
     const amountWei = parseEther(amount || "0");
     const { address } = useAccount();
@@ -34,7 +32,7 @@ const ContributeWindow = ({campaign}) => {
             setTotalDeposited(ethers.utils.formatEther(totalDepositsData));
         }
         if(userDeposit) {
-            setUserDeposits(formatEther(userDeposit))
+            setUserTotalDeposited(formatEther(userDeposit))
         }
     });
     
@@ -46,7 +44,7 @@ const ContributeWindow = ({campaign}) => {
         error: depositError,
     } = useDeposit(campaign.address, amountWei);
     
-
+    // Total deposited amount
     const {
         data: totalDepositsData,
         error: totalDepositsError,
@@ -55,6 +53,7 @@ const ContributeWindow = ({campaign}) => {
         isError: totalDepositsIsError
     } = useReadWithArgs(campaign.address, GetTotalDepositsABI, "getTotalDeposits", []);
 
+    // Total amount contributed by user
     const {
         data: userDeposit,
         error: userContributeError,
@@ -116,7 +115,7 @@ const ContributeWindow = ({campaign}) => {
                 </Box>
                 <Box sx={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
                     <Typography variant="body1" textAlign="left" sx={{width: '50%'}}>Your donations:</Typography>
-                    <Typography variant="body1" textAlign='right' sx={{width: '50%'}}>{userDeposits} MATIC</Typography>
+                    <Typography variant="body1" textAlign='right' sx={{width: '50%'}}>{userTotalDeposited} MATIC</Typography>
                 </Box>
             </CardContent>
         </Box>

@@ -98,7 +98,8 @@ const ViewCharity = () => {
                         width: '100%',
                         height: '25%',
                         p: 1,
-                        px: 2
+                        px: 2,
+                        whiteSpace: 'pre-wrap'
                     }}
                 >
                     <Typography>{charity.description}</Typography>

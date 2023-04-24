@@ -27,6 +27,7 @@ const CreateStep4 = ({ formData, setFormData, stepData, setStepData }) => {
             </Grid>
             <Grid item xs={12}>
                 <TextField 
+                    multiline
                     variant="standard" 
                     label='Description' 
                     sx={{ width: '40%'}}

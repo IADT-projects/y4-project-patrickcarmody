@@ -64,7 +64,7 @@ const Donate = ({charity}) => {
         <Box 
             sx={{
                 display: 'flex',
-                width: { md: "34%", xs: "100%" },
+                width: "100%",
                 height: '260px',
                 justifyContent: 'center',
             }}

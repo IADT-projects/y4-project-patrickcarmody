@@ -255,6 +255,7 @@ const Dashboard = () => {
                                                 Edit
                                             </Button>
                                             <Button 
+                                                href={`/campaigns/${campaign._id}/withdraw`}
                                                 variant='contained'
                                                 sx={{
                                                     mx: 1

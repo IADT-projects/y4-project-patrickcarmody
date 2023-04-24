@@ -4,7 +4,6 @@ import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
 import { Search, Clear } from '@mui/icons-material';
-import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
 import CharityCard from '../../components/CharityCard';
 
@@ -20,7 +19,6 @@ const IndividualCampaigns = () => {
     setLoading(true);
     axios.get(`/charities`)
     .then((response) => {
-        console.log(response.data)
         setCharities(response.data)
     })
     .catch((err) => {
@@ -58,7 +56,6 @@ const IndividualCampaigns = () => {
   };
 
   const handleCategoryChange = (event) => {
-    console.log(event.target.value);
     setCategory(event.target.value);
   }
 

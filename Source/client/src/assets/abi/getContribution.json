@@ -1,0 +1,21 @@
+[
+    {
+        "name": "getContribution",
+        "type": "function",
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "contributor",
+                "type": "address"
+            }
+        ],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ]
+    }
+]

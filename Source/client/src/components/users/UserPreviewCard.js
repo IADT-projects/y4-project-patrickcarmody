@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import axios from '../../config'
 const UserPreviewCard = ({ address }) => {
 
-    console.log("Creator Card:");
-    console.log(address)
     const [creator, setCreator] = useState({
         "image": "wedding_pwjqrg"
     })
@@ -13,7 +11,6 @@ const UserPreviewCard = ({ address }) => {
     useEffect(() => {
         axios.get(`/users?address=${address}`)
             .then((response) => {
-                console.log(response.data[0])
                 setCreator(response.data[0]);
             })
             .catch((err) => {

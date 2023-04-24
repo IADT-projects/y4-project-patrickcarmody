@@ -1,16 +1,22 @@
-import { Grid, Typography } from "@mui/material";
-import PreviewCard from "../ui/PreviewCard";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 
 const CreateStep6 = ({ formData }) => {
-    console.log(formData);
     return(
-        
         <>
             <Grid item xs={12}>
                 <Typography variant="h3">Confirm Details</Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant="h6">Make sure you're happy with your campaign</Typography>
+                <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column'}}>
+                    <Typography variant="h6" fontWeight={500}>When you submit this form, you will be prompted to confirm a transaction in your browsers wallet. This will deploy your fundraising campaign to the Polygon blockchain.</Typography>
+                    <Typography mt={2} variant="h6" fontWeight={500}>You will need a small amount of MATIC to pay the fee for the transaction</Typography>
+                </Box>
+            </Grid>
+            <Grid item xs={12}>
+                <Divider sx={{width: '80%'}}/>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="h6">Here are your campaign details:</Typography>
             </Grid>
             <Grid item xs={2}>
                 <Typography variant="h6">Title:</Typography>

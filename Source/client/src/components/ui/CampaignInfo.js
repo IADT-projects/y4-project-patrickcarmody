@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Divider, Grid, Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { Sell } from "@mui/icons-material";
 
 const CampaignInfo = ({campaign}) => {

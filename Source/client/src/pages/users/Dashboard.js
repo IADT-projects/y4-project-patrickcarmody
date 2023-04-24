@@ -12,13 +12,11 @@ import UserIcon from "../../components/users/UserIcon";
 const Dashboard = () => {
 
     const { userData, isAuthenticated} = useContext(UserContext);
-
-    const navigate = useNavigate();
-    const { id } = "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7";
-    const [campaigns, setCampaigns] = useState(null);
     const [numberOfCampaigns, setNumberOfCampaigns] = useState(0);
+    const [campaigns, setCampaigns] = useState(null);
     const [pageTitle, setPageTitle] = useState("User");
-    
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         axios.get(`/campaigns?creator=${userData.address}`)
@@ -184,12 +182,7 @@ const Dashboard = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography variant="subtitle2" fontWeight={600}>
-                                        Goal
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography variant="subtitle2" fontWeight={600}>
-                                        Raised
+                                        Balance
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -211,7 +204,7 @@ const Dashboard = () => {
                                         >
                                             {campaign.title}
                                         </Typography>
-                                    </TableCell>
+                                    </TableCell>                                    
                                     <TableCell>
                                         <Box
                                             sx={{
@@ -226,27 +219,7 @@ const Dashboard = () => {
                                                         fontSize: "15px",
                                                     }}
                                                 >
-                                                    €{campaign.goal}
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                    </TableCell>
-                                    
-                                    <TableCell>
-                                        <Box
-                                            sx={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                            }}
-                                        >
-                                            <Box>
-                                                <Typography
-                                                    color="textSecondary"
-                                                    sx={{
-                                                        fontSize: "15px",
-                                                    }}
-                                                >
-                                                    €2,000
+                                                    0 MATIC
                                                 </Typography>
                                             </Box>
                                         </Box>

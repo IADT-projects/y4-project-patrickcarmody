@@ -6,7 +6,6 @@ export const UserProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    console.log('Loading user data from localStorage');
     const storedData = localStorage.getItem('userData');
     if (storedData) {
       setUserData(JSON.parse(storedData));
@@ -21,7 +20,6 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    console.log('Saving user data to localStorage');
     localStorage.setItem('userData', JSON.stringify(userData));
   }, [userData]);
 

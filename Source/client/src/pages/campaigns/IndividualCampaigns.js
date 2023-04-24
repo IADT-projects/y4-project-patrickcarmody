@@ -19,7 +19,6 @@ const IndividualCampaigns = () => {
     setLoading(true);
     axios.get(`/campaigns`)
     .then((response) => {
-        console.log(response.data)
         setCampaigns(response.data)
     })
     .catch((err) => {
@@ -57,7 +56,6 @@ const IndividualCampaigns = () => {
   };
 
   const handleCategoryChange = (event) => {
-    console.log(event.target.value);
     setCategory(event.target.value);
   }
 

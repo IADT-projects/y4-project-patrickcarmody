@@ -19,9 +19,6 @@ const Login = () => {
         password: ''
     })
 
-    useEffect(()=>{
-        console.log("userdata : ", userData);
-    })
     const handleForm = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -33,13 +30,11 @@ const Login = () => {
     };
 
     const submitForm = () => {
-        console.log(form)
         axios.post('/users/login', {
             email: form.email,
             password: form.password
         })
         .then((response) => {
-            console.log(response.data);
             setErrorMessage("")
             setUserData({
                 token: response.data.token,

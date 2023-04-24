@@ -3,27 +3,30 @@
         "title": "World Wildlife Fund",
         "description": "The World Wide Fund for Nature (WWF) is a Swiss-based international non-governmental organization founded in 1961 that works in the field of wilderness preservation and the reduction of human impact on the environment.[4] It was formerly named the World Wildlife Fund, which remains its official name in Canada and the United States.",
         "category": "animals",
+        "creator": "0x8ce344f6c0eCe1e2c8F9BDe1Ca464a5769659424",
         "bannerImage": "wwf-banner_zxtrob",
         "logoImage": "wwf-logo_yzbhch",
         "website": "https://www.worldwildlife.org/",
-        "address": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f"
+        "address": "0xA08BcBb83C58295bbB644934F2fcBB94d120E1ea"
     },
     {
         "title": "UNICEF",
         "description": "UNICEF is an agency of the United Nations responsible for providing humanitarian and developmental aid to children worldwide.",
         "category": "emergencies",
+        "creator": "0x01886fC0F3fd1760AA1D7e3bd45498Ed915ACC25",
         "bannerImage": "unicef-banner_vrl9hs",
         "logoImage": "unicef-logo_y6qzda",
         "website": "https://www.unicef.org/",
-        "address": "0x6982508145454Ce325dDbE47a25d4ec3d2311933"
+        "address": "0x761d682E0CAC12E7c3d0D2a4248D3fEc88D0622E"
     },
     {
         "title": "Women's Sports Foundation",
         "description": "We’re building a future where every girl and woman can play, be active, and realize her full potential. We’re building a movement of movement. Through Research. Advocacy. Community impact. And Partnerships. It’s time to transform the game so that every girl and woman can realize her power.",
         "category": "sports",
+        "creator": "0xFa236aF7De1F21Eff4C0d170fE93bdfb8A92fD12",
         "bannerImage": "wsf-banner_cxo2mv",
         "logoImage": "wsf-logo_oyxdjc",
         "website": "https://www.womenssportsfoundation.org/",
-        "address": "0x5C27a0D0e6d045b5113D728081268642060f7499"
+        "address": "0xC13402c4661A091240Dd85E135346295D9E9a09A"
     }
 ]

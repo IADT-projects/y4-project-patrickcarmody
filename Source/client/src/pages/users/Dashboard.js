@@ -8,6 +8,7 @@ import { Box } from "@mui/system";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import UserIcon from "../../components/users/UserIcon";
+import BalanceText from "../../components/BalanceText";
 
 const Dashboard = () => {
 
@@ -213,14 +214,14 @@ const Dashboard = () => {
                                             }}
                                         >
                                             <Box>
-                                                <Typography
+                                                {/* <Typography
                                                     color="textSecondary"
                                                     sx={{
                                                         fontSize: "15px",
                                                     }}
-                                                >
-                                                    0 MATIC
-                                                </Typography>
+                                                > */}
+                                                <BalanceText address={campaign.address}/>
+                                                {/* </Typography> */}
                                             </Box>
                                         </Box>
                                     </TableCell>

@@ -1,50 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem } from '@mui/material';
+import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem, IconButton } from '@mui/material';
 import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
-import { Search, Clear } from '@mui/icons-material';
+import { Search } from '@mui/icons-material';
 import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const IndividualCampaigns = () => {
-  const [category, setCategory] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [showClearSearch, setShowClearSearch] = useState(false);
-  
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+
+  const title = searchParams.get('title') || '';
+  const category = searchParams.get('category') || '';
+
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-      setLoading(true);
-      axios.get(`/campaigns`)
-      .then((response) => { setCampaigns(response.data) })
-      .catch((err) => { console.error(err) })
-      .finally(() => setLoading(false));
-    }, []);
-
-  const handleSearchInput = (e) => {
-      setSearchQuery(e.target.value);
-  }
-
-  const handleCategoryChange = (e) => {
-      setCategory(e.target.value);
-      handleSearch();
-  }
+  const [search, setSearch] = useState(title);
+  const [selectedCategory, setSelectedCategory] = useState(category);
 
   const handleSearch = () => {
-      setLoading(true);
-      axios.get(`/campaigns?category=${category}&title=${searchQuery}`)
-      .then((response) => { setCampaigns(response.data) })
-      .catch((err) => { console.error(err) })
-      .finally(() => setLoading(false));
+    navigate(`/campaigns/user?title=${search}&category=${selectedCategory}`);
   }
 
-  const handleClearSearch = () => {
-      setCategory("");
-      setSearchQuery("");
-      handleSearch();
-  }
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`/campaigns?title=${title}&category=${selectedCategory}`)
+      .then((response) => {
+         setCampaigns(response.data)
+        })
+      .catch((err) => {
+        console.error(err)
+        if(err.response.status == 404) {
+          setCampaigns({});
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [title, selectedCategory]);
 
   const campaignsList = campaigns.length ? campaigns.map((campaign) => {
       return(
@@ -54,49 +48,53 @@ const IndividualCampaigns = () => {
   : <NoResults/>
 
   return(
-      <PageContainer title='User campaigns'>
-          <Typography variant='h3' sx={{ marginY: 2 }}>User campaigns</Typography>
-          <Grid container paddingBottom={2} spacing={2}>
-              <Grid item xs={12} lg={4}>
-                  <TextField
+    <PageContainer title='User campaigns'>
+        <Typography variant='h3' sx={{ marginY: 2 }}>User campaigns</Typography>
+        <Grid container paddingBottom={2} spacing={2}>
+            <Grid item xs={12} lg={4}>
+                <TextField
                       label='Search'
                       fullWidth
                       InputProps={{
                           endAdornment: (
                               <InputAdornment position='end'>
-                                  {showClearSearch ? (
-                                      <Clear onClick={handleClearSearch}/>
-                                  ) : (
-                                      <Search onClick={handleSearch}/>
-                                  )}
+                                <IconButton onClick={handleSearch}>
+                                  <Search/>
+                                </IconButton>
                               </InputAdornment>
                           )
                       }}
-                      value={searchQuery}
-                      onChange={handleSearchInput}
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          handleSearch();
+                        }
+                      }} // Add keypress event listener
                   />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                  <Select 
-                      fullWidth
-                      onChange={handleCategoryChange}
-                      defaultValue={""}
-                  >
-                      <MenuItem value=''>All</MenuItem>
-                      <MenuItem value='animals'>Animals</MenuItem>
-                      <MenuItem value='community'>Community</MenuItem>
-                      <MenuItem value='emergencies'>Emergencies</MenuItem>
-                      <MenuItem value='environment'>Environment</MenuItem>
-                      <MenuItem value='events'>Events</MenuItem>
-                      <MenuItem value='family'>Family</MenuItem>
-                      <MenuItem value='medical'>Medical</MenuItem>
-                      <MenuItem value='sports'>Sports</MenuItem>
-                      <MenuItem value='other'>Other</MenuItem>
-                  </Select>
-              </Grid>
-          </Grid>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Select 
+                    fullWidth
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    displayEmpty
+              >
+                <MenuItem value=''>All</MenuItem>
+                <MenuItem value='animals'>Animals</MenuItem>
+                <MenuItem value='community'>Community</MenuItem>
+                <MenuItem value='emergencies'>Emergencies</MenuItem>
+                <MenuItem value='environment'>Environment</MenuItem>
+                <MenuItem value='events'>Events</MenuItem>
+                <MenuItem value='family'>Family</MenuItem>
+                <MenuItem value='medical'>Medical</MenuItem>
+                <MenuItem value='sports'>Sports</MenuItem>
+                <MenuItem value='other'>Other</MenuItem>
+              </Select>
+            </Grid>
+        </Grid>
           <Box>
-              <Grid container spacing={3} direction="row" pt={3} pl={2} justifyContent='center'>
+              <Grid container spacing={3} direction="row" pt={3} pl={2} justifyContent='left'>
               {loading && (
                   <Grid item xs={12}>
                      <Loading />
@@ -114,7 +112,6 @@ const IndividualCampaigns = () => {
               </>
               )}
               <Grid item xs={12} lg={12}>
-              {/* Pagination here */}
               </Grid>
               </Grid>
           </Box>

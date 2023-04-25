@@ -31,8 +31,8 @@ const Sidebar = (props) => {
               height: '100%',
             }}
           >
-            <Box px={3}>
-              <Logo />
+            <Box p={3}>
+              <img src='/images/Logo.png' style={{ width: '100%' }}/>
             </Box>
             <Box>
               <SidebarItems />
@@ -56,9 +56,6 @@ const Sidebar = (props) => {
         },
       }}
     >
-      <Box px={2}>
-        <Logo />
-      </Box>
       <SidebarItems />
     </Drawer>
   );

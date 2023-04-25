@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material';
-const TempLogo = require('../assets/images/placeholder-logo.png')
 
 const LinkStyled = styled(Link)(() => ({
-  height: '70px',
-  width: '180px',
+  height: '100px',
+  width: '100%',
   overflow: 'hidden',
   display: 'block',
 }));
@@ -12,7 +11,7 @@ const LinkStyled = styled(Link)(() => ({
 const Logo = () => {
   return (
     <LinkStyled to="/">
-      <img src={String(TempLogo)} alt=''/>
+      <img src={'/images/Logo.png'} alt=''/>
     </LinkStyled>
   )
 };

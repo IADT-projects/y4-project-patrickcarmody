@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 
 const UserIcon = ({user, size}) => {
     const [userImage, setUserImage] = useState(false);
-
+    
     useEffect(() => {
         if(user.image) {
+            
         if(user.image.length > 0) {
             setUserImage(true);
         }
     }
-    }, [])
+    }, [user])
     
     return(
         <>

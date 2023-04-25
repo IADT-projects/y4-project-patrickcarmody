@@ -29,7 +29,7 @@ const Progress = ({campaign}) => {
     });
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={1} px={2.5}>
             <Grid item xs={12} >
                 <Typography variant="body2">Progress ({percent}%)</Typography>
             </Grid>

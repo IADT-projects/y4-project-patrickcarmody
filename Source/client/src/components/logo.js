@@ -10,7 +10,7 @@ const LinkStyled = styled(Link)(() => ({
 
 const Logo = () => {
   return (
-    <LinkStyled to="/">
+    <LinkStyled to="/home">
       <img src={'/images/Logo.png'} alt=''/>
     </LinkStyled>
   )

@@ -33,7 +33,7 @@ const Sidebar = (props) => {
             }}
           >
             <Box p={3}>
-              <Link to='/'>
+              <Link to='/home'>
               <img src='/images/Logo.png' style={{ width: '100%' }}/>
               </Link>
             </Box>

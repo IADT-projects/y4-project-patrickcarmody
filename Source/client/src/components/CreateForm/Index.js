@@ -123,7 +123,7 @@ const CreateForm = () => {
                         Submit
                     </Button>
                     ) : (
-                    <Button variant="contained" color="primary" onClick={handleNext} disabled={activeStep === steps.length - 1}>
+                    <Button variant="contained" color="primary" onClick={handleNext} disabled={activeStep === steps.length -1}>
                         Next
                     </Button>
                     )}

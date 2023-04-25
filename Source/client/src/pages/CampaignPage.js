@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, Divider, IconButton, Link, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ContributeWindow from "../components/ui/ContributeWindow";
 import { KeyboardArrowLeft } from "@mui/icons-material";
@@ -7,15 +7,28 @@ import UserIcon from "../components/users/UserIcon";
 import axios from '../config';
 import { useEffect, useState } from "react";
 import { Stack } from "@mui/system";
+import useReadWithArgs from "../hooks/useReadWithArgs";
+import GetTotalDepositsAbi from '../assets/abi/getTotalDeposits.json';
+import { ethers } from "ethers";
 
 const CampaignPage = ({campaign}) => {
-
+    const navigate = useNavigate();
     const [numberOfCampaigns, setNumberOfCampaigns] = useState(0);
+    const [totalDeposited, setTotalDeposited] = useState(0)
     const [user, setUser] = useState({
         image: "",
         first_name: "",
         last_name: ""
     });
+
+    useEffect(() => {
+        if (totalDepositedData) {
+            setTotalDeposited(ethers.utils.formatEther(totalDepositedData));
+        }
+    });
+    const { data: totalDepositedData } = useReadWithArgs(campaign.address, GetTotalDepositsAbi, "getTotalDeposits", []);
+    
+
     useEffect(() => {
         axios.get(`/users?address=${campaign.creator}`)
         .then((res) => {
@@ -31,7 +44,7 @@ const CampaignPage = ({campaign}) => {
         .catch((err) => {console.error(err)});
     }, []);
     
-    const navigate = useNavigate();
+    
     return (
         <PageContainer title={campaign.title}>
             <Box sx={{width: "100%", display: 'flex', flexDirection: 'row', alignItems: 'center', alignContent: 'center'}}>
@@ -66,16 +79,40 @@ const CampaignPage = ({campaign}) => {
                     <Box
                         sx={{
                             display: 'flex',
-                            flexDirection: 'row',
+                            flexDirection: 'column',
                             width: '100%',
-                            height: '25%',
                             p: 1,
                             px: 2,
                             whiteSpace: 'pre-wrap'
                         }}
                     >
                         <Typography variant="body1">{campaign.description}</Typography>
-                    </Box>
+                        <Stack spacing={1}>
+                            <Typography mt={2} mb={1} variant="h5" textAlign={'left'}>Campaign details</Typography>
+                            <Divider/>
+                            <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>Date Created:</Typography>
+                                <Typography variant="body1" sx={{width: '50%', color: 'red'}} textAlign={'right'} >To be added</Typography>
+                            </Box>
+                            <Divider/>
+                            <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>Goal:</Typography>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'right'}>{campaign.goal} MATIC</Typography>
+                            </Box>
+                            <Divider/>
+                            <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>Total raised:</Typography>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'right'}>{totalDeposited} MATIC</Typography>
+                            </Box>
+                            <Divider/>
+                            <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>View on blockchain:</Typography>
+                                <Link href={`https://mumbai.polygonscan.com/address/${campaign.address}`} sx={{width: '50%', textDecoration: 'none'}} target='_blank'>
+                                    <Typography variant="body1" textAlign={'right'}>{campaign.address}</Typography>
+                                </Link>
+                            </Box>
+                        </Stack>
+                    </Box>   
                 </Box>
                 <Box 
                     sx={{

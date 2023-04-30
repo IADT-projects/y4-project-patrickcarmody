@@ -23,6 +23,7 @@ const Charities = Loadable(lazy(() => import('./pages/campaigns/Charities')));
 const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
 const CharityForm = Loadable(lazy(() => import('./components/CharityForm/Index')));
 const ViewCharity = Loadable(lazy(() => import('./pages/charities/ViewCharity')));
+const CharityWithdraw = Loadable(lazy(() => import('./pages/charities/Withdraw')));
 
 // User campaigns
 const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
@@ -30,7 +31,7 @@ const SingleCampaign = Loadable(lazy(() => import('./pages/campaigns/SingleCampa
 const EditCampaign = Loadable(lazy(() => import('./pages/campaigns/Edit')))
 const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')));
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
-const Withdraw = Loadable(lazy(() => import('./pages/users/Withdraw')));
+const CampaignWithdraw = Loadable(lazy(() => import('./pages/users/Withdraw')));
 
 const Router = [
     {
@@ -62,12 +63,15 @@ const Router = [
 
       { path: '/campaigns/:id', element: <SingleCampaign/> },
       { path: '/campaigns/:id/edit', element: <EditCampaign/> },
-      { path: '/campaigns/:id/withdraw', element: <Withdraw/> },
+      { path: '/campaigns/:id/withdraw', element: <CampaignWithdraw/> },
 
       { path: '/create/campaign', exact: true, element: <CreateForm/> },
       { path: '/create', exact: true, element: <CreateLanding/> },
       { path: '/create/charity', exact: true, element: <CharityForm/> },
+      
       { path: '/charity/:id', exact: true, element: <ViewCharity/> },
+      // { path: '/campaigns/:id/edit', element: <EditCampaign/> },
+      { path: '/charity/:id/withdraw', exact: true, element: <CharityWithdraw/> },
       
       //Users
       { path: '/users/:id', element: <User /> },

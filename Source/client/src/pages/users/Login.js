@@ -6,7 +6,6 @@ import PageContainer from "../../components/PageContainer";
 import { ChevronLeft } from '@mui/icons-material';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
-import { useEffect } from 'react';
 
 const Login = () => {
     
@@ -21,6 +20,7 @@ const Login = () => {
     const handleForm = (e) => {
         let name = e.target.name;
         let value = e.target.value;
+        setErrorMessage("")
 
         setForm(prevState => ({
             ...prevState,
@@ -34,7 +34,7 @@ const Login = () => {
             password: form.password
         })
         .then((response) => {
-            setErrorMessage("")
+            console.log(response)
             setUserData({
                 token: response.data.token,
                 id: response.data.user._id,
@@ -49,7 +49,7 @@ const Login = () => {
         })
         .catch((err) => {
             console.log(err)
-            setErrorMessage("Error")
+            setErrorMessage(err.response.data.msg)
         })
     }
 
@@ -57,7 +57,6 @@ const Login = () => {
         <PageContainer title="Login" description="login">
             <Grid container spacing={0} justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
                 <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '500px' }}>
-                    <>
                     <Stack direction="row" alignItems="center" mb={3} spacing={3}>
                         <Box width={24}>
                             <IconButton onClick={() => navigate(-1)}>
@@ -103,6 +102,7 @@ const Login = () => {
                                 onChange={handleForm}
                             />
                         </Box>
+                        <Typography color='red' mt={'10px'}>{errorMessage}</Typography>
                         <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
                             <FormGroup>
                                 <FormControlLabel
@@ -142,7 +142,6 @@ const Login = () => {
                             Register
                         </Typography>
                     </Stack>
-                    </>
                 </Card>
             </Grid>
         </PageContainer>

@@ -29,7 +29,7 @@ const register = async (req, res) => {
       const user = await User.findOne({ email: req.body.email });
       if (!user || !user.comparePassword(req.body.password)) {
         res.status(401).json({
-          msg: "Authentication failed. Invalid user or password",
+          msg: "Invalid email or password",
         });
       } else {
         console.log(`User with ID ${user._id} logged in`);

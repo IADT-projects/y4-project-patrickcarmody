@@ -11,13 +11,16 @@ import { useNavigate } from "react-router-dom";
 const UserSettings = () => {
     const { userData, isAuthenticated} = useContext(UserContext);
     const [buttonMessage, setbuttonMessage] = useState("");
+    const [passwordCheck, setPasswordCheck] = useState({});
+    const [passwordsMatch, setPasswordsMatch] = useState(false);
+    const [passwordHelperText, setPasswordHelperText] = useState("");
+    
     const [ form, setForm ] = useState({
         first_name: "",
         last_name: "",
         biography: "",
         image: "",
         email: "",
-        password: "",
     });
     const navigate = useNavigate()
     
@@ -47,14 +50,23 @@ const UserSettings = () => {
         }));
     };
 
+    useEffect(() => {
+        if(passwordCheck.password1 == passwordCheck.password2) {
+            setPasswordsMatch(true);
+            setPasswordHelperText("")
+            setForm(prevState => ({
+                ...prevState,
+                password: passwordCheck.password1,
+            }))
+        }
+        else {
+            setPasswordsMatch(false);
+            setPasswordHelperText("Passwords do not match")
+        }
+    }, [passwordCheck]);
+
     const handleSubmit = () => {
-        axios.put(`/users/${userData.id}`, {
-            first_name: form.first_name,
-            last_name: form.last_name,
-            biography: form.biography,
-            image: form.image,
-            email: form.email
-        }, {
+        axios.put(`/users/${userData.id}`,form, {
             headers: {
                 "Authorization": `Bearer ${userData.token}`
             }
@@ -180,34 +192,51 @@ const UserSettings = () => {
                                 <Typography variant="subtitle1"
                                     fontWeight={500}
                                     component='label'
-                                    htmlFor='first_name'
+                                    htmlFor='password1'
                                 >
                                     New Password
                                 </Typography>
                                 <TextField
+                                    error={!passwordsMatch}
                                     sx={{my: 1}}
-                                    id='first_name'
-                                    name='first_name'
+                                    id='password1'
+                                    name='password1'
                                     variant="outlined"
+                                    type="password"
                                     fullWidth
-                                    onChange={handleForm}
+                                    onChange={ (e) => {
+                                        setPasswordCheck(prevState => ({
+                                            ...prevState,
+                                            password1: e.target.value
+                                        }));
+                                    }
+                                    }
                                 />
                             </Box>
                             <Box>
                                 <Typography variant="subtitle1"
                                     fontWeight={500}
                                     component='label'
-                                    htmlFor='last_name'
+                                    htmlFor='password2'
                                 >
                                     Confirm New Password
                                 </Typography>
                                 <TextField
+                                    error={!passwordsMatch}
                                     sx={{my: 1}}
-                                    id='last_name'
-                                    name='last_name'
+                                    id='password2'
+                                    name='password2'
                                     variant="outlined"
+                                    type="password"
+                                    helperText={passwordHelperText}
                                     fullWidth
-                                    onChange={handleForm}
+                                    onChange={ (e) => {
+                                        setPasswordCheck(prevState => ({
+                                            ...prevState,
+                                            password2: e.target.value
+                                        }));
+                                    }
+                                    }
                                 />
                             </Box>
                         </Stack>

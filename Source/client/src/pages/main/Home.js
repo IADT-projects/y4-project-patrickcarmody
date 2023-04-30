@@ -45,7 +45,7 @@ const Home = () => {
     })
   
     return (
-      <PageContainer title="Crowdfunding" description="home page">
+      <PageContainer title="BlockAid" description="home page">
         <Box>
           <Grid container columnSpacing={3} padding={4} rowSpacing={10}> 
             {/* ----- Section 1 ----- */}

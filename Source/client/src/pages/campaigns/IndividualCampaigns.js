@@ -3,7 +3,7 @@ import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem, Ico
 import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
-import { Search } from '@mui/icons-material';
+import { Search, ImportExport } from '@mui/icons-material';
 import CampaignCard from '../../components/CampaignCard/CampaignCard';
 import NoResults from '../../components/NoResults';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -15,19 +15,21 @@ const IndividualCampaigns = () => {
 
   const title = searchParams.get('title') || '';
   const category = searchParams.get('category') || '';
+  const sort = searchParams.get('sort') || '';
 
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(title);
   const [selectedCategory, setSelectedCategory] = useState(category);
+  const [sortDate, setSortDate] = useState('');
 
   const handleSearch = () => {
-    navigate(`/campaigns/user?title=${search}&category=${selectedCategory}`);
+    navigate(`/campaigns/user?title=${search}&category=${selectedCategory}&sort=${sortDate}`);
   }
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/campaigns?title=${title}&category=${selectedCategory}`)
+    axios.get(`/campaigns?title=${title}&category=${selectedCategory}&sort=${sortDate}`)
       .then((response) => {
          setCampaigns(response.data)
         })
@@ -38,7 +40,7 @@ const IndividualCampaigns = () => {
         }
       })
       .finally(() => setLoading(false));
-  }, [title, selectedCategory]);
+  }, [title, selectedCategory, sortDate]);
 
   const campaignsList = campaigns.length ? campaigns.map((campaign) => {
       return(
@@ -70,10 +72,10 @@ const IndividualCampaigns = () => {
                         if (e.key === 'Enter') {
                           handleSearch();
                         }
-                      }} // Add keypress event listener
+                      }}
                   />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={3}>
               <Select 
                     fullWidth
                     value={selectedCategory}
@@ -90,6 +92,23 @@ const IndividualCampaigns = () => {
                 <MenuItem value='medical'>Medical</MenuItem>
                 <MenuItem value='sports'>Sports</MenuItem>
                 <MenuItem value='other'>Other</MenuItem>
+              </Select>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Select 
+                onChange={(e) => setSortDate(e.target.value)}
+                fullWidth
+                displayEmpty
+                value={sortDate}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <ImportExport/>
+                  </InputAdornment>
+                }
+              >
+                <MenuItem value=''>Sort by</MenuItem>
+                <MenuItem value='new'>Newer</MenuItem>
+                <MenuItem value='old'>Older</MenuItem>
               </Select>
             </Grid>
         </Grid>

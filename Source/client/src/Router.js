@@ -24,6 +24,7 @@ const Explore = Loadable(lazy(() => import('./pages/campaigns/Explore')));
 const CharityForm = Loadable(lazy(() => import('./components/CharityForm/Index')));
 const ViewCharity = Loadable(lazy(() => import('./pages/charities/ViewCharity')));
 const CharityWithdraw = Loadable(lazy(() => import('./pages/charities/Withdraw')));
+const EditCharity = Loadable(lazy(() => import('./pages/charities/Edit')));
 
 // User campaigns
 const IndividualCampaigns = Loadable(lazy(() => import('./pages/campaigns/IndividualCampaigns')));
@@ -70,7 +71,7 @@ const Router = [
       { path: '/create/charity', exact: true, element: <CharityForm/> },
       
       { path: '/charity/:id', exact: true, element: <ViewCharity/> },
-      // { path: '/campaigns/:id/edit', element: <EditCampaign/> },
+      { path: '/charity/:id/edit', element: <EditCharity/> },
       { path: '/charity/:id/withdraw', exact: true, element: <CharityWithdraw/> },
       
       //Users

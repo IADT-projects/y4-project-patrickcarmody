@@ -39,7 +39,7 @@ const register = async (req, res) => {
             name: user.name,
             _id: user._id,
           },
-          process.env.APP_KEY, // provide a valid secretOrPrivateKey argument
+          process.env.APP_KEY,
         );
         res.status(200).json({
           msg: "Login Successful",
@@ -56,7 +56,6 @@ const register = async (req, res) => {
 
 const readData = (req, res) => {
     let query = {};
-    // check if user included search params
     if (Object.keys(req.query).length > 0) {
         for (const [property, term] of Object.entries(req.query)) {
         query[property] = new RegExp(term, 'i');
@@ -139,25 +138,32 @@ const deleteUser = (req, res) => {
         });
 };
 
-const editUser = (req, res) => {
-    let id = req.params.id;
-    let body = req.body;
-
-    User.findByIdAndUpdate(id, body, {
-        new: true
-    })
-        .then((data) => {
-            if(data){
-                res.status(201).json(data);
-                console.log(`User with ID: ${id} was updated`)
-            }
-            else {
-                res.status(404).json({
-                    "error": `User ${id} not found`
-                });
-            }
-        })
-}
+const editUser = async (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+    try {
+      if (body.password) {
+        body.password = bcrypt.hashSync(body.password, 9);
+      }
+      const user = await User.findByIdAndUpdate(id, body, { new: true });
+      if (user) {
+        user.password = undefined;
+        console.log(`User with ID: ${id} was updated`);
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ error: `User ${id} not found` });
+      }
+    } catch (err) {
+      console.error(err);
+      if (err.name === "CastError") {
+        res
+          .status(400)
+          .json({ error: `Bad request, ${id} is not a valid ID` });
+      } else {
+        res.status(500).json(err);
+      }
+    }
+  };
 
 module.exports = {
     register,

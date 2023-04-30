@@ -3,17 +3,15 @@ import { Grid, Box, Typography, TextField, InputAdornment, Select, MenuItem, Ico
 import PageContainer from '../../components/PageContainer';
 import axios from '../../config';
 import Loading from '../../components/Loading';
-import { Search, Clear } from '@mui/icons-material';
+import { Search, Clear, ImportExport } from '@mui/icons-material';
 import NoResults from '../../components/NoResults';
 import CharityCard from '../../components/CharityCard';
 import { useLocation, useNavigate } from 'react-router-dom';
-
 
 const IndividualCampaigns = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
-
   const title = searchParams.get('title') || '';
   const category = searchParams.get('category') || '';
 
@@ -21,14 +19,27 @@ const IndividualCampaigns = () => {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(title);
   const [selectedCategory, setSelectedCategory] = useState(category);
+  const [sortDate, setSortDate] = useState('');
+  const [showClear, setShowClear] = useState(false);
 
   const handleSearch = () => {
     navigate(`/campaigns/charity?title=${search}&category=${selectedCategory}`);
   }
 
+  const handleClear = () => {
+    setSearch("");
+    setShowClear(false);
+  }
+
+  useEffect(() => {
+    if (search.length != "") {
+      setShowClear(true);
+    }
+  }, [search])
+
   useEffect(() => {
     setLoading(true);
-    axios.get(`/charities?title=${title}&category=${selectedCategory}`)
+    axios.get(`/charities?title=${title}&category=${selectedCategory}&sort=${sortDate}`)
       .then((response) => {
          setCharities(response.data)
         })
@@ -60,10 +71,16 @@ const IndividualCampaigns = () => {
               InputProps={{
                   endAdornment: (
                       <InputAdornment position='end'>
-                        <IconButton onClick={handleSearch}>
-                          <Search/>
+                        <IconButton onClick={showClear ? handleClear : handleSearch}>
+                          { showClear ? 
+                          (
+                            <Clear/>
+                          ) : (
+                            <Search/>
+                          )
+                          }
                         </IconButton>
-                      </InputAdornment>
+                    </InputAdornment>
                   )
               }}
               value={search}
@@ -94,8 +111,25 @@ const IndividualCampaigns = () => {
                 <MenuItem value='other'>Other</MenuItem>
               </Select>
           </Grid>
+          <Grid item xs={12} md={3}>
+              <Select 
+                onChange={(e) => setSortDate(e.target.value)}
+                fullWidth
+                displayEmpty
+                value={sortDate}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <ImportExport/>
+                  </InputAdornment>
+                }
+              >
+                <MenuItem value=''>Sort</MenuItem>
+                <MenuItem value='new'>Newest first</MenuItem>
+                <MenuItem value='old'>Oldest first</MenuItem>
+              </Select>
+            </Grid>
         </Grid>
-    
+
       <Box>
         <Grid container spacing={3} direction="row" pt={3} pl={2} justifyContent="left">
         {loading && (

@@ -1,6 +1,7 @@
 import { Button, Stepper, Step, StepLabel, Grid } from "@mui/material";
 import { useContext } from "react";
 import { useState } from "react";
+import { useAccount } from "wagmi";
 import axios from '../../config'
 import { UserContext } from "../../context/UserContext";
 import PageContainer from "../PageContainer";
@@ -13,7 +14,10 @@ import CreateStep5 from "./CreateStep5";
 import CreateStep6 from "./CreateStep6";
 import CreateStep7 from "./CreateStep7";
 
+import useContractDeploy from "../../hooks/useContractDeploy";
+
 const CreateForm = () => {
+    const { address: account } = useAccount();
     const {userData} = useContext(UserContext);
     const [created, setCreated] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
@@ -25,8 +29,8 @@ const CreateForm = () => {
         "website": "",
         "logoImage": "",
         "bannerImage": "",
-        "creator": "0x45a2800B3b41263156cF45D7Fc4D8E436707c211",
-        "address": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+        "creator": "",
+        "address": "",
     });
     const [step1Data, setStep1Data] = useState({ title: ""});
     const [step2Data, setStep2Data] = useState({ category: "" });
@@ -53,25 +57,43 @@ const CreateForm = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    const { deployContractWithPromise } = useContractDeploy();
+
     const handleSubmit = () => {
-        axios.post('/charities', formData, {
-            headers: {
-                "Authorization": `Bearer ${userData.token}`
-            }
-        }, formData)
-            .then((response) => {
-                setCreated(true);
-                setId(response.data._id);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+
+        deployContractWithPromise()
+        .then((address) => {
+            console.log("Deployed at: " + address)
+            axios.post('/charities', {
+                title: formData.title,
+                category: formData.category,
+                description: formData.description,
+                website: formData.website,
+                logoImage: formData.logoImage,
+                bannerImage: formData.bannerImage,
+                creator: account,
+                address: address
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${userData.token}`
+                }
+                }, formData)
+                .then((response) => {
+                    setCreated(true);
+                    setId(response.data._id);
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        })
+        .catch((err) => {console.error(err)})
+        
     };
 
     return (
         <PageContainer title="Create Campaign" description="Create a form">
             {created ? (
-            <Created redirectUrl={`/campaigns/${id}`}/>
+            <Created redirectUrl={`/charity/${id}`}/>
             ) : (
                 <Grid container spacing={5}>
                 <Grid item xs={12}>

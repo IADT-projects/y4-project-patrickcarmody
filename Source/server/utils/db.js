@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
 const connect = async () => {
-    let db = null;
-
     try {
         await mongoose.connect(process.env.DB_ATLAS_URL, {
             useNewUrlParser: true,
@@ -17,4 +15,8 @@ const connect = async () => {
     }
 };
 
-module.exports = connect;
+const disconnect = async () => {
+    await db.close();
+}
+
+module.exports = { connect, disconnect };

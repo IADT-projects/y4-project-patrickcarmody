@@ -4,7 +4,7 @@ const app = express();
 const port = 3005;
 
 require('dotenv').config();
-require('./utils/db.js')();
+require('./utils/db.js').connect();
 
 app.use(express.json());
 

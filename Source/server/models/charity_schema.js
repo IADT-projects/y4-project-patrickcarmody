@@ -26,7 +26,8 @@ const charitySchema = Schema(
         },
         address: {
             type: String,
-            required: [true]
+            required: [true],
+            unique: true,
         },
         website: {
             type: String

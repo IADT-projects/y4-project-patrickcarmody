@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import PageContainer from "../../components/PageContainer";
 import { ChevronRightRounded } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from '../../config';
 import CampaignCard from "../../components/CampaignCard/CampaignCard";
@@ -11,6 +11,7 @@ const Explore = () => {
 
     const [campaigns, setCampaigns] = useState([]);
     const [charities, setCharities] = useState([]);
+    const navigate = useNavigate();
 
     const categories = [
         "Animals",
@@ -78,7 +79,7 @@ const Explore = () => {
                     {campaignsList}
                 </Grid>
                 {/* ----- Categories ----- */}
-                <Grid container padding={2} pt={4} spacing={3} direction='row'>
+                <Grid container padding={3} pt={4} spacing={3} direction='row'>
                     <Typography variant='h4' sx={{ paddingBottom: 2 }}>Browse campaigns by category</Typography>
                     <Box sx={{width: '100%'}} >
                         {
@@ -86,6 +87,7 @@ const Explore = () => {
                                 return(
                                     <Button
                                         variant="outlined"
+                                        onClick={() => navigate(`/campaigns/user?category=${category.toLowerCase()}`)}
                                         sx={{
                                             borderRadius: 3,
                                             margin: 1

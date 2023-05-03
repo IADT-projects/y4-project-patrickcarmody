@@ -3,16 +3,20 @@ const { Schema, model } = require('mongoose');
 const charitySchema = Schema(
     {
         title: {
-            type: String
+            type: String,
+            required: [true]
         },
         description: {
-            type: String
+            type: String,
+            required: [true]
         },
         category: {
-            type: String
+            type: String,
+            required: [true]
         },
         creator: {
-            type:String
+            type:String,
+            required: [true]
         },
         bannerImage: {
             type: String
@@ -21,12 +25,15 @@ const charitySchema = Schema(
             type: String
         },
         address: {
-            type: String
+            type: String,
+            required: [true],
+            unique: true,
         },
         website: {
             type: String
         }
-    }
+    },
+    { timestamps: true }
 )
 
 module.exports = model('Charity', charitySchema)

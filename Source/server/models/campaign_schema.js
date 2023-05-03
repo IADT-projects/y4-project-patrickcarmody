@@ -3,27 +3,35 @@ const { Schema, model } = require('mongoose');
 const campaignSchema = Schema(
     {
         title: {
-            type: String
+            type: String,
+            required: [true],
         },
         description: {
-            type: String
+            type: String,
+            required: [true]
         },
         category: {
-            type: String
+            type: String,
+            required: [true]
         },
         creator: {
-            type: String
+            type: String,
+            required: [true]
         },
         goal: {
-            type: Number
+            type: Number,
+            required: [true]
         },
         image: {
             type: String
         },
         address: {
-            type: String
+            type: String,
+            required: [true],
+            unique: true,
         }
-    }
+    },
+    { timestamps: true }
 );
 
 module.exports = model('Campaign', campaignSchema);

@@ -1,6 +1,7 @@
-import { Button, Stepper, Step, StepLabel, Grid } from "@mui/material";
+import { Box, Button, CircularProgress, Dialog, Stepper, Step, StepLabel, Typography, Grid } from "@mui/material";
 import { useContext } from "react";
 import { useState } from "react";
+import { useAccount } from "wagmi";
 import axios from '../../config'
 import { UserContext } from "../../context/UserContext";
 import PageContainer from "../PageContainer";
@@ -13,7 +14,10 @@ import CreateStep5 from "./CreateStep5";
 import CreateStep6 from "./CreateStep6";
 import CreateStep7 from "./CreateStep7";
 
+import useContractDeploy from "../../hooks/useContractDeploy";
+
 const CreateForm = () => {
+    const { address: account } = useAccount();
     const {userData} = useContext(UserContext);
     const [created, setCreated] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
@@ -25,8 +29,8 @@ const CreateForm = () => {
         "website": "",
         "logoImage": "",
         "bannerImage": "",
-        "creator": "0x45a2800B3b41263156cF45D7Fc4D8E436707c211",
-        "address": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+        "creator": "",
+        "address": "",
     });
     const [step1Data, setStep1Data] = useState({ title: ""});
     const [step2Data, setStep2Data] = useState({ category: "" });
@@ -34,6 +38,7 @@ const CreateForm = () => {
     const [step4Data, setStep4Data] = useState({ website: "" });
     const [step5Data, setStep5Data] = useState({ logoImage: "" });
     const [step6Data, setStep6Data] = useState({ bannerImage: "" });
+    const [openDialog, setOpenDialog] = useState(false);
 
     const steps = [
         { label: "Name", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} /> },
@@ -53,26 +58,112 @@ const CreateForm = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    }
+
+    const handleOpenDialog = () => {
+        setOpenDialog(true);
+    }
+
+    const { deployContractWithPromise, loading, data } = useContractDeploy();
+
     const handleSubmit = () => {
-        axios.post('/charities', formData, {
-            headers: {
-                "Authorization": `Bearer ${userData.token}`
-            }
-        }, formData)
-            .then((response) => {
-                setCreated(true);
-                setId(response.data._id);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        deployContractWithPromise()
+        .then((address) => {
+            console.log("Deployed at: " + address)
+            axios.post('/charities', {
+                title: formData.title,
+                category: formData.category,
+                description: formData.description,
+                website: formData.website,
+                logoImage: formData.logoImage,
+                bannerImage: formData.bannerImage,
+                creator: account,
+                address: address
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${userData.token}`
+                }
+                }, formData)
+                .then((response) => {
+                    setCreated(true);
+                    setId(response.data._id);
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        })
+        .catch((err) => {console.error(err)})
+        
     };
 
     return (
         <PageContainer title="Create Campaign" description="Create a form">
             {created ? (
-            <Created redirectUrl={`/campaigns/${id}`}/>
+            <Created url={`/charity/${id}`} type={'charity'}/>
             ) : (
+                <>
+                <Dialog
+                    open={openDialog}
+                    onClose={handleCloseDialog}
+                >
+                    
+                    <Box 
+                        sx={{
+                            width: '500px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignContent: 'center',
+                            px: 4,
+                        }}
+                    >
+                        <Typography variant="h3" py={3} textAlign='center'>Deploy campaign on blockchain</Typography>
+                        <Typography variant="subtitle1" textAlign='left' sx={{ my: 1, whiteSpace: 'pre-wrap'}}>
+                            Almost there!
+                        </Typography>
+                        <Typography variant="subtitle1" textAlign='left' sx={{ my: 1, whiteSpace: 'pre-wrap'}}>
+                            This will deploy your fundraiser to the blockchain. A small amount of MATIC is required to do this.
+                        </Typography>
+                        <Typography variant="subtitle1" textAlign='left' sx={{ my: 1, whiteSpace: 'pre-wrap'}}>
+                            After clicking the button below, you will be prompted to confirm a transaction in your wallet.
+                        </Typography>
+                        { loading? (
+                            <Box 
+                                sx={{ 
+                                    width: '250px', 
+                                    height: '60px', 
+                                    mx: 'auto', 
+                                    my: 5,
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <CircularProgress variant="indeterminate"/>
+                            </Box>
+                        ) : (
+                            <>
+                            <Button 
+                            variant="contained" 
+                            color="primary" 
+                            onClick={handleSubmit} 
+                            sx={{
+                                width: "250px",
+                                height: '60px',
+                                mx: 'auto',
+                                my: 5,
+                                fontSize: '16px'
+                            }}
+                            >
+                                Deploy
+                            </Button>
+                            <Typography textAlign='center' color={"red"} mb={2}>
+                                { data.error ? "User rejected transaction": ""}
+                            </Typography>
+                            </>
+                        )}
+                    </Box>
+                </Dialog>
                 <Grid container spacing={5}>
                 <Grid item xs={12}>
                 <Stepper activeStep={activeStep}>
@@ -112,7 +203,7 @@ const CreateForm = () => {
                 </Grid>
                 </Grid>
             </Grid>
-            )
+            </>)
             }
             
         </PageContainer>

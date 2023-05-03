@@ -1,7 +1,6 @@
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { Box, Button, Divider, Grid, IconButton, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useContext } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useAccount, useBalance } from "wagmi";
 import PageContainer from "../../components/PageContainer";
@@ -15,19 +14,17 @@ import GetTotalDepositsABI from '../../assets/abi/getTotalDeposits.json';
 const Withdraw = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-
-    const [campaign, setCampaign] = useState({});
+    
+    const [charity, setCharity] = useState({});
     const [totalRaised, setTotalRaised] = useState(0);
     const [contractBalance, setContractBalance] = useState(0);
-
-    // const { userData, isAuthenticated } = useContext(UserContext);
     
     const { data: balanceData } = useBalance({
-        address: campaign.address,
+        address: charity.address,
         watch: true,
     })
 
-    const { data: totalDepositsData } = useReadWithArgs(campaign.address, GetTotalDepositsABI, "getTotalDeposits", []);
+    const { data: totalDepositsData } = useReadWithArgs(charity.address, GetTotalDepositsABI, "getTotalDeposits", []);
 
     useEffect(() => {
         if(balanceData) {
@@ -38,12 +35,12 @@ const Withdraw = () => {
         }
     })
     useEffect(() => {
-        axios.get(`/campaigns/${id}`)
-        .then((res) => {setCampaign(res.data);})
+        axios.get(`/charities/${id}`)
+        .then((res) => {setCharity(res.data);})
         .catch((err) => {console.error(err)})
     }, [])
 
-    const { withdraw, isLoading } = useWithdraw(campaign.address);
+    const { withdraw, isLoading } = useWithdraw(charity.address);
 
     const handleWithdraw = () => {
         withdraw?.()
@@ -78,7 +75,7 @@ const Withdraw = () => {
                         }}
                     >
                         <Typography textAlign='center' sx={{ mb: 3.5, fontSize: "20px", fontWeight: 'bold' }}>
-                            {campaign.title}
+                            {charity.title}
                         </Typography>
                         <Stack spacing={2}
                             sx={{
@@ -127,7 +124,7 @@ const Withdraw = () => {
                                 boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
                             }}
                         >
-                            <Typography sx={{fontSize: '15px'}}>Withdrawing your campaign's balance will not affect the progress displayed on the site</Typography>
+                            <Typography sx={{fontSize: '15px'}}>Withdrawing your charity's balance will not affect the progress displayed on the site</Typography>
                             <Typography textAlign={'center'} sx={{fontSize: '15px', fontWeight: 500}}>Click below to withdraw {contractBalance} MATIC</Typography>
                             <Button variant="contained" onClick={handleWithdraw} disabled={contractBalance < 0.01}>
                                 { isLoading ? ("Loading") : ("Withdraw")}

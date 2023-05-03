@@ -9,6 +9,7 @@ const useContractDeploy = () => {
 
     const [data, setData] = useState({});
     const {data: signer} = useSigner();
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
         setData(prevState => ({
@@ -20,25 +21,38 @@ const useContractDeploy = () => {
     const contractFactory = new ethers.ContractFactory(ContractABI, bytecode, signer);
 
     const deployContract = async () => {
-        const contract = await contractFactory.deploy();
-        setData(prevState => ({
+        setLoading(true);
+        try {
+          const contract = await contractFactory.deploy();
+          setData((prevState) => ({
             ...prevState,
-            deployedAt: contract.deployTransaction.hash
-        }));
-
-        // Wait for the transaction to be confirmed
-        await contract.deployTransaction.wait();
-
-        setData(prevState => ({
+            deployedAt: contract.deployTransaction.hash,
+          }));
+          
+          // Wait for the transaction to be confirmed
+          await contract.deployTransaction.wait();
+          
+          setData((prevState) => ({
             ...prevState,
-            deployedAt: contract.address
-        }));
-
-        return contract;
-    }
-
+            deployedAt: contract.address,
+          }));
+          
+          setLoading(false);
+          
+          return contract;
+        } catch (error) {
+          console.error(error);
+          setLoading(false);
+          setData((prevState) => ({
+            ...prevState,
+            error: error.message || 'Transaction rejected by user',
+          }));
+        }
+      };
+      
     return({
         deployContract,
+        loading,
         data,
         deployContractWithPromise: async () => {
             const contract = await deployContract();
@@ -46,6 +60,5 @@ const useContractDeploy = () => {
         }
     })
 }
-
 
 export default useContractDeploy;

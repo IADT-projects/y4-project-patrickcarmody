@@ -1,4 +1,5 @@
 import { useMediaQuery, Box, Drawer } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Logo from '../logo';
 import SidebarItems from './SidebarItems';
 
@@ -31,8 +32,10 @@ const Sidebar = (props) => {
               height: '100%',
             }}
           >
-            <Box px={3}>
-              <Logo />
+            <Box p={3}>
+              <Link to='/home'>
+              <img src='/images/Logo.png' style={{ width: '100%' }}/>
+              </Link>
             </Box>
             <Box>
               <SidebarItems />
@@ -56,9 +59,6 @@ const Sidebar = (props) => {
         },
       }}
     >
-      <Box px={2}>
-        <Logo />
-      </Box>
       <SidebarItems />
     </Drawer>
   );

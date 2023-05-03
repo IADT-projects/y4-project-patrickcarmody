@@ -6,6 +6,7 @@ const userSchema = Schema (
         address: {
             type: String,
             required: [true],
+            unique: true,
         },
         first_name: {
             type: String,
@@ -20,7 +21,8 @@ const userSchema = Schema (
         },
         email: {
             type: String,
-            required: [true]
+            required: [true],
+            unique: true,
         },
         password: {
             type: String,

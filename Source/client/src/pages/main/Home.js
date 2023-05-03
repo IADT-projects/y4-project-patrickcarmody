@@ -45,7 +45,7 @@ const Home = () => {
     })
   
     return (
-      <PageContainer title="Crowdfunding" description="home page">
+      <PageContainer title="BlockAid" description="home page">
         <Box>
           <Grid container columnSpacing={3} padding={4} rowSpacing={10}> 
             {/* ----- Section 1 ----- */}
@@ -77,12 +77,12 @@ const Home = () => {
                 Donate Now
               </Button>
             </Grid>
-            <Grid item xs={12} md={7}>
-              <img 
-                src='https://i.imgur.com/1Ksal3s.png'
-                width={'100%'}
-                height={'100%'}
-                />
+            <Grid item xs={12} md={7} sx={{ display: 'flex', justifyContent: 'center'}}>
+              
+              <Box component={'img'}
+                src='/images/DonateExample.png' 
+                sx={{boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', ml: 18}}
+              />
             </Grid>
             {/* ----- Section 4 ----- */}
             <Grid item xs={12} container alignItems={'center'}>

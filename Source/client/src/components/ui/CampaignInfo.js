@@ -41,10 +41,13 @@ const CampaignInfo = ({campaign}) => {
                 //Description
                 sx={{
                     minHeight: '15%',
-                    width: '100%'
+                    width: '100%',
+                    whiteSpace: 'pre-wrap'
                 }}
                 >
-                    <Typography sx={{fontWeight: 'medium'}}>{campaign.description}</Typography>
+                    <Typography variant="body1" sx={{fontWeight: 'medium'}}>
+                        {campaign.description}
+                    </Typography>
                 </Box>
                 <Box
                 //Category

@@ -13,7 +13,7 @@ import { mainnet, goerli, polygonMumbai } from 'wagmi/chains';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 
 //Web3
-const chains = [mainnet, goerli, polygonMumbai]
+const chains = [polygonMumbai]
 const projectId = '0afb09d091a22717a29a967913a0a531'
 
 const { provider } = configureChains(chains, [w3mProvider({projectId})])

@@ -32,8 +32,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/api/users', require('./routes/users.js'));
-app.use('/api/campaigns', require('./routes/campaigns.js'));
-app.use('/api/charities', require('./routes/charities.js'))
+app.use('/users', require('./routes/users.js'));
+app.use('/campaigns', require('./routes/campaigns.js'));
+app.use('/charities', require('./routes/charities.js'))
 
 module.exports = app;

@@ -27,7 +27,7 @@ const CampaignPage = ({campaign}) => {
         }
     });
     const { data: totalDepositedData } = useReadWithArgs(campaign.address, GetTotalDepositsAbi, "getTotalDeposits", []);
-    
+    const campaignaddress = `${campaign.address.substring(0,6)}...${campaign.address.substring(38)}`
 
     useEffect(() => {
         axios.get(`/users?address=${campaign.creator}`)
@@ -108,7 +108,7 @@ const CampaignPage = ({campaign}) => {
                             <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
                                 <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>View on blockchain:</Typography>
                                 <Link href={`https://mumbai.polygonscan.com/address/${campaign.address}`} sx={{width: '50%', textDecoration: 'none'}} target='_blank'>
-                                    <Typography variant="body1" textAlign={'right'}>{campaign.address}</Typography>
+                                    <Typography variant="body1" textAlign={'right'}>{campaignaddress}</Typography>
                                 </Link>
                             </Box>
                         </Stack>

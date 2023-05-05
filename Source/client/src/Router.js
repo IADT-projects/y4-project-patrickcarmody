@@ -34,8 +34,6 @@ const CreateForm = Loadable(lazy(() => import('./components/CreateForm/Index')))
 const CreateLanding = Loadable(lazy(() => import('./pages/campaigns/CreateLanding')));
 const CampaignWithdraw = Loadable(lazy(() => import('./pages/users/Withdraw')));
 
-//dev
-const Created = Loadable(lazy(() => import('./components/CreateForm/Created')));
 
 const Router = [
     {
@@ -86,9 +84,6 @@ const Router = [
       { path: '/about', exact: true, element: <About /> },
       { path: '/get-started', exact: true, element: <Start /> },
       { path: '*', element: <Navigate to="/home" /> },
-
-      // dev
-      { path: '/created', exact: true, element: <Created type={'campaign'}/>}
     ],
   },
 ]

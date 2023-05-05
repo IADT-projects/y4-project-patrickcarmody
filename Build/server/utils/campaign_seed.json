@@ -1,0 +1,83 @@
+[
+    {
+        "title": "Dublin City Dog Shelter",
+        "description": "We have hundreds of puppies and dogs of all shapes, sizes, colours and breeds in our care, looking for their special someone.\n\nAll puppies and dogs in our rehoming centre are neutered (or if not already neutered at the time of adoption, they will go home with a €90 voucher to be redeemed against the cost of neutering at a local veterinary practice), microchipped, fully vaccinated and have their temperament assessed before going to their Forever Home.\nDogs Trust also offers a lifetime of training and behavioural support for all dogs and puppies rehomed from our centre.\n\nDogs Trust does not receive any Government funding towards our life saving work, so none of this would be possible without the continued commitment and generosity of our donors and supporters. We simply could not continue our efforts without them.",
+        "category": "animals",
+        "creator": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7",
+        "goal": 3,
+        "image": "dog_a062ak",
+        "address": "0xE6faC894f515878350F3D7a7FfF500e58113C2F3"
+    },
+    {
+        "title": "Barbados Hurricane Aid",
+        "description": "Food, Water, Shelter, and Medical Services are the four basic immediate concerns in a hurricane or other emergency situation to safeguard people.\n\nPreventing injury and loss of life from storm-tossed debris, electrocution, exposure, or being caught in floodwaters are priorities for first responders and emergency personnel during a hurricane. Evacuations relate to geographic areas. But evacuating can be difficult for some.\n\nPeople who lack mobility or have other disabling physical or mental conditions have greater difficulty simply leaving their residences, as do those without transportation or with very low incomes.",
+        "category": "emergencies",
+        "creator": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7",
+        "goal": 2,
+        "image": "disaster_adjxdg",
+        "address": "0x436035E4F0277731527f8BA6a88977AB6A404076"
+    },
+    {
+        "title": "New Operating Theatre",
+        "description": "An operating theater (also known as an operating room (OR), operating suite, or operation suite) is a facility within a hospital where surgical operations are carried out in an aseptic environment.\n\nHistorically, the term 'operating theater' referred to a non-sterile, tiered theater or amphitheater in which students and other spectators could watch surgeons perform surgery. Contemporary operating rooms are usually devoid of a theater setting, making the term 'operating theater' a misnomer in those cases.",
+        "category": "medical",
+        "creator": "0xeC19937914d11991b91B463Caf666B90F77ACcAa",
+        "goal": 3,
+        "image": "hospital_dnxndo",
+        "address": "0x22a9d8b5bf67d7f78b52f278A53d2469bb2Db7ef"
+    },
+    {
+        "title": "Stock Exchange Startup",
+        "description": "A stock exchange, securities exchange, or bourse is an exchange where stockbrokers and traders can buy and sell securities, such as shares of stock, bonds and other financial instruments.\nStock exchanges may also provide facilities for the issue and redemption of such securities and instruments and capital events including the payment of income and dividends.",
+        "category": "business",
+        "creator": "0xeC19937914d11991b91B463Caf666B90F77ACcAa",
+        "goal": 2,
+        "image": "business_kwjy1y",
+        "address": "0x20b4E03c222A404C31bE7A3D8b842670B2523CcD"
+    },
+    {
+        "title": "Walking Club Trip to Alps",
+        "description": "The Alpine arch extends from Nice on the western Mediterranean to Trieste on the Adriatic and Vienna at the beginning of the Pannonian Basin. The mountains were formed over tens of millions of years as the African and Eurasian tectonic plates collided.\n\nExtreme shortening caused by the event resulted in marine sedimentary rocks rising by thrusting and folding into high mountain peaks such as Mont Blanc and the Matterhorn",
+        "category": "community",
+        "creator": "0xeC19937914d11991b91B463Caf666B90F77ACcAa",
+        "goal": 1,
+        "image": "community_vce2hd",
+        "address": "0x5808bcf4c61792F636f825EB86979D5FB9F662bB"
+    },
+    {
+        "title": "Buy new kits for the football club",
+        "description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal.\nUnqualified, the word football normally means the form of football that is the most popular where the word is used.\n\nSports commonly called football include association football (known as soccer in North America, Ireland and Australia)",
+        "category": "sports",
+        "creator": "0x55860323F793957C3F0bf33a069B6B0810adC81e",
+        "goal": 2,
+        "image": "sports_bkfdzv",
+        "address": "0x40617707D6E919Df44f1636f04314f318c2B3ED9"
+    },
+    {
+        "title": "California Wildfire Aid",
+        "description": "Recovering from a wildfire takes time and a diverse network of organizations and services\n\nto make sure people have the help they need.",
+        "category": "emergencies",
+        "creator": "0x55860323F793957C3F0bf33a069B6B0810adC81e",
+        "goal": 3,
+        "image": "forest_ddkkrv",
+        "address": "0x05771Bf7535edB46c89e1EE20D820ABd9B47D727"
+    },
+    {
+        "title": "Company Prizegiving Event",
+        "description": "This is the description for the company prizegiving crowdfunding campaign",
+        "category": "events",
+        "creator": "0x2EBd98d3Ae2BbbB002cCf762487fFD224fa68119",
+        "goal": 4,
+        "image": "event_jupl40",
+        "address": "0xB79Eca7d5a87d807B9996b7d587A392029Eae0d8"
+    },
+    {
+        "title": "Jane & John's Wedding",
+        "description": "This is the description for the wedding crowdfunding campaign",
+        "category": "family",
+        "creator": "0x2EBd98d3Ae2BbbB002cCf762487fFD224fa68119",
+        "goal": 1,
+        "image": "wedding_pwjqrg",
+        "address": "0x02F325535902F82295D48017Fb96E4093b8dBD9d"
+    }
+]

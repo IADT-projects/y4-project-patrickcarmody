@@ -107,7 +107,10 @@ const Register = () => {
                 password: form.password
             })
             .then((response) => {
-                // navigate('/login')
+                console.log(response);
+                if(response.status == 201) {
+                    navigate('/login')
+                }
             })
             .catch((err) => {
                 if(err.response.data.error.includes("Email is already in use")) {

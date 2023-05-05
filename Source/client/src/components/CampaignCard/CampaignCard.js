@@ -45,8 +45,8 @@ const CampaignCard = ({campaign}) => {
                     component='img'
                     src={`https://res.cloudinary.com/dzooewr3a/image/upload/v1681845846/${campaign.image}.png`}
                     sx={{
-                        width: '100%',
-                        height: '45%',
+                        maxWidth: '100%',
+                        height: '35%',
                         backgroundColor: '#3BBBEB',
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,

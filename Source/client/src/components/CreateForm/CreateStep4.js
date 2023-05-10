@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 
-const CreateStep4 = ({ formData, setFormData, stepData, setStepData }) => {
+const CreateStep4 = ({ formData, setFormData, stepData, setStepData, setStepCompleted }) => {
 
     const [description, setDescription] = useState(stepData.description)
 
@@ -15,6 +15,7 @@ const CreateStep4 = ({ formData, setFormData, stepData, setStepData }) => {
 
     useEffect(() => {
         setStepData({ description });
+        { !!description ? setStepCompleted(true) : setStepCompleted(false) }
       }, [description]);
 
     return(
@@ -28,7 +29,7 @@ const CreateStep4 = ({ formData, setFormData, stepData, setStepData }) => {
             <Grid item xs={12}>
                 <TextField 
                     multiline
-                    variant="standard" 
+                    // variant="standard" 
                     label='Description' 
                     sx={{ width: '40%'}}
                     type="text"

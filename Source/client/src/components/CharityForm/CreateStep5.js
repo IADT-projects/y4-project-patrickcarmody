@@ -3,7 +3,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { CloudinaryContext, Image } from "cloudinary-react";
 
 
-const CreateStep5 = ({ formData, setFormData, stepData, setStepData }) => {
+const CreateStep5 = ({ formData, setFormData, stepData, setStepData, setStepCompleted }) => {
     const [logoImage, setLogoImage] = useState("")
     const [uploaded, setUploaded] = useState(false);
 
@@ -13,6 +13,7 @@ const CreateStep5 = ({ formData, setFormData, stepData, setStepData }) => {
 
     useEffect(() => {
         setStepData({ logoImage });
+        { !!logoImage ? setStepCompleted(true) : setStepCompleted(false)}
       }, [logoImage]);
 
     const cloudinaryRef = useRef();
@@ -23,7 +24,7 @@ const CreateStep5 = ({ formData, setFormData, stepData, setStepData }) => {
         cloudName: 'dzooewr3a',
         uploadPreset: 'kcjt9zeq',
         sources: ["local"],
-        cropping: true,
+        cropping: false,
         multiple: false,
         styles: {
             palette: {

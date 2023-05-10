@@ -16,19 +16,11 @@ const CreateStep7 = ({ formData, setFormData }) => {
             </Grid>
             <Grid item xs={12} display='flex'>
                 <Typography variant='h4' sx={{mr: 3}}>Description:</Typography>
-                <Typography variant='h4' sx={{ fontWeight: '500' }} >{formData.about}</Typography>
+                <Typography variant='h4' sx={{ fontWeight: '500' }} >{formData.description}</Typography>
             </Grid>
             <Grid item xs={12} display='flex'>
                 <Typography variant='h4' sx={{mr: 3}}>Website:</Typography>
                 <Typography variant='h4' sx={{ fontWeight: '500' }} >{formData.website}</Typography>
-            </Grid>
-            <Grid item xs={12} display='flex'>
-                <Typography variant='h4' sx={{mr: 3}}>Logo:</Typography>
-                <Typography variant='h4' sx={{ fontWeight: '500' }} >{formData.logoImage}</Typography>
-            </Grid>
-            <Grid item xs={12} display='flex'>
-                <Typography variant='h4' sx={{mr: 3}}>Website:</Typography>
-                <Typography variant='h4' sx={{ fontWeight: '500' }} >{formData.bannerImage}</Typography>
             </Grid>
         </>
     )    

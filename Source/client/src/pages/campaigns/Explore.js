@@ -68,7 +68,7 @@ const Explore = () => {
 
                 {/* ----- User ----- */}
                 
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <Typography variant='h4'>Donate to user fundraisers</Typography>
                 </Grid>
                 <Grid item xs={4} display='flex' justifyContent={'flex-end'} component={Link} to='/campaigns/user'>
@@ -100,7 +100,7 @@ const Explore = () => {
                         }
                     </Box>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <Typography variant='h4'>Donate to charity organisations</Typography>
                 </Grid>
                 <Grid item xs={4} display='flex' justifyContent={'flex-end'} component={Link} to='/campaigns/charity'>

@@ -78,21 +78,21 @@ const User = () => {
                   </Link>
                 </Grid>
                 <Grid item container xs={12}>
-                  <Grid item xs={6}>
+                  <Grid item xs={12}>
                     <Typography sx={{ fontWeight: 'medium', fontSize: 17, textAlign: 'center' }}>{numberOfCampaigns}</Typography>
                     <Typography sx={{ fontSize: 12, textAlign: 'center' }}>Campaigns</Typography>
                   </Grid>
-                  <Grid item xs={6}>
+                  {/* <Grid item xs={6}>
                     <Typography sx={{ fontWeight: 'medium', fontSize: 17, textAlign: 'center' }}>€20,728</Typography>
                     <Typography sx={{ fontSize: 12, textAlign: 'center' }}>Raised</Typography>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
               <Typography variant='h2' sx={{ textAlign: 'center', pt: 6, pb: 3 }}>Campaigns created by {user.first_name} {user.last_name}</Typography>
               <Grid container spacing={3} direction="row" padding={3} justifyContent='center'>
                 {campaigns &&
                   campaigns.map((campaign) => (
-                      <CampaignCard campaign={campaign} />
+                      <CampaignCard campaign={campaign}/>
                   ))
                 }
               </Grid>

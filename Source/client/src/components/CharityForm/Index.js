@@ -39,14 +39,20 @@ const CreateForm = () => {
     const [step5Data, setStep5Data] = useState({ logoImage: "" });
     const [step6Data, setStep6Data] = useState({ bannerImage: "" });
     const [openDialog, setOpenDialog] = useState(false);
+    const [step1Completed, setStep1Completed] = useState(false);
+    const [step2Completed, setStep2Completed] = useState(false);
+    const [step3Completed, setStep3Completed] = useState(false);
+    const [step4Completed, setStep4Completed] = useState(false);
+    const [step5Completed, setStep5Completed] = useState(false);
+    const [step6Completed, setStep6Completed] = useState(false);
 
     const steps = [
-        { label: "Name", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} /> },
-        { label: "Category", component: <CreateStep2 formData={formData} setFormData={setFormData} stepData={step2Data} setStepData={setStep2Data} /> },
-        { label: "About", component: <CreateStep3 formData={formData} setFormData={setFormData} stepData={step3Data} setStepData={setStep3Data} /> },
-        { label: "Website", component: <CreateStep4 formData={formData} setFormData={setFormData} stepData={step4Data} setStepData={setStep4Data} /> },
-        { label: "Logo", component: <CreateStep5 formData={formData} setFormData={setFormData} stepData={step5Data} setStepData={setStep5Data} /> },
-        { label: "Banner", component: <CreateStep6 formData={formData} setFormData={setFormData} stepData={step6Data} setStepData={setStep6Data} /> },
+        { label: "Name", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} setStepCompleted={(completed) => setStep1Completed(completed)}/> },
+        { label: "Category", component: <CreateStep2 formData={formData} setFormData={setFormData} stepData={step2Data} setStepData={setStep2Data} setStepCompleted={(completed) => setStep2Completed(completed)}/> },
+        { label: "About", component: <CreateStep3 formData={formData} setFormData={setFormData} stepData={step3Data} setStepData={setStep3Data} setStepCompleted={(completed) => setStep3Completed(completed)}/> },
+        { label: "Website", component: <CreateStep4 formData={formData} setFormData={setFormData} stepData={step4Data} setStepData={setStep4Data} setStepCompleted={(completed) => setStep4Completed(completed)}/> },
+        { label: "Logo", component: <CreateStep5 formData={formData} setFormData={setFormData} stepData={step5Data} setStepData={setStep5Data} setStepCompleted={(completed) => setStep5Completed(completed)}/> },
+        { label: "Banner", component: <CreateStep6 formData={formData} setFormData={setFormData} stepData={step6Data} setStepData={setStep6Data} setStepCompleted={(completed) => setStep6Completed(completed)}/> },
         { label: "Confirm", component: <CreateStep7 formData={formData} setFormData={setFormData} /> },
     ];
 
@@ -101,7 +107,7 @@ const CreateForm = () => {
     return (
         <PageContainer title="Create Campaign" description="Create a form">
             {created ? (
-            <Created url={`/charity/${id}`} type={'charity'}/>
+            <Created redirectUrl={`/charity/${id}`} type={'charity'}/>
             ) : (
                 <>
                 <Dialog
@@ -191,16 +197,38 @@ const CreateForm = () => {
                     
                 </Grid>
                 <Grid item xs={6} justifyContent="flex-end">
-                    {activeStep === steps.length - 1 ? (
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>
-                        Submit
-                    </Button>
-                    ) : (
-                    <Button variant="contained" color="primary" onClick={handleNext} disabled={activeStep === steps.length - 1}>
-                        Next
-                    </Button>
-                    )}
-                </Grid>
+                            {activeStep === steps.length - 1 ? (
+                            <Button variant="contained" color="primary" onClick={handleOpenDialog}>
+                                Submit
+                            </Button>
+                            ) : (
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                    disabled={
+                                        activeStep === steps.length - 1
+                                        ? false
+                                        : activeStep === 0
+                                        ? !step1Completed
+                                        : activeStep === 1
+                                        ? !step2Completed
+                                        : activeStep === 2
+                                        ? !step3Completed
+                                        : activeStep === 3
+                                        ? !step4Completed
+                                        : activeStep === 4
+                                        ? !step5Completed
+                                        : activeStep === 5
+                                        ? !step6Completed
+                                        : // Add similar conditions for other steps
+                                            true
+                                    }
+                                >
+                                Next
+                            </Button>
+                            )}
+                        </Grid>
                 </Grid>
             </Grid>
             </>)

@@ -34,20 +34,49 @@ const CreateForm = () => {
     const [step4Data, setStep4Data] = useState({ description: "" });
     const [step5Data, setStep5Data] = useState({ image: "" });
     const [openDialog, setOpenDialog] = useState(false);
+    const [step1Completed, setStep1Completed] = useState(false);
+    const [step2Completed, setStep2Completed] = useState(false);
+    const [step3Completed, setStep3Completed] = useState(false);
+    const [step4Completed, setStep4Completed] = useState(false);
+    const [step5Completed, setStep5Completed] = useState(false);
+    
+
 
     const { address: account } = useAccount();
 
     const steps = [
-        { label: "Title", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} /> },
-        { label: "Category", component: <CreateStep2 formData={formData} setFormData={setFormData} stepData={step2Data} setStepData={setStep2Data} /> },
-        { label: "Target", component: <CreateStep3 formData={formData} setFormData={setFormData} stepData={step3Data} setStepData={setStep3Data} /> },
-        { label: "About", component: <CreateStep4 formData={formData} setFormData={setFormData} stepData={step4Data} setStepData={setStep4Data} /> },
-        { label: "Image", component: <CreateStep5 formData={formData} setFormData={setFormData} stepData={step5Data} setStepData={setStep5Data} /> },
+        { label: "Title", component: <CreateStep1 formData={formData} setFormData={setFormData} stepData={step1Data} setStepData={setStep1Data} setStepCompleted={(completed) => setStep1Completed(completed)}/> },
+        { label: "Category", component: <CreateStep2 formData={formData} setFormData={setFormData} stepData={step2Data} setStepData={setStep2Data} setStepCompleted={(completed) => setStep2Completed(completed)} /> },
+        { label: "Target", component: <CreateStep3 formData={formData} setFormData={setFormData} stepData={step3Data} setStepData={setStep3Data} setStepCompleted={(completed) => setStep3Completed(completed)}/> },
+        { label: "About", component: <CreateStep4 formData={formData} setFormData={setFormData} stepData={step4Data} setStepData={setStep4Data} setStepCompleted={(completed) => setStep4Completed(completed)}/> },
+        { label: "Image", component: <CreateStep5 formData={formData} setFormData={setFormData} stepData={step5Data} setStepData={setStep5Data} setStepCompleted={(completed) => setStep5Completed(completed)}/> },
         { label: "Confirm", component: <CreateStep6 formData={formData} setFormData={setFormData}/> },
     ];
     const handleNext = () => {
+        if (activeStep < steps.length - 1) {
+          switch (activeStep) {
+            case 0:
+              setStep1Completed(!!step1Data.title);
+              break;
+            case 1:
+              setStep2Completed(!!step2Data.category);
+              break;
+            // Repeat for other steps
+            case 2:
+              setStep3Completed(!!step3Data.target);
+              break;
+            case 3:
+              setStep4Completed(!!step4Data.target);
+              break;
+            case 4:
+              setStep5Completed(!!step5Data.target);
+              break;
+            default:
+              break;
+          }
+        }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
+      };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -187,7 +216,27 @@ const CreateForm = () => {
                                 Submit
                             </Button>
                             ) : (
-                            <Button variant="contained" color="primary" onClick={handleNext} disabled={activeStep === steps.length -1}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                    disabled={
+                                        activeStep === steps.length - 1
+                                        ? false
+                                        : activeStep === 0
+                                        ? !step1Completed
+                                        : activeStep === 1
+                                        ? !step2Completed
+                                        : activeStep === 2
+                                        ? !step3Completed
+                                        : activeStep === 3
+                                        ? !step4Completed
+                                        : activeStep === 4
+                                        ? !step5Completed
+                                        : // Add similar conditions for other steps
+                                            true
+                                    }
+                                >
                                 Next
                             </Button>
                             )}

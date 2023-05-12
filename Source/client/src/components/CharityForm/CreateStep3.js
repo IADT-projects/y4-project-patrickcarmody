@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 
-const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
+const CreateStep3 = ({ formData, setFormData, stepData, setStepData, setStepCompleted }) => {
 
     const [description, setDescription] = useState(stepData.description);
 
@@ -15,6 +15,7 @@ const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
 
     useEffect(() => {
         setStepData({ description });
+        { !!description ? setStepCompleted(true) : setStepCompleted(false) } 
       }, [description]);
 
     return(

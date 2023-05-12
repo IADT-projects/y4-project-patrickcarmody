@@ -61,7 +61,7 @@ const Home = () => {
                   decentralised.
               </Typography>
               <Typography variant='subtitle1' sx={{fontSize: 18, marginY: 4}}>
-                Receive cryptocurrency donations for your cause directly from users on the Ethereum blockchain.
+                Receive cryptocurrency donations for your cause directly from users on the Polygon blockchain.
               </Typography>
               <Button
                 variant='contained'

@@ -165,9 +165,7 @@ const Edit = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6} sx={{mt: 5}}>
-                    <Typography sx={{ fontSize: "20px", fontWeight: '500' }}>
-                        Profile Image
-                    </Typography>
+
                     <Box sx={{ borderRadius: 2, height: '100%', width: '100%', pr: 2, pt: 2 }}>
 
                     </Box>

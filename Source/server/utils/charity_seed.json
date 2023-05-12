@@ -1,32 +1,32 @@
 [
     {
-        "title": "World Wildlife Fund",
-        "description": "We bear witness to the accelerating decline of nature and our climate, with serious consequences for life on Earth, including our own.\n\nOur vision is to build a future in which people live in harmony with nature. To deliver this mission, we work to conserve and restore biodiversity, the web that supports all life on Earth; to reduce humanity’s environmental footprint; and to ensure the sustainable use of natural resources to support current and future generations.\n\nWe celebrate and respect diversity in nature and among the people, partners, and communities with whom we work. Across the many cultures and individuals that represent WWF, we are unified by one mission, one brand, and one common set of values",
-        "category": "animals",
+        "title": "Hopeful Hearts Foundation",
+        "description": "Hopeful Hearts Foundation is dedicated to providing essential services to individuals and families affected by poverty, homelessness, and hunger. Our goal is to empower people to break the cycle of poverty and lead self-sufficient lives.",
+        "category": "medical",
         "creator": "0x8ce344f6c0eCe1e2c8F9BDe1Ca464a5769659424",
-        "bannerImage": "wwf-banner_zxtrob",
-        "logoImage": "wwf-logo_yzbhch",
-        "website": "https://www.worldwildlife.org/",
+        "bannerImage": "hearts_banner_p5t4xq",
+        "logoImage": "heart_txidzp",
+        "website": "https://www.bhf.org.uk/informationsupport/how-a-healthy-heart-works",
         "address": "0xA08BcBb83C58295bbB644934F2fcBB94d120E1ea"
     },
     {
-        "title": "UNICEF",
-        "description": "UNICEF works in some of the world’s toughest places, to reach the world’s most disadvantaged children. To save their lives. To defend their rights. To help them fulfill their potential. Across 190 countries and territories, we work for every child, everywhere, every day, to build a better world for everyone.\n\nBefore, during and after humanitarian emergencies. UNICEF is on the ground, bringing lifesaving help and hope to children and families.\n\nAnd we never give up.",
-        "category": "emergencies",
+        "title": "Animal Rescue League",
+        "description": "The Animal Rescue League is a non-profit organization dedicated to rescuing and rehabilitating animals in need. We provide shelter, medical care, and adoption services to animals that have been abandoned, abused, or neglected.",
+        "category": "animals",
         "creator": "0x01886fC0F3fd1760AA1D7e3bd45498Ed915ACC25",
-        "bannerImage": "unicef-banner_vrl9hs",
-        "logoImage": "unicef-logo_y6qzda",
-        "website": "https://www.unicef.org/",
+        "bannerImage": "dog_vg3v7u",
+        "logoImage": "animal_logo_tezluw",
+        "website": "https://www.dogstrust.ie/",
         "address": "0x761d682E0CAC12E7c3d0D2a4248D3fEc88D0622E"
     },
     {
-        "title": "Women's Sports Foundation",
-        "description": "The Women’s Sports Foundation was established in 1974 to advance the lives of women and girls through sports and physical activity. Our mission is to enable all girls and women to reach their potential in sports and life. We provide financial fuel to aspiring champion athletes.\n\nWe fund groundbreaking research. We educate. We advocate. And we help communities get girls active.\n\nSure, there’s a long way to go but we’re not going to stop until we get there.",
-        "category": "sports",
+        "title": "Disaster Relief Fund",
+        "description": "The Disaster Relief Fund provides emergency assistance to communities affected by natural disasters such as hurricanes, earthquakes, and floods. We work to provide essential resources such as food, water, shelter, and medical aid to those in need.",
+        "category": "emergencies",
         "creator": "0xFa236aF7De1F21Eff4C0d170fE93bdfb8A92fD12",
-        "bannerImage": "wsf-banner_cxo2mv",
-        "logoImage": "wsf-logo_oyxdjc",
-        "website": "https://www.womenssportsfoundation.org/",
+        "bannerImage": "disast_yefwgv",
+        "logoImage": "disasterlogo_r5qyg1",
+        "website": "https://www.dec.org.uk/",
         "address": "0xC13402c4661A091240Dd85E135346295D9E9a09A"
     }
 ]

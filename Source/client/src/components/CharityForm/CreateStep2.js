@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Grid, MenuItem, Select, TextField, Typography } from "@mui/material";
 
-const CreateStep2 = ({ formData, setFormData, stepData, setStepData  }) => {
+const CreateStep2 = ({ formData, setFormData, stepData, setStepData, setStepCompleted }) => {
 
     const [category, setCategory] = useState(stepData.category)
 
@@ -15,6 +15,7 @@ const CreateStep2 = ({ formData, setFormData, stepData, setStepData  }) => {
 
     useEffect(() => {
         setStepData({ category });
+        { !!category ? setStepCompleted(true) : setStepCompleted(false) }
       }, [category]);
 
     return(
@@ -32,11 +33,12 @@ const CreateStep2 = ({ formData, setFormData, stepData, setStepData  }) => {
             </Grid>
             <Grid item xs={12}>
                 <Select
-                    label="Category"
                     value={category}
                     onChange={handleChange}
                     sx={{ width: '50%' }}
+                    displayEmpty
                     >
+                        <MenuItem value="">Please select</MenuItem>
                         <MenuItem value="animals">Animals</MenuItem>
                         <MenuItem value="community">Community</MenuItem>
                         <MenuItem value="emergencies">Emergencies</MenuItem>

@@ -1,3 +1,3 @@
-# project_y4
-## Documentation
-Save your report here converted as a .pdf file.
+## Documents
+
+This folder contains the final report for this project, and a video walking through the project.

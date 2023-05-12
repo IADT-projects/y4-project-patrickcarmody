@@ -103,7 +103,7 @@ const Login = () => {
                             />
                         </Box>
                         <Typography color='red' mt={'10px'}>{errorMessage}</Typography>
-                        <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
+                        {/* <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
                             <FormGroup>
                                 <FormControlLabel
                                     control={<Checkbox defaultChecked />}
@@ -121,7 +121,7 @@ const Login = () => {
                             >
                                 Forgot Password ?
                             </Typography>
-                        </Stack>
+                        </Stack> */}
                     </Stack>
                     <Box>
                         <Button

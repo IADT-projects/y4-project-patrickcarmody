@@ -151,7 +151,7 @@ const Dashboard = () => {
                                 <Box
                                     sx={{
                                         padding: 4,
-                                        height: "50%",
+                                        height: "100%",
                                         display: "flex",
                                         alignItems: "center",
                                         flexDirection: "column",
@@ -176,7 +176,7 @@ const Dashboard = () => {
                                         Campaigns
                                     </Typography>
                                 </Box>
-                                <Box
+                                {/* <Box
                                     sx={{
                                         padding: 4,
                                         height: "50%",
@@ -205,7 +205,7 @@ const Dashboard = () => {
                                     >
                                         Raised
                                     </Typography>
-                                </Box>
+                                </Box> */}
                             </Box>
                         </Grid>
 

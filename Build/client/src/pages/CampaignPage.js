@@ -21,6 +21,9 @@ const CampaignPage = ({campaign}) => {
         last_name: ""
     });
 
+    const date = new Date(Date.parse(campaign.createdAt));
+    const dateCreated = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+
     useEffect(() => {
         if (totalDepositedData) {
             setTotalDeposited(ethers.utils.formatEther(totalDepositedData));
@@ -92,7 +95,7 @@ const CampaignPage = ({campaign}) => {
                             <Divider/>
                             <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>
                                 <Typography variant="body1" sx={{width: '50%'}} textAlign={'left'}>Date Created:</Typography>
-                                <Typography variant="body1" sx={{width: '50%', color: 'red'}} textAlign={'right'} >To be added</Typography>
+                                <Typography variant="body1" sx={{width: '50%'}} textAlign={'right'} >{dateCreated}</Typography>
                             </Box>
                             <Divider/>
                             <Box sx={{width: '100%', display: 'flex', flexDirection: 'row'}}>

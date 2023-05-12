@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageContainer from "../../components/PageContainer"
 import axios from '../../config'
 import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
@@ -8,13 +8,15 @@ import { UserContext } from "../../context/UserContext";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
+
 const UserSettings = () => {
     const { userData, isAuthenticated} = useContext(UserContext);
     const [buttonMessage, setbuttonMessage] = useState("");
     const [passwordCheck, setPasswordCheck] = useState({});
     const [passwordsMatch, setPasswordsMatch] = useState(false);
     const [passwordHelperText, setPasswordHelperText] = useState("");
-    
+    const cloudinaryRef = useRef();
+    const widgetRef = useRef();
     const [ form, setForm ] = useState({
         first_name: "",
         last_name: "",
@@ -40,6 +42,50 @@ const UserSettings = () => {
             console.log(err);
         })
     }, [])
+
+    useEffect(() => {
+        cloudinaryRef.current = window.cloudinary;
+        widgetRef.current = cloudinaryRef.current.createUploadWidget({
+            cloudName: 'dzooewr3a',
+            uploadPreset: 'kcjt9zeq',
+            sources: ["local"],
+            cropping: true,
+            multiple: false,
+            styles: {
+                palette: {
+                    window: "#FFFFFF",
+                    windowBorder: "#191818",
+                    tabIcon: "#0078FF",
+                    menuIcons: "#437DC7",
+                    textDark: "#000000",
+                    textLight: "#FFFFFF",
+                    link: "#3F84D4",
+                    action: "#FF620C",
+                    inactiveTabIcon: "#0E2F5A",
+                    error: "#F44235",
+                    inProgress: "#0078FF",
+                    complete: "#20B832",
+                    sourceBg: "#FFFFFF"
+                },
+                fonts: {
+                    default: null,
+                    "'Poppins', sans-serif": {
+                        url: "https://fonts.googleapis.com/css?family=Poppins",
+                        active: true
+                    }
+                }
+            }
+        }, (error, result) => {
+            if (!error && result && result.event === 'success') {
+            console.log("Image uploaded:", result.info)
+            setForm(prevState => ({
+                ...prevState,
+                image: result.info.public_id
+            }))
+            }
+        });
+    
+        }, [])
 
     const handleForm = (e) => {
         let name = e.target.name;
@@ -182,6 +228,7 @@ const UserSettings = () => {
                         </Stack>
                     </Box>
                 </Grid>
+                
                 <Grid item xs={12} md={6} sx={{mt: {xs: 5, md: 0}}}>
                     <Typography sx={{ fontSize: "20px", fontWeight: 'bold' }}>
                         Change Password
@@ -240,16 +287,20 @@ const UserSettings = () => {
                                 />
                             </Box>
                         </Stack>
+                        <Grid item xs={12} md={6} sx={{mt: 5}}>
+                            <Typography sx={{ fontSize: "20px", fontWeight: '500' }}>
+                                Profile Image
+                            </Typography>
+                            
+                            <Box sx={{ borderRadius: 2, height: '100%', width: '100%', pr: 2, pt: 2 }}>
+                            </Box>
+                            <Button onClick={() => {widgetRef.current.open()}} sx={{mt: '20px'}} variant='contained'>Change image</Button>
+                        </Grid>
                     </Box>
+                    
                 </Grid>
-                <Grid item xs={12} md={6} sx={{mt: 5}}>
-                    <Typography sx={{ fontSize: "20px", fontWeight: '500' }}>
-                        Profile Image
-                    </Typography>
-                    <Box sx={{ borderRadius: 2, height: '100%', width: '100%', pr: 2, pt: 2 }}>
 
-                    </Box>
-                </Grid>
+                
                 <Grid item xs={12} mt={2} display>
                     <Button onClick={handleSubmit} variant="contained" size="large">Save</Button>
                     <Typography color='#16b56b' sx={{fontWeight: '500', pt: 1}}>{buttonMessage}</Typography>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, InputAdornment, TextField, Typography } from "@mui/material";
 
-const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
+const CreateStep3 = ({ formData, setFormData, stepData, setStepData, setStepCompleted }) => {
 
     const [goal, setGoal] = useState(stepData.goal)
 
@@ -15,6 +15,7 @@ const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
 
     useEffect(() => {
         setStepData({ goal });
+        { !!goal ? setStepCompleted(true) : setStepCompleted(false) }
       }, [goal]);
     
     return(
@@ -27,12 +28,19 @@ const CreateStep3 = ({ formData, setFormData, stepData, setStepData }) => {
             </Grid>
             <Grid item xs={12}>
                 <TextField 
-                    variant="standard" 
+                    // variant="standard" 
                     label='Target ' 
-                    sx={{ width: '40%'}}
+                    sx={{ width: '250px'}}
                     type="number"
                     value={goal}
                     onChange={handleChange}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                MATIC
+                            </InputAdornment>
+                        )
+                    }}
                 />
             </Grid>
         </>

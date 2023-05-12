@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import '../../assets/css/index.css'
 import Progress from "./Progress";
@@ -23,6 +23,7 @@ const CampaignCard = ({campaign}) => {
                 component={Link}
                 to={`/campaigns/${campaign._id}`}
                 sx={{
+                    overflow: 'hidden',
                     display: 'flex-inline',
                     justifyContent: 'center',
                     alignItems: 'start',
@@ -45,8 +46,9 @@ const CampaignCard = ({campaign}) => {
                     component='img'
                     src={`https://res.cloudinary.com/dzooewr3a/image/upload/v1681845846/${campaign.image}.png`}
                     sx={{
-                        maxWidth: '100%',
-                        height: '35%',
+                        height: '140px',
+                        overflow: 'hidden',
+                        aspectRatio: 8/3,
                         backgroundColor: '#3BBBEB',
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,

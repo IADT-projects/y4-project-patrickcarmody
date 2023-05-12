@@ -1,0 +1,66 @@
+[
+    {
+        "address": "0xfA88EFd9f846a57479dF3402E685B2AD455dBde7",
+        "first_name": "Stephanie",
+        "last_name": "Cameron",
+        "biography": "Pop cultureaholic. Incurable troublemaker. Food aficionado. Friend of animals everywhere.",
+        "email": "stephanie@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": "stephanie_vmzgn2"
+    },
+    {
+        "address": "0xeC19937914d11991b91B463Caf666B90F77ACcAa",
+        "first_name": "George",
+        "last_name": "Russell",
+        "biography": "Hardcore web aficionado. Evil internet advocate. Incurable entrepreneur.",
+        "email": "george@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": "george_ekqhth"
+    },
+    {
+        "address": "0x55860323F793957C3F0bf33a069B6B0810adC81e",
+        "first_name": "Alison",
+        "last_name": "Leonard",
+        "biography": "Infuriatingly humble introvert. Friendly writer. Tv trailblazer. Troublemaker.",
+        "email": "alison@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": "alison_vc5ndh"
+    },
+    {
+        "address": "0x2EBd98d3Ae2BbbB002cCf762487fFD224fa68119",
+        "first_name": "Kyle",
+        "last_name": "McAndrew",
+        "biography": "Friendly music lover. Web aficionado. Future teen idol. Extreme twitter fan. Internet practitioner. Hipster-friendly coffee maven.",
+        "email": "kyle@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": "kyle_gltsvr"
+    },
+    {
+        "address": "0xf387359fAb862eaEF4B7C03D2174755918c58D4d",
+        "first_name": "Lisa",
+        "last_name": "Owens",
+        "biography": "Manages World Wildlife Fund Fundraiser",
+        "email": "lisa@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": ""
+    },
+    {
+        "address": "0x01886fC0F3fd1760AA1D7e3bd45498Ed915ACC25",
+        "first_name": "John",
+        "last_name": "Howard",
+        "biography": "Manages UNICEF Fundraiser",
+        "email": "john@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": ""
+    },
+    {
+        "address": "0xFa236aF7De1F21Eff4C0d170fE93bdfb8A92fD12",
+        "first_name": "Amanda",
+        "last_name": "Morgan",
+        "biography": "Manages WSF Fundraiser",
+        "email": "amanda@example.com",
+        "password": "$2a$09$nSC9p3iIYDvUGo0AImlEBu9KNtRl.5IhRb9CYlxMIKlecQX2gXuVS",
+        "image": ""
+    }
+    
+]
